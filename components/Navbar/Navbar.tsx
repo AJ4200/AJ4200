@@ -10,7 +10,7 @@ const Navbar: React.FC = () => {
       <MobileNavbar open={open} setOpen={setOpen} />
       <div className="w-3/12 flex items-center">
         <a className="text-2xl font-semibold" href="/">
-          Abel Majadibodu
+          aj4200
         </a>
       </div>
       <div className="w-9/12 flex justify-end items-center">
@@ -39,8 +39,11 @@ const Navbar: React.FC = () => {
         </div>
 
         <div className="hidden md:flex">
-          <NavLink to="/contact">CONTACT</NavLink>
+          <NavLink to="/">HOME</NavLink>
           <NavLink to="/about">ABOUT</NavLink>
+          <NavLink to="/portfolio">PORTFOLIO</NavLink>
+          <NavLink to="/services">SERVICES</NavLink>
+          <NavLink to="/contact">CONTACT</NavLink>
         </div>
       </div>
     </nav>
