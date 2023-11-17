@@ -11,7 +11,7 @@ const Hero = () => {
 
   return (
     <div className="w-full flex mx-auto mt-10 items-center flex-col">
-      <div className="flex max-w-md justify-between border-b-2 w-full">
+      <div className="flex max-w-md justify-between border-b-2 w-full text-shadow">
         <button
           className={`py-2 ${
             activeTab === "main" ? "border-b-2 border-blue-500" : ""

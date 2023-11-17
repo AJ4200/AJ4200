@@ -6,16 +6,16 @@ const Navbar: React.FC = () => {
   const [open, setOpen] = useState(false);
 
   return (
-    <nav className="flex filter drop-shadow-md bg-white px-4 py-4 h-20 items-center">
+    <nav className="logo text-shadow flex filter drop-shadow-md bg-transparent backdrop-blur-md px-4 py-4 h-20 items-center">
       <MobileNavbar open={open} setOpen={setOpen} />
       <div className="w-3/12 flex items-center">
         <a className="text-2xl font-semibold" href="/">
-          aj4200
+          <b>a<span>j</span>4<span>2</span>00</b>
         </a>
       </div>
       <div className="w-9/12 flex justify-end items-center">
         <div
-          className="z-50 flex relative w-8 h-8 flex-col justify-between items-center md:hidden"
+          className=" flex relative w-8 h-8 flex-col justify-between items-center md:hidden"
           onClick={() => {
             setOpen(!open);
           }}

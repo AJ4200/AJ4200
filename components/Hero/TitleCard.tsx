@@ -4,23 +4,24 @@ import DynamicTitle from "../Utils/DynamicTitle";
 
 const TitleCard = () => {
   return (
-    <section className="w-full px-8 py-12 grid grid-cols-1 md:grid-cols-2 items-center gap-8 max-w-6xl mx-auto">
+    <section className="w-full px-8 py-12 grid grid-cols-1 md:grid-cols-2 items-center gap-8 max-w-6xl mx-auto backdrop-blur-md">
       <div>
-        {" "}
-        <h3 className="text-4xl md:text-6xl font-semibold">
+        <h3 className="text-4xl md:text-6xl font-semibold text-shadow">
           Hello, I'm <span className="text-indigo-500">Abel</span>
         </h3>
-        <span className="block mb-4 text-lg md:text-md text-indigo-500 font-medium">
+        <span className="mb-4 text-lg md:text-md text-indigo-500 font-medium">
           <DynamicTitle />
         </span>
-        <p className="text-base md:text-md text-slate-700 my-4 md:my-6">
+
+        <p className="text-base md:text-md text-slate-500 my-4 md:my-6"
+        >
           I'm a software engineer with experience in designing, building and
           scaling software, However i specialize in full stack development.
           Additionally, I possess skills in creative fields such as
           cinematography, music production and game development. Pursued a BSc
           degree at the University of Johannesburg, I take on small projects to
           further hone my skills. As a hobbyist, I develop mods for games, make
-          music, and compete in online hackathon tournaments. I 
+          music, and compete in online hackathon tournaments.
         </p>
         <button className="bg-indigo-500 text-white font-medium py-2 px-4 rounded transition-all hover:bg-indigo-600 active:scale-95">
           Find a class
@@ -113,10 +114,12 @@ const generateSquares = () => {
       key={sq.id}
       layout
       transition={{ duration: 1.5, type: "spring" }}
-      className="w-full h-full rounded-md"
+      className="w-full h-full"
       style={{
         backgroundImage: `url(${sq.src})`,
         backgroundSize: "cover",
+        clipPath:
+          "polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)" ,
       }}
     ></motion.div>
   ));

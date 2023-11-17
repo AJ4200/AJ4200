@@ -24,7 +24,7 @@ const GitHubHeatmap: React.FC = () => {
     <div>
       <h2 className="text-2xl font-bold mb-4">GitHub Contribution Heatmap</h2>
       <div className="grid grid-cols-7 gap-2">
-        {contributions &&  contributions.map((count, index) => (
+        {contributions.map((count, index) => (
           <div
             key={index}
             className={`w-5 h-5 bg-gray-300 ${count > 0 ? "bg-green-500" : ""}`}
