@@ -34,5 +34,5 @@
 .cursor.is-moving {
   transform: scale(0.3);
   animation: none; 
-background: #0000003f;
+background: #ffffff3f;
 }

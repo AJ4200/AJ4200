@@ -10,33 +10,34 @@ const Hero = () => {
   };
 
   return (
-    <div className="w-full flex mx-auto mt-10 items-center flex-col">
-      <div className="flex max-w-md justify-between border-b-2 w-full text-shadow">
+    <div className="w-full flex mx-auto items-center flex-col">
+      <div className="flex md:max-w-xl justify-between w-full">
         <button
-          className={`py-2 ${
-            activeTab === "main" ? "border-b-2 border-blue-500" : ""
-          }`}
-          onClick={() => handleTabClick("main")}
-        >
-          Main
-        </button>
-        <button
-          className={`py-2 ${
-            activeTab === "githeat" ? "border-b-2 border-blue-500" : ""
+          className={`text-slate-500 font-semibold backdrop-blur-md w-[33.33%] py-2 ${
+            activeTab === "githeat" ? "text-indigo-500 border-b-8 border-indigo-500/40" : ""
           }`}
           onClick={() => handleTabClick("githeat")}
         >
           Git Heat
         </button>
         <button
-          className={`py-2 ${
-            activeTab === "latest" ? "border-b-2 border-blue-500" : ""
+          className={`text-slate-500 font-semibold backdrop-blur-md w-[33.33%] py-2 ${
+            activeTab === "main" ? "text-indigo-500 border-b-8 border-indigo-500/40" : ""
+          }`}
+          onClick={() => handleTabClick("main")}
+        >
+          Main
+        </button>
+        <button
+          className={`text-slate-500 font-semibold backdrop-blur-md w-[33.33%] py-2 ${
+            activeTab === "latest" ? "text-indigo-500 border-b-8 border-indigo-500/40" : ""
           }`}
           onClick={() => handleTabClick("latest")}
         >
           latest
         </button>
       </div>
+
       {activeTab === "main" && <TitleCard />}
       {activeTab === "githeat" && <GitHubHeatmap />}
       {activeTab === "latest" && (
@@ -45,7 +46,6 @@ const Hero = () => {
           <iframe
             src="https://diealouge.vercel.app"
             className="mt-6 p-4 text-center rounded-md"
-
           />
         </>
       )}

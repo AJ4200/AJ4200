@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import DynamicTitle from "../Utils/DynamicTitle";
+import Decrypt from "../Utils/Decrypt";
 
 const TitleCard = () => {
   return (
@@ -23,9 +24,7 @@ const TitleCard = () => {
           further hone my skills. As a hobbyist, I develop mods for games, make
           music, and compete in online hackathon tournaments.
         </p>
-        <button className="bg-indigo-500 text-white font-medium py-2 px-4 rounded transition-all hover:bg-indigo-600 active:scale-95">
-          Find a class
-        </button>
+  <Decrypt/>
       </div>
       <ShuffleGrid />
     </section>
@@ -119,7 +118,7 @@ const generateSquares = () => {
         backgroundImage: `url(${sq.src})`,
         backgroundSize: "cover",
         clipPath:
-          "polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)" ,
+          " polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%)",
       }}
     ></motion.div>
   ));

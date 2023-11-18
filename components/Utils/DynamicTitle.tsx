@@ -3,9 +3,10 @@ import { motion } from "framer-motion";
 
 const titles = [
   "Software Engineer",
-  "Web Developer",
-  "UI/UX Designer",
+  "Frontend Developer",
+  "UI Designer",
   "Full Stack Developer",
+  "Game Developer"
 ];
 
 const DynamicTitle: React.FC = () => {

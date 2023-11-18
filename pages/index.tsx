@@ -1,5 +1,3 @@
-import 'swiper/css/pagination';
-import 'swiper/css/scrollbar';
 import Hero from '../components/Hero/Hero';
 
 

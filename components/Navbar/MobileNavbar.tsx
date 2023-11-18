@@ -8,11 +8,11 @@ interface MobileNavbarProps {
 const MobileNavbar: React.FC<MobileNavbarProps> = ({ open, setOpen }) => {
   return (
     <div
-      className={`logo absolute top-0 left-0 h-screen w-screen transform ${
+      className={`logo block fixed top-0 left-0 h-screen w-screen transform ${
         open ? "-translate-x-0" : "-translate-x-full"
       } transition-transform duration-300 ease-in-out filter drop-shadow-md `}
     >
-      <div className="flex items-center justify-center filter drop-shadow-md bg-transparent backdrop-blur-sm h-20">
+      <div className="flex items-center justify-center filter drop-shadow-md h-20">
         {" "}
         {/*logo container*/}
         <a className="text-xl font-semibold" href="/">
@@ -21,7 +21,7 @@ const MobileNavbar: React.FC<MobileNavbarProps> = ({ open, setOpen }) => {
           </b>
         </a>
       </div>
-      <div className="flex flex-col ml-4">
+      <div className="flex flex-col text-center bg-inherit">
         <a
           className="text-xl font-medium my-4"
           href="/"
@@ -34,7 +34,7 @@ const MobileNavbar: React.FC<MobileNavbarProps> = ({ open, setOpen }) => {
           Home
         </a>
         <a
-          className="text-xl font-normal my-4"
+          className="text- text-xl font-normal my-4"
           href="/about"
           onClick={() =>
             setTimeout(() => {
@@ -45,7 +45,7 @@ const MobileNavbar: React.FC<MobileNavbarProps> = ({ open, setOpen }) => {
           About
         </a>
         <a
-          className="text-xl font-normal my-4"
+          className="text- text-xl font-normal my-4"
           href="/portfolio"
           onClick={() =>
             setTimeout(() => {
@@ -56,7 +56,7 @@ const MobileNavbar: React.FC<MobileNavbarProps> = ({ open, setOpen }) => {
           Portfolio
         </a>
         <a
-          className="text-xl font-normal my-4"
+          className="text- text-xl font-normal my-4"
           href="/services"
           onClick={() =>
             setTimeout(() => {
@@ -67,7 +67,7 @@ const MobileNavbar: React.FC<MobileNavbarProps> = ({ open, setOpen }) => {
           Services
         </a>
         <a
-          className="text-xl font-normal my-4"
+          className="text- text-xl font-normal my-4"
           href="/contacts"
           onClick={() =>
             setTimeout(() => {

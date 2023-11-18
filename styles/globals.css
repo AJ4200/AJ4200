@@ -7,8 +7,8 @@
 body
 {
     height: 100vh;
-    width: 100vw;
-    overflow: hidden;                               
+    width: 100vw;    
+    overflow-x: hidden;                          
   cursor: none;
   font-family: "MonaspaceKrypton";
   background: #112 url(//images.weserv.nl/?url=i.imgur.com/6QJjYMe.jpg)  center no-repeat;
@@ -65,5 +65,5 @@ body
   }
 }
 .text-shadow{
-  text-shadow: #fee 0.5px 0.5px;
+  text-shadow: #fee 0.5px 0.5px 0.5px;
 }

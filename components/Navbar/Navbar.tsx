@@ -4,14 +4,20 @@ import NavLink from "./NavLink";
 
 const Navbar: React.FC = () => {
   const [open, setOpen] = useState(false);
-
+  
   return (
-    <nav className="logo text-shadow flex filter drop-shadow-md bg-transparent backdrop-blur-md px-4 py-4 h-20 items-center">
+    <nav className="logo md:sticky text-shadow flex filter drop-shadow-md bg-transparent backdrop-blur-md px-4 py-4 h-20 items-center">
       <MobileNavbar open={open} setOpen={setOpen} />
       <div className="w-3/12 flex items-center">
-        <a className="text-2xl font-semibold" href="/">
-          <b>a<span>j</span>4<span>2</span>00</b>
-        </a>
+        {open ? (
+          ""
+        ) : (
+          <a className="text-2xl font-semibold" href="/">
+            <b>
+              #a<span>j</span>4<span>2</span>00
+            </b>
+          </a>
+        )}
       </div>
       <div className="w-9/12 flex justify-end items-center">
         <div
@@ -28,7 +34,7 @@ const Navbar: React.FC = () => {
           />
           <span
             className={`h-1 w-full bg-black rounded-lg transition-all duration-300 ease-in-out ${
-              open ? "w-0" : "w-full"
+              open ? "bg-transparent" : "w-full"
             }`}
           />
           <span
