@@ -1,10 +1,25 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import MobileNavbar from "./MobileNavbar";
 import NavLink from "./NavLink";
+import { useRouter } from "next/router";
+import { getNeonColor, getStyles, getTextColor } from "../../lib/navbarUtils";
 
 const Navbar: React.FC = () => {
+  const router = useRouter();
   const [open, setOpen] = useState(false);
-  
+  const { asPath } = router;
+
+  // Effect to update the font family and background image when the path changes
+  useEffect(() => {
+    const body = document.querySelector("body");
+    if (body) {
+      const styles = getStyles(asPath);
+      body.style.backgroundImage = styles.backgroundImage;
+      body.style.fontFamily = styles.fontFamily;
+    }
+    document.documentElement.style.setProperty("--neon", getNeonColor(asPath));
+  }, [asPath]);
+
   return (
     <nav className="logo md:sticky text-shadow flex filter drop-shadow-md bg-transparent backdrop-blur-md px-4 py-4 h-20 items-center">
       <MobileNavbar open={open} setOpen={setOpen} />
@@ -14,7 +29,7 @@ const Navbar: React.FC = () => {
         ) : (
           <a className="text-2xl font-semibold" href="/">
             <b>
-              #a<span>j</span>4<span>2</span>00
+              #a<span>j</span>4<span>2</span>00 {asPath}
             </b>
           </a>
         )}
@@ -45,11 +60,21 @@ const Navbar: React.FC = () => {
         </div>
 
         <div className="hidden md:flex">
-          <NavLink to="/">HOME</NavLink>
-          <NavLink to="/about">ABOUT</NavLink>
-          <NavLink to="/portfolio">PORTFOLIO</NavLink>
-          <NavLink to="/services">SERVICES</NavLink>
-          <NavLink to="/contact">CONTACT</NavLink>
+          <NavLink to="/" text_color={getTextColor("/")}>
+            HOME
+          </NavLink>
+          <NavLink to="/about" text_color={getTextColor("/about")}>
+            ABOUT
+          </NavLink>
+          <NavLink to="/portfolio" text_color={getTextColor("/portfolio")}>
+            PORTFOLIO
+          </NavLink>
+          <NavLink to="/services" text_color={getTextColor("/services")}>
+            SERVICES
+          </NavLink>
+          <NavLink to="/contact" text_color={getTextColor("/contact")}>
+            CONTACT
+          </NavLink>
         </div>
       </div>
     </nav>
