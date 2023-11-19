@@ -23,8 +23,23 @@ body
   src: url('/fonts/MonaspaceRadon.ttf') format('truetype');
 }
 @font-face {
+  font-family: 'Teqto';
+  src: url('/fonts/Teqto.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'rimouski';
+  src: url('/fonts/rimouski.otf') format('opentype');
+}
+
+@font-face {
   font-family: 'pricedown';
   src: url('/fonts/pricedown.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'Suggested';
+  src: url('/fonts/Suggested.ttf') format('truetype');
 }
 
 .logo b{
@@ -73,4 +88,7 @@ body
 }
 .text-shadow{
   text-shadow: #fee 0.5px 0.5px 0.5px;
+}
+.text-darkshadow{
+  text-shadow: black 0.5px 0.5px 0.5px;
 }

@@ -23,21 +23,21 @@ export const getStyles = (path: string) => {
       backgroundImage: "url(//images.weserv.nl/?url=i.imgur.com/6QJjYMe.jpg)",
     },
     "/about": {
-      fontFamily: "MonaspaceRadon",
+      fontFamily: "pricedown",
       backgroundImage:
-        "url('https://img.freepik.com/free-photo/red-black-brush-stroke-banner-background-perfect-canva_1361-3597.jpg?w=900&t=st=1700381273~exp=1700381873~hmac=a5c66abec64f0fac7e1b7e0e6dd128ac115709d186b326beb1f0279e6ed7ba57')",
+        "url('imgs/apg.jpg')",
     },
     "/portfolio": {
-      fontFamily: "font-mono",
+      fontFamily: "MonaspaceRadon",
       backgroundImage: "url('/imgs/pbg.jpg')",
     },
     "/services": {
-      fontFamily: "font-serif",
-      backgroundImage: "url('/images/services-background.jpg')",
+      fontFamily: "rimouski",
+      backgroundImage: "url('/imgs/8753.jpg')",
     },
     "/contact": {
-      fontFamily: "font-sans",
-      backgroundImage: "url('/images/contact-background.jpg')",
+      fontFamily: "Teqto",
+      backgroundImage: "url('/imgs/water.jpg')",
     },
   };
 
