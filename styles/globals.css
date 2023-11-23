@@ -18,18 +18,20 @@ body
   font-family: 'MonaspaceKrypton';
   src: url('/fonts/MonaspaceKrypton.ttf') format('truetype');
 }
+
 @font-face {
-  font-family: 'MonaspaceRadon';
-  src: url('/fonts/MonaspaceRadon.ttf') format('truetype');
-}
-@font-face {
-  font-family: 'Teqto';
-  src: url('/fonts/Teqto.otf') format('opentype');
+  font-family: 'Allema';
+  src: url('/fonts/Allema.otf') format('opentype');
 }
 
 @font-face {
   font-family: 'rimouski';
   src: url('/fonts/rimouski.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'Teqto';
+  src: url('/fonts/Teqto.otf') format('opentype');
 }
 
 @font-face {

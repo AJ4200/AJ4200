@@ -36,9 +36,12 @@ const MainContact: React.FC = () => {
   return (
     <div>
       <form
-        className="max-w-md mx-auto p-6 backdrop-blur-md rounded-md shadow-md"
+        className="max-w-md mx-auto p-6 backdrop-blur-md rounded-md shadow-md mt-4 text-darkshadow"
         onSubmit={sendEmail}
       >
+        <h1 className="text-2xl text-center text-shadow my-4">
+          Submit an enquiry
+        </h1>
         <input type="hidden" name="contact_number" />
 
         <div className="mb-4">
@@ -90,14 +93,19 @@ const MainContact: React.FC = () => {
           type="submit"
           disabled={loading}
         >
-          {loading ? "Sending..." : "Send"}
+          {loading ? <div className="aqua-loader" /> : "Send"}
         </button>
       </form>
 
       {showConfirmation && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
           <div className="bg-white p-4 rounded-md">
-            <p className="text-lg font-semibold">Email sent successfully!</p>
+            <p className="text-lg font-semibold">
+              Your Enquiry was recieved successfully!{" "}
+            </p>
+            <p className="text-md font-bold">
+            Will be in touch soon!
+            </p>
             <button
               className="mt-4 bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition duration-300"
               onClick={closeConfirmation}

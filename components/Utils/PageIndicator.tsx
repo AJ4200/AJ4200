@@ -3,19 +3,21 @@ import React from "react";
 
 interface PageIndictorProps {
   route: string;
-  bgcolor: string;
+  TextColor: string;
 }
 
-const PageIndictor: React.FC<PageIndictorProps> = ({ route, bgcolor }) => {
+const PageIndictor: React.FC<PageIndictorProps> = ({ route, TextColor }) => {
   return (
     <motion.div
-      initial={{ y: -100, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      exit={{ y: -100, opacity: 0 }}
-      className="fixed w-full h-full"
-      style={{ backgroundColor: bgcolor }}
+      className="fixed top-1/2"
     >
-      <span className="text-center text-5xl">{route}</span>
+      <span className={`${TextColor} text-center text-8xl w-full`}>
+        {route}
+      </span>
     </motion.div>
   );
 };
+
+export default PageIndictor;
+
+

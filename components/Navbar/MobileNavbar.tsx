@@ -8,14 +8,14 @@ interface MobileNavbarProps {
 const MobileNavbar: React.FC<MobileNavbarProps> = ({ open, setOpen }) => {
   return (
     <div
-      className={`logo block fixed top-0 left-0 h-screen w-screen transform ${
+      className={`z-[98]block fixed top-0 left-0 h-screen w-screen transform backdrop-blur-lg ${
         open ? "-translate-x-0" : "-translate-x-full"
       } transition-transform duration-300 ease-in-out filter drop-shadow-md `}
     >
       <div className="flex items-center justify-center filter drop-shadow-md h-20">
         {" "}
         {/*logo container*/}
-        <a className="text-xl font-semibold" href="/">
+        <a className="logo text-xl font-semibold" href="/">
           <b>
             a<span>j</span>4<span>2</span>00
           </b>
@@ -68,7 +68,7 @@ const MobileNavbar: React.FC<MobileNavbarProps> = ({ open, setOpen }) => {
         </a>
         <a
           className="text- text-xl font-normal my-4"
-          href="/contacts"
+          href="/contact"
           onClick={() =>
             setTimeout(() => {
               setOpen(!open);
