@@ -1,11 +1,10 @@
 import React from'react';
+import MainContact from '../components/Contact/MainContact';
  
-interface ConctactProps{
-prop: string
-}
+
  
-const Conctact: React.FC<ConctactProps> = ({prop}) => 
+const Conctact: React.FC = () => 
 {
-return (<div>Conctact</div>);
+return (<MainContact/> );
 }
 export default Conctact;
