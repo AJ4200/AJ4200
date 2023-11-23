@@ -9,9 +9,9 @@ interface PageIndictorProps {
 const PageIndictor: React.FC<PageIndictorProps> = ({ route, TextColor }) => {
   return (
     <motion.div
-      className="fixed top-1/2"
+      className="fixed bottom-0 pointer-events-none"
     >
-      <span className={`${TextColor} text-center text-8xl w-full`}>
+      <span className={`${TextColor} text-center text-7xl w-full opacity-50`}>
         {route}
       </span>
     </motion.div>
