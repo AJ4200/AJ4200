@@ -28,7 +28,7 @@ export const getStyles = (path: string) => {
         "url('imgs/apg.jpg')",
     },
     "/portfolio": {
-      fontFamily: "Allema",
+      fontFamily: "Girdens",
       backgroundImage: "url('/imgs/pbg.jpg')",
     },
     "/services": {

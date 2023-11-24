@@ -23,7 +23,7 @@ const Navbar: React.FC = () => {
   return (
     <nav
       className="logo md:sticky text-shadow flex filter drop-shadow-md bg-transparent backdrop-blur-md px-4 py-4 h-20 items-center"
-      style={asPath == "/about" ? { textShadow: "black 0.5px 0.5px 0.5px" } : {}}
+      style={asPath == "/about" || "/portfolio" ? { textShadow: "black 0.5px 0.5px 0.5px" } : {}}
     >
       <MobileNavbar open={open} setOpen={setOpen} />
       <div className="w-3/12 flex items-center">
