@@ -1,19 +1,20 @@
 import React, { useEffect } from "react";
 import Splide from "@splidejs/splide";
+import projects from "../../data/projects";
 
-const Projects:React.FC = () => {
+const Projects: React.FC = () => {
   useEffect(() => {
     const secondarySlider = new Splide("#secondary-slider", {
       fixedWidth: 100,
-      height: 60,
+      fixedHeight: 60,
       gap: 10,
-      cover: true,
+      rewind: true,
+      pagination: false,
       isNavigation: true,
-      focus: "center",
       breakpoints: {
         "600": {
           fixedWidth: 66,
-          height: 40,
+          fixedHeight: 44,
         },
       },
     }).mount();
@@ -33,14 +34,24 @@ const Projects:React.FC = () => {
     <div>
       <div id="primary-slider" className="splide">
         <div className="splide__track">
-          <ul className="splide__list">{/* Add your slide items here */}</ul>
+          <ul className="splide__list">
+            {projects.map((project, index) => (
+              <li key={index} className="splide__slide">
+                <img src={project.image} alt={project.title} />
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
 
       <div id="secondary-slider" className="splide">
         <div className="splide__track">
           <ul className="splide__list">
-            {/* Add your thumbnail items here */}
+            {projects.map((project, index) => (
+              <li key={index} className="splide__slide">
+                <img src={project.image} alt={project.title} />
+              </li>
+            ))}
           </ul>
         </div>
       </div>

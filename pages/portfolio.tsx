@@ -18,7 +18,7 @@ const Portfolio: React.FC = () =>
           <div className="w-full flex mx-auto items-center flex-col">
             <div className="flex md:max-w-xl justify-between w-full">
               <button
-                className={`text-slate-500 font-semibold backdrop-blur-md w-[33.33%] py-2 ${
+                className={`text-darkshadow text-lime-500 font-semibold backdrop-blur-md w-[33.33%] py-2 ${
                   activeTab === "experience"
                     ? "text-green-500 border-b-8 border-green-500/40"
                     : ""
@@ -28,7 +28,7 @@ const Portfolio: React.FC = () =>
                 Experience
               </button>
               <button
-                className={`text-slate-500 font-semibold backdrop-blur-md w-[33.33%] py-2 ${
+                className={`text-darkshadow text-lime-500 font-semibold backdrop-blur-md w-[33.33%] py-2 ${
                   activeTab === "projects"
                     ? "text-green-500 border-b-8 border-green-500/40"
                     : ""
@@ -38,7 +38,7 @@ const Portfolio: React.FC = () =>
                 Projects
               </button>
               <button
-                className={`text-slate-500 font-semibold backdrop-blur-md w-[33.33%] py-2 ${
+                className={`text-darkshadow text-lime-500 font-semibold backdrop-blur-md w-[33.33%] py-2 ${
                   activeTab === "certifications"
                     ? "text-green-500 border-b-8 border-green-500/40"
                     : ""
