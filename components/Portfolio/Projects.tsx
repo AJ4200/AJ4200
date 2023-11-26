@@ -24,7 +24,8 @@ const Projects: React.FC = () => {
       heightRatio: 0.5,
       pagination: false,
       arrows: false,
-      cover: true,
+        cover: true,
+      
     });
 
     primarySlider.sync(secondarySlider).mount();
