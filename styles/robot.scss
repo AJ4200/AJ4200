@@ -1,12 +1,12 @@
-$background: transparent;
-$outline-color: #195272;
-$face-color: #e1f4f0;
+$background: white;
+$outline-color: var(--neon);
+$face-color: var(--neon);
 $tongue-color: #f9bbbb;
-$inner-bg: #cedbdd;
+$inner-bg: #ffffff1e;
 
 .cute-robot-v1{
-    bottom: 0;
-    right: 0;
+    bottom: -13%;
+    right: -6%;
     position: fixed;
   transform: scale(0.2);
     display: flex;

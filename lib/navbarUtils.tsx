@@ -44,13 +44,26 @@ export const getStyles = (path: string) => {
   return styleMap[path] || { fontFamily: "", backgroundImage: "" };
 };
 
-export const getNeonColor = (path: string) => {
-  const neonColorMap: Record<string, string> = {
-    "/": "#6366f1", 
+export const getbotColors = (path: string) => {
+  const botColorMap: Record<string, {}> = {
+    "/": {
+      outline: "#6366f1",
+    }, 
     "/about": "#ff0000", 
     "/portfolio": "#00ff00", 
     "/services": "#800080", 
     "/contact": "#0000ff", 
+  };
+
+  return botColorMap[path] || "";
+};
+export const getNeonColor = (path: string) => {
+  const neonColorMap: Record<string, string> = {
+    "/": "#6366f1",
+    "/about": "#ff0000",
+    "/portfolio": "#00ff00",
+    "/services": "#800080",
+    "/contact": "#0000ff",
   };
 
   return neonColorMap[path] || "";
