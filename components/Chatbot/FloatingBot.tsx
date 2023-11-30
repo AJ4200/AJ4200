@@ -1,10 +1,7 @@
 import React from'react';
  
-interface FloatingBotProps{
-prop: string
-}
- 
-const FloatingBot: React.FC<FloatingBotProps> = ({prop}) => 
+
+const FloatingBot: React.FC = () => 
 {
 return (
   <div className="cute-robot-v1">
