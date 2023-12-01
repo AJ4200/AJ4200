@@ -65,7 +65,7 @@ const EncryptButton = () => {
       className="group relative overflow-hidden rounded-none border-[1px] border-indigo-500 bg-transparent px-4 py-2 font-medium text-indigo-500 transition-colors hover:text-indigo-300"
     >
       <div className="relative z-10 flex items-center gap-2">
-        <span>{text}</span>
+        <a href="/about">{text}</a>
       </div>
       <motion.span
         initial={{

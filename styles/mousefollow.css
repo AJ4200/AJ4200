@@ -5,7 +5,7 @@
   top: 50%;
   left: 50%;
   margin: -20px 0 0 -20px;
-  border: 3px solid transparent;
+  border: 2px solid var(--neon);
   border-radius: 50%;
   backface-visibility: hidden;
   transition: transform 0.3s ease-out;
@@ -23,7 +23,8 @@
 }
 
 @keyframes trail {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 0;
   }
   50% {
@@ -32,7 +33,7 @@
 }
 
 .cursor.is-moving {
-  transform: scale(0.3);
-  animation: none; 
-background: #ffffff3f;
+  transform: scale(0.4);
+  animation: none;
+  background: var(--neon);
 }

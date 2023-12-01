@@ -5,6 +5,7 @@ import "../styles/mousefollow.css"
 import "../styles/custome-loaders.css"
 import "@splidejs/splide/dist/css/themes/splide-sea-green.min.css";
 import "../styles/robot.scss"
+import "../styles/bubbles.css";
 
 
 import type { AppProps } from "next/app";
