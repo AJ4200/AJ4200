@@ -11,7 +11,7 @@ interface Project {
 // Sample data for projects
 const projects: Project[] = [
   {
-    image: "imgs/die.png",
+    image: "/imgs/die.png",
     title: "Project 1",
     description: "Description for Project 1.",
     techStack: ["Tech1", "Tech2", "Tech3"],
@@ -19,7 +19,7 @@ const projects: Project[] = [
     sourceCode: "https://github.com/yourusername/project1",
   },
   {
-    image: "imgs/csb.png",
+    image: "/imgs/csb.png",
     title: "Project 2",
     description: "Description for Project 2.",
     techStack: ["Tech4", "Tech5", "Tech6"],
@@ -27,7 +27,7 @@ const projects: Project[] = [
     sourceCode: "https://github.com/yourusername/project2",
   },
   {
-    image: "imgs/gsw.png",
+    image: "/imgs/gsw.png",
     title: "Project 2",
     description: "Description for Project 2.",
     techStack: ["Tech4", "Tech5", "Tech6"],
@@ -35,7 +35,7 @@ const projects: Project[] = [
     sourceCode: "https://github.com/yourusername/project2",
   },
   {
-    image: "imgs/hdfplayer.png",
+    image: "/imgs/hdfplayer.png",
     title: "Project 2",
     description: "Description for Project 2.",
     techStack: ["Tech4", "Tech5", "Tech6"],
@@ -43,7 +43,7 @@ const projects: Project[] = [
     sourceCode: "https://github.com/yourusername/project2",
   },
   {
-    image: "imgs/ttp.png",
+    image: "/imgs/ttp.png",
     title: "Project 2",
     description: "Description for Project 2.",
     techStack: ["Tech4", "Tech5", "Tech6"],
@@ -51,7 +51,7 @@ const projects: Project[] = [
     sourceCode: "https://github.com/yourusername/project2",
   },
   {
-    image: "imgs/Appoflex.png",
+    image: "/imgs/Appoflex.png",
     title: "Project 2",
     description: "Description for Project 2.",
     techStack: ["Tech4", "Tech5", "Tech6"],
@@ -59,7 +59,7 @@ const projects: Project[] = [
     sourceCode: "https://github.com/yourusername/project2",
   },
   {
-    image: "imgs/Portyfolio.png",
+    image: "/imgs/Portyfolio.png",
     title: "Project 2",
     description: "Description for Project 2.",
     techStack: ["Tech4", "Tech5", "Tech6"],
@@ -67,7 +67,7 @@ const projects: Project[] = [
     sourceCode: "https://github.com/yourusername/project2",
   },
   {
-    image: "imgs/CommonFunLib.png",
+    image: "/imgs/CommonFunLib.png",
     title: "Project 2",
     description: "Description for Project 2.",
     techStack: ["Tech4", "Tech5", "Tech6"],
@@ -75,7 +75,7 @@ const projects: Project[] = [
     sourceCode: "https://github.com/yourusername/project2",
   },
   {
-    image: "imgs/TeslaResume.png",
+    image: "/imgs/TeslaResume.png",
     title: "Project 2",
     description: "Description for Project 2.",
     techStack: ["Tech4", "Tech5", "Tech6"],
@@ -83,7 +83,7 @@ const projects: Project[] = [
     sourceCode: "https://github.com/yourusername/project2",
   },
   {
-    image: "imgs/TimeWhere.png",
+    image: "/imgs/TimeWhere.png",
     title: "Project 2",
     description: "Description for Project 2.",
     techStack: ["Tech4", "Tech5", "Tech6"],

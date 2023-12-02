@@ -16,7 +16,7 @@ const ProjectContent: React.FC<ProjectContentProps> = ({
   techStack,
 }) => {
     return (
-      <section>
+      <section className=" bg-lime-500/25 backdrop-blur-md w-full">
         <h1>{title}</h1>
         <a href={sourceCode} />
             <a href={link} />

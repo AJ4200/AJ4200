@@ -16,7 +16,6 @@ const Portfolio: React.FC = () => {
     <>
       <PageWithIndicator route={"/portfolio"} bgcolor={"bg-green-500"}>
         <>
-          {" "}
           <Leaves />
           <div className="w-full flex mx-auto items-center flex-col">
             <div className="flex md:max-w-xl justify-between w-full">

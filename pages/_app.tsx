@@ -1,6 +1,6 @@
 import Navbar from "../components/Navbar/Navbar";
 import MouseMoveEffect from "../components/Utils/Cursor";
-import "@splidejs/splide/dist/css/themes/splide-sea-green.min.css";
+import "@splidejs/splide/css/core";
 import "../styles/globals.css";
 import "../styles/mousefollow.css";
 import "../styles/custome-loaders.css";
