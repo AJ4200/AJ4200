@@ -17,10 +17,10 @@ const ProjectContent: React.FC<ProjectContentProps> = ({
 }) => {
     return (
       <section className=" bg-lime-500/25 backdrop-blur-md w-full">
-        <h1>{title}</h1>
+        <h1 className="text-2xl font-bold">{title}</h1>
         <a href={sourceCode} />
             <a href={link} />
-            <ul>
+            <ul className="flex max-w-">
                 {techStack.map((tech) => (
                     <li key={tech}>
                     {tech}

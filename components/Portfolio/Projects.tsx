@@ -3,12 +3,11 @@ import Splide from "@splidejs/splide";
 import projects from "../../data/projects";
 import ProjectContent from "./Projects/ProjectContent";
 import Image from "next/image";
-import { relative } from "path";
 
 const Projects: React.FC = () => {
   useEffect(() => {
     const secondarySlider = new Splide("#secondary-slider", {
-    
+    width:"90%",
       fixedWidth: 100,
       fixedHeight: 60,
       arrows:false,
@@ -45,7 +44,7 @@ autoplay:true,
           <ul className="splide__list">
             {projects.map((project, index) => (
               <>
-                <li key={index} className="splide__slide flex">
+                <li key={index} className="splide__slide flex space-x-2">
                   <Image style={{position:"relative"}}  width={700} height={700*0.4} src={project.image} alt={project.title} />
                   <ProjectContent
                     title={project.title}
@@ -62,7 +61,7 @@ autoplay:true,
       </div>
 
       <div id="secondary-slider" className="splide">
-        <div className="splide__track ml-20">
+        <div className="splide__track ml-20 border-[var(--neon)] border backdrop-blur-sm">
           <ul className="splide__list">
             {projects.map((project, index) => (
               <li key={index} className="splide__slide">
