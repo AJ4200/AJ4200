@@ -8,7 +8,7 @@ body
 {
     height: 100vh;
     width: 100vw;    
-    overflow-x: hidden;                          
+    overflow: hidden;                          
   cursor: none;
   background:center no-repeat;
   background-size: cover;
@@ -94,3 +94,20 @@ body
 .text-darkshadow{
   text-shadow: black 0.5px 0.5px 0.5px;
 }
+
+.splide__slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;  border: 1px solid var(--neon);
+}
+
+.splide__slide {
+  opacity: 0.6;
+
+}
+
+.splide__slide.is-active {
+  opacity: 1;
+  border: 2px solid var(--neon);
+}
+

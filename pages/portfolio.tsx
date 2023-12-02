@@ -1,20 +1,23 @@
-import React, { useState } from'react';
-import PageWithIndicator from '../components/Utils/PageWithIndicator';
-import Projects from '../components/Portfolio/Projects';
-import Experience from '../components/Portfolio/Experience';
-import Certifications from '../components/Portfolio/Certifications';
- 
-const Portfolio: React.FC = () => 
-{
+import React, { useState } from "react";
+import PageWithIndicator from "../components/Utils/PageWithIndicator";
+import Projects from "../components/Portfolio/Projects";
+import Experience from "../components/Portfolio/Experience";
+import Certifications from "../components/Portfolio/Certifications";
+import Leaves from "../components/Utils/Leaves";
+
+const Portfolio: React.FC = () => {
   const [activeTab, setActiveTab] = useState("projects");
 
   const handleTabClick = (tabValue: string) => {
     setActiveTab(tabValue);
   };
 
-    return (
-      <>
-        <PageWithIndicator route={"/portfolio"} bgcolor={"bg-green-500"}>
+  return (
+    <>
+      <PageWithIndicator route={"/portfolio"} bgcolor={"bg-green-500"}>
+        <>
+          {" "}
+          <Leaves />
           <div className="w-full flex mx-auto items-center flex-col">
             <div className="flex md:max-w-xl justify-between w-full">
               <button
@@ -51,10 +54,11 @@ const Portfolio: React.FC = () =>
 
             {activeTab === "projects" && <Projects />}
             {activeTab === "experience" && <Experience />}
-            {activeTab === "certifications" && <Certifications/>}
+            {activeTab === "certifications" && <Certifications />}
           </div>
-        </PageWithIndicator>
-      </>
-    );
-}
+        </>
+      </PageWithIndicator>
+    </>
+  );
+};
 export default Portfolio;
