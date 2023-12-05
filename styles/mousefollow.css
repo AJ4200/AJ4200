@@ -33,7 +33,8 @@
 }
 
 .cursor.is-moving {
-  transform: scale(0.4);
+  transform: scale(0.4) rotate(-45deg);
   animation: none;
   background: var(--neon);
+  clip-path: polygon(50% 0%, 100% 100%, 50% 50%, 0 100%);
 }

@@ -20,7 +20,7 @@ const ProjectContent: React.FC<ProjectContentProps> = ({
         <h1 className="text-2xl font-bold">{title}</h1>
         <a href={sourceCode} />
             <a href={link} />
-            <ul className="flex max-w-">
+            <ul className="flex max-w-[50%]">
                 {techStack.map((tech) => (
                     <li key={tech}>
                     {tech}
