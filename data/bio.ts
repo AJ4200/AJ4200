@@ -1,7 +1,6 @@
 // types.ts
 
 export interface SocialLinks {
-  twitter?: string;
   linkedin?: string;
   github?: string;
 }

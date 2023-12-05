@@ -13,7 +13,7 @@ const Cursor: React.FC = () => {
       gsap.to(".cursor", {
         left: e.pageX,
         top: e.pageY,
-        duration: 0.23,
+        duration: 0.01,
         ease: "power4.easeOut",
       });
 
@@ -21,7 +21,7 @@ const Cursor: React.FC = () => {
 
       timer = setTimeout(() => {
         setIsMoving(false);
-      }, 300);
+      }, 700);
     };
 
     window.addEventListener("mousemove", moveCursor);

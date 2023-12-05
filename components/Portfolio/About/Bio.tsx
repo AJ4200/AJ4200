@@ -1,4 +1,11 @@
+import { motion } from "framer-motion";
 import React from "react";
+import {
+  FaLinkedin,
+  FaGithub,
+  FaEnvelope,
+  FaProjectDiagram,
+} from "react-icons/fa";
 
 interface BioProps {
   name: string;
@@ -26,7 +33,7 @@ const Bio: React.FC<BioProps> = ({
   email,
 }) => {
   return (
-    <div className=" bg-gray-100 p-6 rounded-lg shadow-md">
+    <div className=" bg-red-900/60 mt-4 backdrop-blur-sm p-6 rounded-lg shadow-md text-shadow mx-4">
       <div className=" flex items-center mb-4">
         <img
           src={imageUrl}
@@ -35,12 +42,13 @@ const Bio: React.FC<BioProps> = ({
         />
         <h1 className="text-2xl font-bold">{name}</h1>
       </div>
-      <p className="text-sm text-gray-600">
-        {`${age} years old, ${occupation}`}
+      <p className="text-lg text-white text-darkshadow">
+        <span>{age} years old,</span>
+        <span className="text-red-700 text-darkshadow">{occupation}</span>
       </p>
       <p className="text-md my-4">{description}</p>
       <div className="hobbies">
-        <p className="font-bold mb-2">Hobbies:</p>
+        <p className="text-red-700 font-bold mb-2 text-darkshadow">Hobbies:</p>
         <ul className="list-disc pl-6">
           {hobbies.map((hobby, index) => (
             <li key={index} className="text-gray-700">
@@ -50,53 +58,57 @@ const Bio: React.FC<BioProps> = ({
         </ul>
       </div>
       <div className="social-links mt-4">
+        <span>___________________________________</span>
         <p className="font-bold mb-2">Connect with me:</p>
-        <ul className="flex space-x-4">
-          {socialLinks.twitter && (
-            <li>
-              <a
-                href={socialLinks.twitter}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-red-500"
-              >
-                Twitter
-              </a>
-            </li>
-          )}
+        <ul className="flex space-x-4 text-darkshadow">
           {socialLinks.linkedin && (
-            <li>
+            <motion.li whileHover={{ scale: 1.2 }} whileTap={{ scale: 0.8 }}>
               <a
                 href={socialLinks.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-red-500"
               >
-                LinkedIn
+                <FaLinkedin />
+                Linkedin
               </a>
-            </li>
+            </motion.li>
           )}
           {socialLinks.github && (
-            <li>
+            <motion.li whileHover={{ scale: 1.2 }} whileTap={{ scale: 0.8 }}>
               <a
                 href={socialLinks.github}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-red-500"
               >
-                GitHub
+                <FaGithub />
+                Githbub
               </a>
-            </li>
+            </motion.li>
           )}
         </ul>
-      </div>
-      <div className="mt-4">
-        <a
+      </div>{" "}
+      <span>___________________________________</span>
+      <div className="mt-4 flex space-x-2">
+        <motion.a
           href={`/contact`}
-          className="bg-red-500 text-white py-2 px-4 rounded-md"
+          whileHover={{ scale: 1.2 }}
+          whileTap={{ scale: 0.8 }}
+          className="bg-red-500 text-white py-2 px-4 rounded-md flex items-center w-max text-darkshadow"
         >
+          <FaEnvelope className="mr-2" />
           Contact Me
-        </a>
+        </motion.a>
+        <motion.a
+          href={`/portfolio`}
+          whileHover={{ scale: 1.2 }}
+          whileTap={{ scale: 0.8 }}
+          className=" border border-red-500 text-red-500 py-2 px-4 rounded-md flex items-center w-max text-darkshadow"
+        >
+          <FaProjectDiagram className="mr-2" />
+          My Portfolio
+        </motion.a>
       </div>
     </div>
   );
