@@ -33,7 +33,7 @@ const Bio: React.FC<BioProps> = ({
   email,
 }) => {
   return (
-    <div className=" bg-red-900/60 mt-4 backdrop-blur-sm p-6 rounded-lg shadow-md text-shadow mx-4">
+    <div className=" bg-red-900/60 bg-opacity-5 mt-4 backdrop-blur-sm p-6 rounded-lg shadow-md text-shadow mx-4">
       <div className=" flex items-center mb-4">
         <img
           src={imageUrl}

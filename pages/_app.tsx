@@ -12,11 +12,13 @@ import type { AppProps } from "next/app";
 import Chatbot from "../components/Chatbot/Chatbot";
 
 function MyApp({ Component, pageProps }: AppProps) {
+
   return (
     <>
       <Navbar />
       <Component {...pageProps} />
       <MouseMoveEffect />
+      
       <Chatbot prop={""} />
     </>
   );

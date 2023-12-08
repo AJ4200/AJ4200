@@ -18,6 +18,7 @@ const Navbar: React.FC = () => {
       body.style.fontFamily = styles.fontFamily;
     }
     document.documentElement.style.setProperty("--neon", getNeonColor(asPath));
+
   }, [asPath]);
 
   return (
