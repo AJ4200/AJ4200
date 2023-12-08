@@ -88,7 +88,22 @@ body
     text-shadow: inherit;
   }
 }
+.text-shadow{
+  text-shadow: #fee 0.5px 0.5px 0.5px;
+}
+.text-darkshadow{
+  text-shadow: black 0.5px 0.5px 0.5px;
+}
 
+.splide__slide {
+  opacity: 0.6;
+  
+}
+
+.splide__slide.is-active {
+  opacity: 1;
+  border: 1px solid var(--neon);
+}
 
 
 a{
