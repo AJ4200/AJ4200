@@ -9,12 +9,12 @@
   border-radius: 50%;
   backface-visibility: hidden;
   transition: transform 0.3s ease-out;
-  animation: glow 3s infinite alternate, trail 3s ease-out infinite;
+  animation: mouseglow 3s infinite alternate, trail 3s ease-out infinite;
   pointer-events: none;
   backdrop-filter: grayscale(100%);
 }
 
-@keyframes glow {
+@keyframes mouseglow {
   0% {
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.7);
   }

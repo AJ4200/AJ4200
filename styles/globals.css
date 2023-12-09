@@ -105,15 +105,7 @@ body
   opacity: 1;
   border: 1px solid var(--neon);
 }
-
-
-a{
-  cursor: none;
-}
-button{
-  cursor: none;
-}
-img{
+label, input, a, img, button{
   cursor: none;
 }
 .lime-grad-bg

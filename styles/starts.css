@@ -7,15 +7,15 @@
   background-size: 240px;
   backface-visibility: visible;
   z-index: 999;
-  animation: spin 300s linear infinite;
+  animation: spin 100s linear infinite;
   pointer-events: none;
 }
 
 .circle {
   position: absolute;
   background: white ;
-  width: 2px;
-  height: 2px;
+  width: 4px;
+  height: 4px;
   border-radius: 50%;
   display: flex;
   justify-content: center;
@@ -24,16 +24,16 @@
   animation: glow 2s infinite alternate;
 }
 .circle-big .circle {
-  width: 2px;
-  height: 2px;
+  width: 3px;
+  height: 3px;
 }
 
 @keyframes glow {
   from {
-    box-shadow: 0px 0px 6px 1px #5995c7;
+    box-shadow: 0px 0px 6px 1px var(--neon);
   }
   to {
-    box-shadow: 0px 0px 8px 4px #5995c7;
+    box-shadow: 0px 0px 8px 4px var(--neon);
   }
 }
 @keyframes spin {
