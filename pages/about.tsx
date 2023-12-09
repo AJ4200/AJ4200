@@ -2,6 +2,7 @@ import React from "react";
 import PageWithIndicator from "../components/Utils/PageWithIndicator";
 import Bio from "../components/Portfolio/About/Bio";
 import bioData from "../data/bio";
+import Particles from "../components/Utils/Particles";
 
 interface AboutProps {
   prop: string;
@@ -11,7 +12,9 @@ const About: React.FC<AboutProps> = ({ prop }) => {
   return (
     <>
       <PageWithIndicator route="/about" bgcolor="bg-red-500">
+        <>        <Particles />
         <Bio {...bioData} />
+        </>
       </PageWithIndicator>
     </>
   );

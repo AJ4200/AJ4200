@@ -1,6 +1,7 @@
 import React from "react";
 import Pricing from "../components/Services/Pricing";
 import PageWithIndicator from "../components/Utils/PageWithIndicator";
+import Stars from "../components/Utils/Stars";
 
 interface ServicesProps {
   prop: string;
@@ -9,7 +10,11 @@ interface ServicesProps {
 const Services: React.FC<ServicesProps> = ({ prop }) => {
   return (
     <PageWithIndicator route={"/services"} bgcolor={"bg-purple-500"}>
-      <Pricing/>
+      <>
+      <Stars/>
+        <Pricing />
+      </>
+
     </PageWithIndicator>
   );
 };

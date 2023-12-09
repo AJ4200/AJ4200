@@ -7,18 +7,19 @@ import "../styles/custome-loaders.css";
 import "../styles/robot.scss";
 import "../styles/bubbles.css";
 import "../styles/leaves.css";
+import "../styles/particles.css";
+import "../styles/starts.css";
 
 import type { AppProps } from "next/app";
 import Chatbot from "../components/Chatbot/Chatbot";
 
 function MyApp({ Component, pageProps }: AppProps) {
-
   return (
     <>
       <Navbar />
       <Component {...pageProps} />
       <MouseMoveEffect />
-      
+
       <Chatbot prop={""} />
     </>
   );
