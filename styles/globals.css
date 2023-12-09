@@ -12,6 +12,7 @@ body
   cursor: none;
   background:center no-repeat;
   background-size: cover;
+  --transparent: transparent;
 }
 
 @font-face {
@@ -108,4 +109,14 @@ body
 
 a{
   cursor: none;
+}
+button{
+  cursor: none;
+}
+img{
+  cursor: none;
+}
+.lime-grad-bg
+{
+background: linear-gradient(to top, transparent -30%, var(--neon) 50%, transparent 130%);
 }

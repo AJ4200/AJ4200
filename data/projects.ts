@@ -12,9 +12,9 @@ interface Project {
 const projects: Project[] = [
   {
     image: "/imgs/die.png",
-    title: "Project 1",
-    description: "Description for Project 1.",
-    techStack: ["Tech1", "Tech2", "Tech3"],
+    title: "DiE-ALOUGE",
+    description: "Survive the harbinger of death in a halloween special developed by aj4200. powered by GPT-3.5 the travel will write in blood to the harbinger to try and survive his decptive ways that will lead  the traveler to death.",
+    techStack: ["GPT3.5", "NextJS", "Prisma","MongoDB"],
     link: "https://project1.com",
     sourceCode: "https://github.com/yourusername/project1",
   },
