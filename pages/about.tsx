@@ -1,8 +1,8 @@
 import React from "react";
 import PageWithIndicator from "../components/Utils/PageWithIndicator";
-import Bio from "../components/Portfolio/About/Bio";
 import bioData from "../data/bio";
 import Particles from "../components/Utils/Particles";
+import Bio from "../components/About/Bio";
 
 interface AboutProps {
   prop: string;
