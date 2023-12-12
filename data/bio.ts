@@ -1,8 +1,16 @@
-// types.ts
-
 export interface SocialLinks {
   linkedin?: string;
   github?: string;
+}
+
+export interface Skill {
+  name: string;
+  proficiency: number;
+}
+
+export interface Skillset {
+  title: string;
+  skills: Skill[];
 }
 
 export interface BioData {
@@ -15,6 +23,33 @@ export interface BioData {
   socialLinks: SocialLinks;
   email: string;
 }
+
+const skillsets: Skillset[] = [
+  {
+    title: "Frontend Technologies",
+    skills: [
+      { name: "React", proficiency: 90 },
+      { name: "Next.js", proficiency: 80 },
+      // Add other frontend skills with proficiency percentages
+    ],
+  },
+  {
+    title: "Backend Technologies",
+    skills: [
+      { name: "Node.js", proficiency: 85 },
+      { name: "Express", proficiency: 75 },
+      // Add other backend skills with proficiency percentages
+    ],
+  },
+  {
+    title: "Other Skills",
+    skills: [
+      { name: "Git", proficiency: 95 },
+      { name: "Docker", proficiency: 70 },
+      // Add other skills with proficiency percentages
+    ],
+  },
+];
 
 const bioData: BioData = {
   name: "Abel Majadibodu",
@@ -31,4 +66,4 @@ const bioData: BioData = {
   email: "abeljackson33@gmail.com",
 };
 
-export default bioData;
+export { bioData, skillsets };

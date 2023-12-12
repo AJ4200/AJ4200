@@ -33,7 +33,7 @@ const Bio: React.FC<BioProps> = ({
   email,
 }) => {
   return (
-    <div className=" bg-red-900/60 bg-opacity-5 mt-4 backdrop-blur-sm p-6 rounded-lg shadow-md text-shadow mx-4">
+    <div>
       <div className=" flex items-center mb-4">
         <img
           src={imageUrl}
@@ -51,7 +51,7 @@ const Bio: React.FC<BioProps> = ({
         <p className="text-red-700 font-bold mb-2 text-darkshadow">Hobbies:</p>
         <ul className="list-disc pl-6">
           {hobbies.map((hobby, index) => (
-            <li key={index} className="text-gray-700">
+            <li key={index} className="text-gray-700 text-darkshadow">
               {hobby}
             </li>
           ))}
