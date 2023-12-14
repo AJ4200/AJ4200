@@ -103,7 +103,7 @@ body
 
 .splide__slide.is-active {
   opacity: 1;
-  border: 1px solid var(--neon);
+  border: 1.5px solid var(--neon);
 }
 label, input, a, img, button{
   cursor: none;
@@ -111,4 +111,8 @@ label, input, a, img, button{
 .lime-grad-bg
 {
 background: linear-gradient(to top, transparent -30%, var(--neon) 50%, transparent 130%);
+}
+::selection
+{
+  background-color: var(--neon);
 }

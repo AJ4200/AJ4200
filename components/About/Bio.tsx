@@ -15,7 +15,6 @@ interface BioProps {
   imageUrl: string;
   hobbies: string[];
   socialLinks: {
-    twitter?: string;
     linkedin?: string;
     github?: string;
   };
@@ -33,37 +32,52 @@ const Bio: React.FC<BioProps> = ({
   email,
 }) => {
   return (
-    <div>
-      <div className=" flex items-center mb-4">
-        <img
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="space-y-4"
+    >
+      <motion.div
+        className="flex items-center mb-4"
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
+      >
+        <motion.img
           src={imageUrl}
           alt={`Image of ${name}`}
-          className=" w-16 h-16 rounded-full mr-4"
+          className="w-16 h-16 rounded-full mr-4"
         />
-        <h1 className="text-2xl font-bold">{name}</h1>
-      </div>
-      <p className="text-lg text-white text-darkshadow">
+        <motion.h1 className="text-2xl font-bold">{name}</motion.h1>
+      </motion.div>
+      <motion.p className="text-lg text-white text-darkshadow">
         <span>{age} years old,</span>
         <span className="text-red-700 text-darkshadow">{occupation}</span>
-      </p>
-      <p className="text-md my-4">{description}</p>
+      </motion.p>
+      <motion.p className="text-md my-4">{description}</motion.p>
       <div className="hobbies">
-        <p className="text-red-700 font-bold mb-2 text-darkshadow">Hobbies:</p>
+        <motion.p className="text-red-700 font-bold mb-2 text-darkshadow">
+          Hobbies:
+        </motion.p>
         <ul className="list-disc pl-6">
           {hobbies.map((hobby, index) => (
-            <li key={index} className="text-gray-700 text-darkshadow">
+            <motion.li
+              key={index}
+              className="text-gray-400 text-darkshadow"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
               {hobby}
-            </li>
+            </motion.li>
           ))}
         </ul>
       </div>
       <div className="social-links mt-4">
-        <span>___________________________________</span>
-        <p className="font-bold mb-2">Connect with me:</p>
+        <motion.p className="font-bold mb-2">Connect with me:</motion.p>
         <ul className="flex space-x-4 text-darkshadow">
           {socialLinks.linkedin && (
             <motion.li whileHover={{ scale: 1.2 }} whileTap={{ scale: 0.8 }}>
-              <a
+              <motion.a
                 href={socialLinks.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -71,25 +85,24 @@ const Bio: React.FC<BioProps> = ({
               >
                 <FaLinkedin />
                 Linkedin
-              </a>
+              </motion.a>
             </motion.li>
           )}
           {socialLinks.github && (
             <motion.li whileHover={{ scale: 1.2 }} whileTap={{ scale: 0.8 }}>
-              <a
+              <motion.a
                 href={socialLinks.github}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-red-500"
               >
                 <FaGithub />
-                Githbub
-              </a>
+                Github
+              </motion.a>
             </motion.li>
           )}
         </ul>
-      </div>{" "}
-      <span>___________________________________</span>
+      </div>
       <div className="mt-4 flex space-x-2">
         <motion.a
           href={`/contact`}
@@ -104,13 +117,13 @@ const Bio: React.FC<BioProps> = ({
           href={`/portfolio`}
           whileHover={{ scale: 1.2 }}
           whileTap={{ scale: 0.8 }}
-          className=" border border-red-500 text-red-500 py-2 px-4 rounded-md flex items-center w-max text-darkshadow"
+          className="border border-red-500 text-red-500 py-2 px-4 rounded-md flex items-center w-max text-darkshadow"
         >
           <FaProjectDiagram className="mr-2" />
           My Portfolio
         </motion.a>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

@@ -1,4 +1,5 @@
 import React from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 interface Skill {
   name: string;
@@ -23,42 +24,67 @@ const SkillsetSection: React.FC<SkillsetSectionProps> = ({ skillsets }) => {
     const progress = circumference - (percentage / 100) * circumference;
 
     return (
-      <svg height="80" width="80" className="mr-2">
-        <circle
+      <motion.svg
+        height="40"
+        width="40"
+        className="mr-2"
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.9 }}
+      >
+        <motion.circle
           strokeWidth={strokeWidth}
           fill="var(--neon)"
           r={radius}
-          cx="40"
-          cy="40"
+          cx="20"
+          cy="20"
           stroke="rgb(185 28 28)"
           strokeDasharray={`${circumference} ${circumference}`}
           style={{ strokeDashoffset: progress }}
         />
-      </svg>
+      </motion.svg>
     );
   };
 
   return (
-    <div className=" w-full p-6 rounded-md shadow-md flex backdrop-blur-md">
-          <h2 className="text-2xl font-bold mb-4">Skillset</h2>
-          <div className="flex items-stretch w-full">
-            {skillsets.map((skillset, index) => (
-        <div key={index} className="mb-4">
-          <h3 className="text-lg font-semibold mb-2">{skillset.title}</h3>
-          <ul className="list-disc list-inside">
-            {skillset.skills.map((skill, skillIndex) => (
-              <li key={skillIndex} className="flex items-center mb-2">
-                {renderRadialProgressBar(skill.proficiency)}
-                <span className="font-semibold">{skill.name}</span>
-                <span className="ml-auto text-gray-500">{`${skill.proficiency}%`}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-      ))}   
-          </div>
-     
-    </div>
+    <motion.div
+      className="w-full p-6 rounded-md shadow-md flex backdrop-blur-md flex-col "
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+    >
+      <h2 className="text-2xl font-bold mb-4 text-right ">Skillset</h2>
+      <div className="flex items-stretch w-full">
+        {skillsets.map((skillset, index) => (
+          <AnimatePresence key={index}>
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -50 }}
+              className="bg-red-950 p-4 rounded-md w-full m-1 hover:bg-red-950/70 transition-colors"
+            >
+              <h3 className="text-lg font-semibold mb-2">{skillset.title}</h3>
+              <ul className="list-disc list-inside">
+                {skillset.skills.map((skill, skillIndex) => (
+                  <motion.li
+                    key={skillIndex}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: 20 }}
+                    className="flex items-center "
+                  >
+                    {renderRadialProgressBar(skill.proficiency)}
+                    <div className="flex justify-between w-[85%]">
+                      <span className="font-semibold">{skill.name}</span>
+                      <span className="ml-1 text-gray-500 text-darkshadow bg-[var(--neon)] rounded-full ">{`${skill.proficiency}%`}</span>
+                    </div>
+                  </motion.li>
+                ))}
+              </ul>
+            </motion.div>
+          </AnimatePresence>
+        ))}
+      </div>
+    </motion.div>
   );
 };
 
