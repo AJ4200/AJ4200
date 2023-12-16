@@ -24,8 +24,7 @@ export const getStyles = (path: string) => {
     },
     "/about": {
       fontFamily: "pricedown",
-      backgroundImage:
-        "url('imgs/apg.jpg')",
+      backgroundImage: "url('imgs/apg.jpg')",
     },
     "/portfolio": {
       fontFamily: "Girdens",
@@ -46,11 +45,11 @@ export const getStyles = (path: string) => {
 
 export const getNeonColor = (path: string) => {
   const neonColorMap: Record<string, string> = {
-    "/": "#6366f1", 
-    "/about": "#ff0000", 
-    "/portfolio": "#00ff00", 
-    "/services": "#800080", 
-    "/contact": "#0000ff", 
+    "/": "#6366f1",
+    "/about": "#ff0000",
+    "/portfolio": "#00ff00",
+    "/services": "#800080",
+    "/contact": "#0000ff",
   };
 
   return neonColorMap[path] || "";

@@ -1,11 +1,11 @@
 import { useRef, useState } from "react";
 import { motion } from "framer-motion";
-
+import { FaArrowRight  } from "react-icons/fa";
 const Decrypt = () => {
   return <EncryptButton />;
 };
 
-const TARGET_TEXT = "Lets Begin";
+const TARGET_TEXT = "More";
 const CYCLES_PER_LETTER = 2;
 const SHUFFLE_TIME = 50;
 
@@ -65,7 +65,7 @@ const EncryptButton = () => {
       }}
     >
       <div className="relative z-10 flex items-center gap-2">
-        <a href="/about">{text}</a>
+        <a className="flex" href="/about">{text}<p className="m-1"><FaArrowRight/></p></a>
       </div>
       <motion.span
         initial={{
