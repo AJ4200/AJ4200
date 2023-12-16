@@ -106,3 +106,10 @@ background: linear-gradient(to top, transparent -30%, var(--neon) 50%, transpare
 {
   background-color: var(--neon);
 }
+.splide__slide {
+  opacity: 0.6;
+}
+
+.splide__slide.is-active {
+  opacity: 1;
+}
