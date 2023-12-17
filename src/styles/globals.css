@@ -116,9 +116,9 @@ background: linear-gradient(to top, transparent -30%, var(--neon) 50%, transpare
 }
 .text-outline
 {
-  text-shadow: 1px 1px 1px 1px white;
+  text-shadow: 1px 1px 4px white;
 }
 .text-darkoutline
 {
-  text-shadow: 1px 1px 1px 1px white;
+  text-shadow: 1px 1px 4px black;
 }

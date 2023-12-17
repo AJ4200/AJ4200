@@ -47,7 +47,7 @@ const SkillsetSection: React.FC<SkillsetSectionProps> = ({ skillsets }) => {
 
   return (
     <motion.div
-      className="w-full p-6 rounded-md shadow-md flex backdrop-blur-md flex-col "
+      className="w-full p-6 flex flex-col "
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
