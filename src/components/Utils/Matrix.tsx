@@ -3,7 +3,7 @@ import React from "react";
 const Matrix: React.FC = () => {
   return (
     <>
-      <article>
+      <article className="pointer-events-none">
         <pre>
           但是 房地产开发商 在所需方向大海，如果谁觉得 它永远是 存在的开发者
           没事的实践中，凭借本披露声明和两个做法毫无疑问不厌其烦地通过

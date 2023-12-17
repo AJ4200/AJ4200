@@ -32,7 +32,7 @@ const Cursor: React.FC = () => {
     };
   }, []);
 
-  return <div className={`cursor ${isMoving ? "is-moving" : ""}`}></div>;
+  return <div className={`z-[99999] cursor ${isMoving ? "is-moving" : ""}`}></div>;
 };
 
 export default Cursor;

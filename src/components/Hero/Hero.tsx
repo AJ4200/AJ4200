@@ -51,7 +51,7 @@ const Hero = () => {
           <span className="font-bold text-indigo-600 text-shadow text-2xl">Latest Project</span>
           <img
             src="/imgs/Screenshot.png"
-            className="mt-2 text-center rounded-md md:w-[60%] max-w-[80%] "
+            className="mt-2 text-center rounded-md md:w-[60%] max-w-[80%] z-[99]"
           />
           <span className="text-indigo-500 -scroll-mt-72">
             Check it Out{" "}

@@ -112,4 +112,13 @@ background: linear-gradient(to top, transparent -30%, var(--neon) 50%, transpare
 
 .splide__slide.is-active {
   opacity: 1;
+  border: 2px double var(--neon);
+}
+.text-outline
+{
+  text-shadow: 1px 1px 1px 1px white;
+}
+.text-darkoutline
+{
+  text-shadow: 1px 1px 1px 1px white;
 }

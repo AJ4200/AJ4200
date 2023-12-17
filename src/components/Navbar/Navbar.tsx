@@ -23,8 +23,8 @@ const Navbar: React.FC = () => {
 
   return (
     <nav
-      className="z-[99999] logo md:sticky text-shadow flex filter drop-shadow-md bg-transparent backdrop-blur-md px-4 py-4 h-20 items-center"
-      style={asPath == "/about" || "/portfolio" ? { textShadow: "black 0.5px 0.5px 0.5px" } : {}}
+      className="z-[9999] logo md:sticky text-shadow flex filter drop-shadow-md bg-transparent backdrop-blur-md px-4 py-4 h-20 items-center"
+      style={asPath == "/about" || "/portfolio" ? { textShadow: "[var(--neon)] 0.5px 0.5px 0.5px" } : {}}
     >
       <MobileNavbar open={open} setOpen={setOpen} />
       <div className="w-3/12 flex items-center">
@@ -47,17 +47,17 @@ const Navbar: React.FC = () => {
         >
           {/* hamburger button */}
           <span
-            className={`h-1 w-full bg-black rounded-lg transform transition duration-300 ease-in-out ${
+            className={`h-1 w-full bg-[var(--neon)] rounded-lg transform transition duration-300 ease-in-out ${
               open ? "rotate-45 translate-y-3.5" : ""
             }`}
           />
           <span
-            className={`h-1 w-full bg-black rounded-lg transition-all duration-300 ease-in-out ${
+            className={`h-1 w-full bg-[var(--neon)] rounded-lg transition-all duration-300 ease-in-out ${
               open ? "bg-transparent" : "w-full"
             }`}
           />
           <span
-            className={`h-1 w-full bg-black rounded-lg transform transition duration-300 ease-in-out ${
+            className={`h-1 w-full bg-[var(--neon)] rounded-lg transform transition duration-300 ease-in-out ${
               open ? "-rotate-45 -translate-y-3.5" : ""
             }`}
           />

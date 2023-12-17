@@ -21,7 +21,41 @@ const certificationsData: Certification[] = [
     link: "https://example.com/certification2",
     imageUrl: "https://example.com/certification2-image.jpg",
   },
-  // Add more certifications as needed
+  {
+    name: "Advanced TypeScript Certification",
+    issuingAuthority: "Code Mastery Academy",
+    dateEarned: "2020-12-01",
+    link: "https://example.com/certification2",
+    imageUrl: "https://example.com/certification2-image.jpg",
+  },
+  {
+    name: "Advanced TypeScript Certification",
+    issuingAuthority: "Code Mastery Academy",
+    dateEarned: "2020-12-01",
+    link: "https://example.com/certification2",
+    imageUrl: "https://example.com/certification2-image.jpg",
+  },
+  {
+    name: "Advanced TypeScript Certification",
+    issuingAuthority: "Code Mastery Academy",
+    dateEarned: "2020-12-01",
+    link: "https://example.com/certification2",
+    imageUrl: "https://example.com/certification2-image.jpg",
+  },
+  {
+    name: "Advanced TypeScript Certification",
+    issuingAuthority: "Code Mastery Academy",
+    dateEarned: "2020-12-01",
+    link: "https://example.com/certification2",
+    imageUrl: "https://example.com/certification2-image.jpg",
+  },
+  {
+    name: "Advanced TypeScript Certification",
+    issuingAuthority: "Code Mastery Academy",
+    dateEarned: "2020-12-01",
+    link: "https://example.com/certification2",
+    imageUrl: "https://example.com/certification2-image.jpg",
+  },
 ];
 
 export { certificationsData };

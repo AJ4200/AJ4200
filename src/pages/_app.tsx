@@ -1,6 +1,7 @@
 import Chatbot from "@/components/Chatbot/Chatbot";
 import Navbar from "@/components/Navbar/Navbar";
 import Cursor from "@/components/Utils/Cursor";
+import "@splidejs/splide/css/core";
 import "@/styles/globals.css";
 import "@/styles/bubbles.css";
 import "@/styles/custome-loaders.css";

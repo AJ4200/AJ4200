@@ -30,7 +30,9 @@ const skillsets: Skillset[] = [
     skills: [
       { name: "React", proficiency: 90 },
       { name: "Next.js", proficiency: 80 },
-      // Add other frontend skills with proficiency percentages
+      { name: "Vercel", proficiency: 70 },
+      { name: "TailwindCSS", proficiency: 80 },
+      { name: "Framer-motion", proficiency: 75 },
     ],
   },
   {
@@ -38,7 +40,10 @@ const skillsets: Skillset[] = [
     skills: [
       { name: "Node.js", proficiency: 85 },
       { name: "Express", proficiency: 75 },
-      // Add other backend skills with proficiency percentages
+      { name: "Ruby on Rails", proficiency: 60 },
+      { name: "Java Spring", proficiency: 80 },
+      { name: "MongoDB", proficiency: 70 },
+      { name: "PostgreSQL", proficiency: 90 },
     ],
   },
   {
@@ -46,7 +51,9 @@ const skillsets: Skillset[] = [
     skills: [
       { name: "Git", proficiency: 95 },
       { name: "Docker", proficiency: 70 },
-      // Add other skills with proficiency percentages
+      { name: "Modding", proficiency: 80 },
+      { name: "AI Intergration", proficiency: 90 },
+      { name: "PyScripting", proficiency: 70 },
     ],
   },
 ];
@@ -54,7 +61,7 @@ const skillsets: Skillset[] = [
 const bioData: BioData = {
   name: "Abel Majadibodu",
   age: 24,
-  occupation: "Full Stack Developer",
+  occupation: "Software Engineer",
   description: "Passionate about coding and creating awesome web applications.",
   imageUrl:
     "https://media.licdn.com/dms/image/D4D03AQEMxn0mchBygw/profile-displayphoto-shrink_800_800/0/1675420423236?e=1707350400&v=beta&t=iYRT7EsVckdoic7bUIfZE_7flt0vE-fRBRCYjm872Po",

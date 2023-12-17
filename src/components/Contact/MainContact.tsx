@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import emailjs from "emailjs-com";
+import emailjs  from "@emailjs/browser";
 
 const MainContact: React.FC = () => {
   const [loading, setLoading] = useState(false);
