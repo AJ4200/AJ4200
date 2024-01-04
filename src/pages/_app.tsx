@@ -12,6 +12,7 @@ import "@/styles/stars.css";
 import "@/styles/robot.scss";
 import "@/styles/particles.css";
 import "@/styles/matrix.css";
+import "@/styles/musicplayer.css";
 
 import type { AppProps } from "next/app";
 

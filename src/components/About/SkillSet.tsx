@@ -16,7 +16,7 @@ interface SkillsetSectionProps {
 }
 
 const SkillsetSection: React.FC<SkillsetSectionProps> = ({ skillsets }) => {
-  const renderRadialProgressBar = (percentage: number) => {
+   const renderRadialProgressBar = (percentage: number) => {
     const strokeWidth = 7;
     const radius = 13;
     const circumference = 2 * Math.PI * radius;

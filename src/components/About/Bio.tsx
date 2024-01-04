@@ -73,7 +73,7 @@ const Bio: React.FC<BioProps> = ({
             {hobbies.map((hobby, index) => (
               <motion.li
                 key={index}
-                className="text-gray-400 text-darkshadow m-2"
+                className={`text-gray-400 text-darkshadow m-2 ${activeTab === hobby ? "text-red-700 text-outline" : ""}`}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onMouseEnter={() => {

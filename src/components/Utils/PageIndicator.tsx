@@ -26,7 +26,7 @@ const PageIndicator: React.FC<PageIndicatorProps> = ({ route, TextColor }) => {
     >
       <span className={`${TextColor} w-full text-center text-7xl opacity-50`}>
         {route}
-      </span>
+      </span>                                   
     </motion.div>
   );
 };
