@@ -16,7 +16,7 @@ const CertificationCard: React.FC<CertificationCardProps> = ({
   certification,
 }) => {
   return (
-    <div className="bg-lime-500/25 border border-[var(--neon)] p-4  shadow-lg m-1 backdrop-blur-sm w-[28.5vw]">
+    <div className="bg-lime-500/25 border border-[var(--neon)] p-4  shadow-lg m-1 backdrop-blur-sm">
       <h3 className="text-lg font-semibold mb-2">{certification.name}</h3>
       <img
         src={certification.imageUrl}

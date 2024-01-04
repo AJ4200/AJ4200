@@ -1,14 +1,33 @@
-import React from "react";
+import React, { useEffect } from "react";
+import Splide from "@splidejs/splide";
 import { certificationsData } from "../../data/certifications";
 import CertificationCard from "./Certifications/CertificationCard";
 
 const Certifications: React.FC = () => {
+  useEffect(() => {
+    new Splide("#certifications-slider", {
+      type: "slide",
+      perPage: 3,
+      perMove: 1,
+      gap: "1rem",
+      pagination: false,
+  
+    }).mount();
+  }, []);
+
   return (
-    <div className="backdrop-blur-md grid gap-4 md:gap-4 h-[70vh] overflow-x-scroll mx-8 grid-flow-col max-w-[90%] snap-x snap-mandatory snap-start">
-      {certificationsData.map((certification, index) => (
-        <CertificationCard key={index} certification={certification} />
-      ))}
-    </div>
+        <><h2 className="my-4 text-2xl font-bold text-center text-shadow-theme">Certifications</h2><div id="certifications-slider" className="splide">
+      <div className="splide__track">
+        <ul className="splide__list">
+          {certificationsData.map((certification, index) => (
+            <li className="splide__slide" key={index}>
+              <CertificationCard certification={certification} />
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div></>
   );
 };
+
 export default Certifications;

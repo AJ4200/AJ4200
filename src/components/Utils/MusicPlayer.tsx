@@ -85,56 +85,70 @@ const MusicPlayer: React.FC = () => {
       <span className="mb-4 w-full text-center text-4xl">Music Prod.</span>
       <div className="flex flex-row justify-between">
         <motion.div
-          className="m-4 flex flex-col items-center bg-black/20 p-4"
+          className="m-4 flex flex-col items-center rounded-md bg-black/20 p-4 shadow-2xl"
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: 20 }}
         >
-          <span className="text-darkoutline text-xl text-slate-400">
+          <span className="text-darkoutline mb-2 text-xl text-slate-400">
             MPlayer
           </span>
-          <img
+          <motion.img
             className="w-40 shadow-2xl"
             src={currentSong?.albumArt}
             alt="Album Art"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
           />
-          <span className="text-outline text-lg">{currentSong?.title}</span>
-          <VolumeControl audioRef={audioRef} />
-          <div
-            className="text-darkoutline flex justify-center space-x-4 p-4"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+          <motion.span
+            className="text-outline text-lg"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
           >
-            <button
+            {currentSong?.title}
+          </motion.span>
+          <VolumeControl audioRef={audioRef} />
+          <div className="text-darkoutline flex justify-center space-x-4 p-4">
+            <motion.button
               className="border border-[var(--neon)] bg-blue-500/20 p-2 text-white"
               onClick={isPlaying ? handlePause : handlePlay}
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
             >
               {isPlaying ? <FaPause /> : <FaPlay />}{" "}
               {isPlaying ? "Pause" : "Play"}
-            </button>
-            <button
+            </motion.button>
+            <motion.button
               className="border border-[var(--neon)] bg-red-500/20 p-2 text-white"
               onClick={handleStop}
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
             >
               <FaStop /> Stop
-            </button>
-            <button
+            </motion.button>
+            <motion.button
               className="border border-[var(--neon)] bg-yellow-500/20 p-4 text-white"
               onClick={handlePrevious}
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
             >
               <FaStepBackward /> Previous
-            </button>
-            <button
+            </motion.button>
+            <motion.button
               className="border border-[var(--neon)] bg-purple-500/20 p-4 text-white"
               onClick={handleNext}
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
             >
               <FaStepForward /> Next
-            </button>
+            </motion.button>
           </div>
         </motion.div>
 
         <motion.div
-          className="m-4 flex w-full flex-col items-center bg-black/20 p-4"
+          className="m-4 flex w-full flex-col items-center rounded-md bg-black/20 p-4 shadow-2xl"
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: 20 }}
@@ -142,14 +156,14 @@ const MusicPlayer: React.FC = () => {
           <span className="text-darkoutline text-xl text-slate-400">
             Playlist
           </span>
-          <ul className="playlist music-marker p-4">
+          <ul className="music-marker flex w-full flex-col items-center p-4">
             {playlist.map((song: Song, index: number) => (
               <AnimatePresence key={index}>
                 <motion.li
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: 20 }}
-                  className={`music-marker p-[1px] ${
+                  className={`music-marker w-4/5 p-[1px] text-center ${
                     index === currentSongIndex ? "bg-[var(--neon)]" : ""
                   }`}
                   onClick={() => handlePlaylistItemClick(index)}

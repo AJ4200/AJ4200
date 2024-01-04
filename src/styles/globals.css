@@ -122,3 +122,7 @@ background: linear-gradient(to top, transparent -30%, var(--neon) 50%, transpare
 {
   text-shadow: 2px 2px 4px black;
 }
+.text-shadow-theme
+{
+   text-shadow: 1px 1px 1px var(--neon);
+}

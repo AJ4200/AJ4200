@@ -3,7 +3,7 @@ import MusicPlayer from '../Utils/MusicPlayer';
  
 const Producing: React.FC = () => 
 {
-    return (<><h1>Producing</h1><MusicPlayer /></>
+    return (<><MusicPlayer /></>
     );
 }
 export default Producing;
