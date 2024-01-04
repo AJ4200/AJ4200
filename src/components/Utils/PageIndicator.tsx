@@ -13,7 +13,7 @@ const PageIndicator: React.FC<PageIndicatorProps> = ({ route, TextColor }) => {
     controls.start({
       opacity: 1,
       scale: 1,
-      rotate: [0, -10, 10, -5, 5, 0], // Wonky rotation effect
+      rotate: [0, -10, 10, -5, 5, 0],
       transition: { duration: 0.5 },
     });
   }, [controls]);
