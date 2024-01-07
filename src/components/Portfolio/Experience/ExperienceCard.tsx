@@ -10,7 +10,7 @@ interface ExperienceCardProps {
 const ExperienceCard: React.FC<ExperienceCardProps> = ({ experience }) => {
   return (
     <motion.div
-      className="m-1 border border-[var(--neon)] bg-gray-500/25 p-4 shadow-lg backdrop-blur-sm"
+      className="m-1 border border-[var(--neon)] bg-gray-500/25 p-4 shadow-lg backdrop-blur-sm hover:bg-lime-600/50 hover:w-full transition-all duration-500"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -20 }}
