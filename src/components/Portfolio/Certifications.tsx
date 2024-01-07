@@ -11,7 +11,11 @@ const Certifications: React.FC = () => {
       perMove: 1,
       gap: "1rem",
       pagination: false,
-  
+      width: "80%",
+      rewind: true,
+      focus: 1,
+start:1,
+      autoplay:true
     }).mount();
   }, []);
 

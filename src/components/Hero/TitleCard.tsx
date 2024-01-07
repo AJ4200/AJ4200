@@ -105,6 +105,10 @@ const squareData = [
     id: 14,
     src: "imgs/intraview.png",
   },
+  {
+    id: 15,
+    src: "imgs/taskme.png",
+  },
 ];
 
 const generateSquares = () => {
@@ -118,7 +122,7 @@ const generateSquares = () => {
         backgroundImage: `url(${sq.src})`,
         backgroundSize: "cover",
         clipPath:
-          " polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%)",
+          "polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%)",
       }}
     ></motion.div>
   ));

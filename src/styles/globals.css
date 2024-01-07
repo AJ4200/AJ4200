@@ -2,56 +2,60 @@
 @tailwind components;
 @tailwind utilities;
 
-body
-{
-    height: 100vh;
-    width: 100vw;    
-    overflow: hidden;                          
+body {
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
   cursor: none;
-  background:center no-repeat;
+  background: center no-repeat;
   background-size: cover;
   --transparent: transparent;
 }
 
 @font-face {
-  font-family: 'MonaspaceKrypton';
-  src: url('/fonts/MonaspaceKrypton.ttf') format('truetype');
+  font-family: "MonaspaceKrypton";
+  src: url("/fonts/MonaspaceKrypton.ttf") format("truetype");
 }
 
 @font-face {
-  font-family: 'Girdens';
-  src: url('/fonts/Girdens.otf') format('opentype');
+  font-family: "Girdens";
+  src: url("/fonts/Girdens.otf") format("opentype");
 }
 
 @font-face {
-  font-family: 'rimouski';
-  src: url('/fonts/rimouski.otf') format('opentype');
+  font-family: "rimouski";
+  src: url("/fonts/rimouski.otf") format("opentype");
 }
 
 @font-face {
-  font-family: 'Teqto';
-  src: url('/fonts/Teqto.otf') format('opentype');
+  font-family: "Teqto";
+  src: url("/fonts/Teqto.otf") format("opentype");
 }
 
 @font-face {
-  font-family: 'pricedown';
-  src: url('/fonts/pricedown.otf') format('opentype');
+  font-family: "pricedown";
+  src: url("/fonts/pricedown.otf") format("opentype");
 }
 
 @font-face {
-  font-family: 'Suggested';
-  src: url('/fonts/Suggested.ttf') format('truetype');
+  font-family: "Suggested";
+  src: url("/fonts/Suggested.ttf") format("truetype");
 }
 
-.logo b{
-
+.logo b {
   color: #fee;
-  text-shadow: 0 -40px 100px, 0 0 2px, 0 0 1em var(--neon), 0 0 0.5em var(--neon), 0 0 0.1em var(--neon), 0 10px 3px #000;
+  text-shadow:
+    0 -40px 100px,
+    0 0 2px,
+    0 0 1em var(--neon),
+    0 0 0.5em var(--neon),
+    0 0 0.1em var(--neon),
+    0 10px 3px #000;
 }
-.logo b span{
+.logo b span {
   animation: blink linear infinite 2s;
 }
-.logo b span:nth-of-type(2){
+.logo b span:nth-of-type(2) {
   animation: blink linear infinite 3s;
 }
 @keyframes blink {
@@ -59,11 +63,10 @@ body
     color: inherit;
     text-shadow: inherit;
   }
-  79%{
-     color: #333;
+  79% {
+    color: #333;
   }
   80% {
-    
     text-shadow: none;
   }
   81% {
@@ -87,23 +90,29 @@ body
     text-shadow: inherit;
   }
 }
-.text-shadow{
+.text-shadow {
   text-shadow: #fee 0.5px 0.5px 0.5px;
 }
-.text-darkshadow{
+.text-darkshadow {
   text-shadow: black 0.5px 0.5px 0.5px;
 }
 
-
-label, input, a, img, button{
+label,
+input,
+a,
+img,
+button {
   cursor: none;
 }
-.lime-grad-bg
-{
-background: linear-gradient(to top, transparent -30%, var(--neon) 50%, transparent 130%);
+.lime-grad-bg {
+  background: linear-gradient(
+    to top,
+    transparent -30%,
+    var(--neon) 50%,
+    transparent 130%
+  );
 }
-::selection
-{
+::selection {
   background-color: var(--neon);
 }
 .splide__slide {
@@ -114,15 +123,12 @@ background: linear-gradient(to top, transparent -30%, var(--neon) 50%, transpare
   opacity: 1;
   border: 2px double var(--neon);
 }
-.text-outline
-{
+.text-outline {
   text-shadow: 1px 1px 4px white;
 }
-.text-darkoutline
-{
+.text-darkoutline {
   text-shadow: 2px 2px 4px black;
 }
-.text-shadow-theme
-{
-   text-shadow: 1px 1px 1px var(--neon);
+.text-shadow-theme {
+  text-shadow: 1px 1px 1px var(--neon);
 }

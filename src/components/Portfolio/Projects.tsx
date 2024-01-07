@@ -17,7 +17,7 @@ const Projects: React.FC = () => {
       arrows: false,
       rewind: true,
       autoplay: true,
-      pagination: true,
+      pagination: false,
       perPage: 10,
       isNavigation: true,
       breakpoints: {
@@ -45,6 +45,7 @@ const Projects: React.FC = () => {
       width: "78vw",
       height: "50vh",
       autoplay: true,
+    
       pagination: false,
       arrows: false,
       cover: false,
