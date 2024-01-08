@@ -13,7 +13,7 @@ const Cursor: React.FC = () => {
       gsap.to(".cursor", {
         left: e.pageX,
         top: e.pageY,
-        duration: 0.01,
+        duration: 0,
         ease: "power4.easeOut",
       });
 

@@ -3,11 +3,23 @@ import MobileNavbar from "./MobileNavbar";
 import NavLink from "./NavLink";
 import { useRouter } from "next/router";
 import { getNeonColor, getStyles, getTextColor } from "../../lib/navbarUtils";
+import { FaGithubAlt } from "react-icons/fa";
 
 const Navbar: React.FC = () => {
   const router = useRouter();
   const [open, setOpen] = useState(false);
   const { asPath } = router;
+
+  const navshadow = (path: string) => {
+  switch (path) {
+    case "/about":
+      return "black 1px 1px 1px";
+    case "/services":
+      break;
+    default:
+      break;
+  }
+}
 
   // Effect to update the font family and background image when the path changes
   useEffect(() => {
@@ -24,18 +36,17 @@ const Navbar: React.FC = () => {
   return (
     <nav
       className="z-[9999] logo md:sticky text-shadow flex filter drop-shadow-md bg-transparent backdrop-blur-md px-4 py-4 h-20 items-center"
-      style={asPath == "/about" || "/portfolio" ? { textShadow: "[var(--neon)] 0.5px 0.5px 0.5px" } : {}}
+      style={{ textShadow: navshadow(asPath) } }
     >
       <MobileNavbar open={open} setOpen={setOpen} />
       <div className="w-3/12 flex items-center">
         {open ? (
           ""
-        ) : (
-          <a className="text-2xl font-semibold" href="/">
-            <b>
+        ) : (   <><a className="git-header mx-2 text-3xl" href="https://github.com/aj4200"><FaGithubAlt /></a><a className="text-2xl font-semibold" href="/">
+            <b className="flex">
               #a<span>j</span>4<span>2</span>00 {asPath}
             </b>
-          </a>
+          </a></>
         )}
       </div>
       <div className="w-9/12 flex justify-end items-center">

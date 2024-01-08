@@ -1,6 +1,6 @@
 import { WorkExperience } from "@/data/experience";
 import React from "react";
-import { FaMapMarkerAlt, FaRegClock, FaCheck } from "react-icons/fa";
+import { FaMapMarkerAlt, FaRegClock, FaCheck,FaBusinessTime} from "react-icons/fa";
 import { motion } from "framer-motion";
 
 interface ExperienceCardProps {
@@ -10,13 +10,13 @@ interface ExperienceCardProps {
 const ExperienceCard: React.FC<ExperienceCardProps> = ({ experience }) => {
   return (
     <motion.div
-      className="m-1 border border-[var(--neon)] bg-gray-500/25 p-4 shadow-lg backdrop-blur-sm hover:bg-lime-600/50 hover:w-full transition-all duration-500"
+      className="m-1 border border-[var(--neon)] bg-gray-500/25 p-4 shadow-lg backdrop-blur-sm transition-all duration-500 hover:w-full hover:bg-lime-600/50"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -20 }}
     >
-      <h3 className="text-shadow-theme mb-2 text-lg font-semibold">
-        <FaCheck className="mr-2 text-[var(--neon)]" />
+      <h3 className="text-shadow-theme mb-2 text-lg font-semibold flex">
+        <FaBusinessTime size={40} className="mr-2 text-[var(--neon)]" />
         {experience.jobTitle}
       </h3>
       <p className="mb-2 text-sm">{experience.company}</p>

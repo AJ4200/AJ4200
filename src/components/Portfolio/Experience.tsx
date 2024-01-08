@@ -20,7 +20,7 @@ const Experience: React.FC = () => {
 
   return (
     <div className="w-full">
-      <h2 className="c my-4 text-center text-2xl font-bold">
+      <h2 className="text-shadow-theme my-4 text-center text-2xl font-bold">
         Work Experience
       </h2>
       <div className="flex flex-row justify-between w-full">
