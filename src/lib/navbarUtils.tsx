@@ -20,7 +20,7 @@ export const getStyles = (path: string) => {
   > = {
     "/": {
       fontFamily: "MonaspaceKrypton",
-      backgroundImage: "url(//images.weserv.nl/?url=i.imgur.com/6QJjYMe.jpg)",
+      backgroundImage: "url(imgs/bbw.jpg)",
     },
     "/about": {
       fontFamily: "pricedown",
