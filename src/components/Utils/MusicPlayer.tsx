@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import {
   FaPlay,
   FaPause,
@@ -9,9 +9,10 @@ import {
 import { motion, AnimatePresence } from "framer-motion";
 import VolumeControl from "./Knob";
 import playlist, { Song } from "@/data/playlist";
+import Bars from "./Bars";
 
 const MusicPlayer: React.FC = () => {
-  const [isPlaying, setIsPlaying] = useState<boolean>(false);
+  const [isPlaying, setIsPlaying] = useState<boolean>(true);
   const [currentSongIndex, setCurrentSongIndex] = useState<number>(0);
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
@@ -75,6 +76,7 @@ const MusicPlayer: React.FC = () => {
     }
   };
 
+
   return (
     <motion.div
       className="text-shadow flex flex-col"
@@ -93,14 +95,23 @@ const MusicPlayer: React.FC = () => {
           <span className="text-darkoutline mb-2 text-xl text-slate-400">
             MPlayer
           </span>
-          <motion.img
-            className="w-40 shadow-2xl"
-            src={currentSong?.albumArt}
-            alt="Album Art"
+          <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-          />
+            className="items-center w-max h-full"
+          >
+            <div className="absolute">
+                        <Bars isplaying={isPlaying}/>
+            </div>
+  
+            <img
+              className="w-40 shadow-2xl"
+              src={currentSong?.albumArt}
+              alt="Album Art"
+            />
+          </motion.div>
+
           <motion.span
             className="text-outline text-lg"
             initial={{ opacity: 0 }}
@@ -177,7 +188,7 @@ const MusicPlayer: React.FC = () => {
           </ul>
         </motion.div>
       </div>
-      <audio ref={audioRef} src={currentSong?.url} />
+      <audio ref={audioRef} src={currentSong?.url} autoPlay/>
     </motion.div>
   );
 };

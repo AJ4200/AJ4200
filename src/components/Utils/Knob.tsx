@@ -9,7 +9,14 @@ interface VolumeControlProps {
 
 const VolumeControl: React.FC<VolumeControlProps> = ({ audioRef }) => {
   const [volume, setVolume] = useState<number>(50);
+  const [mute, setMute] = useState(false);
 
+  const handleMute = () => {
+    setMute(!mute);
+    if (audioRef.current) {
+      audioRef.current.muted = mute;
+    }
+  };
   const handleVolumeChange = (newVolume: number) => {
     setVolume(newVolume);
     if (audioRef.current) {
@@ -29,7 +36,7 @@ const VolumeControl: React.FC<VolumeControlProps> = ({ audioRef }) => {
 
   return (
     <div
-      className={`volume-control flex items-center space-x-2 backdrop-blur-sm m-2 p-2  ${getVolumeColor()}`}
+      className={`volume-control m-2 flex items-center space-x-2 p-2 backdrop-blur-sm  ${getVolumeColor()}`}
     >
       <div className="relative">
         <motion.div
@@ -38,6 +45,7 @@ const VolumeControl: React.FC<VolumeControlProps> = ({ audioRef }) => {
           whileTap={{ scale: 0.9 }}
         >
           <motion.div
+            onClick={handleMute}
             className="inner-knob h-6 w-6 rounded-full bg-white"
             style={{
               background: `conic-gradient(var(--neon) ${volume}%, transparent ${volume}%)`,

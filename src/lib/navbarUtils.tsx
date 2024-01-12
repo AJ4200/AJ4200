@@ -1,5 +1,3 @@
-// navbarUtils.ts
-
 export const getTextColor = (path: string) => {
   const colorMap: Record<string, string> = {
     "/": "text-indigo-500",
@@ -7,7 +5,6 @@ export const getTextColor = (path: string) => {
     "/portfolio": "text-green-500",
     "/services": "text-purple-500",
     "/contact": "text-blue-500",
-    // Add more paths and colors as needed
   };
 
   return colorMap[path] || "";
