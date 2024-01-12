@@ -10,6 +10,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import VolumeControl from "./Knob";
 import playlist, { Song } from "@/data/playlist";
 import Bars from "./Bars";
+import SeekProgressBar from "./SeekProgressBar";
 
 const MusicPlayer: React.FC = () => {
   const [isPlaying, setIsPlaying] = useState<boolean>(true);
@@ -77,6 +78,29 @@ const MusicPlayer: React.FC = () => {
   };
 
 
+  useEffect(() => {
+    const handleSongEnded = () => {
+      // Check if it's the last song
+      if (currentSongIndex === playlist.length - 1) {
+        // Stop playback when the last song ends
+        handleStop();
+      } else {
+        // Load and play the next song
+        handleNext();
+      }
+    };
+
+    if (audioRef.current) {
+      audioRef.current.addEventListener("ended", handleSongEnded);
+    }
+
+    return () => {
+      if (audioRef.current) {
+        audioRef.current.removeEventListener("ended", handleSongEnded);
+      }
+    };
+  }, [audioRef, handleNext, handleStop, currentSongIndex, playlist]);
+
   return (
     <motion.div
       className="text-shadow flex flex-col"
@@ -99,12 +123,12 @@ const MusicPlayer: React.FC = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="items-center w-max h-full"
+            className="relative h-full w-max items-center" // Add relative positioning
           >
-            <div className="absolute">
-                        <Bars isplaying={isPlaying}/>
+            <div className="absolute inset-0 flex items-center justify-center">
+              <Bars isplaying={isPlaying} />
             </div>
-  
+
             <img
               className="w-40 shadow-2xl"
               src={currentSong?.albumArt}
@@ -120,8 +144,9 @@ const MusicPlayer: React.FC = () => {
           >
             {currentSong?.title}
           </motion.span>
+          <SeekProgressBar audioRef={audioRef} />
           <VolumeControl audioRef={audioRef} />
-          <div className="text-darkoutline flex justify-center space-x-4 p-4">
+          <div className="text-darkoutline flex justify-center space-x-4 p-4 h-24">
             <motion.button
               className="border border-[var(--neon)] bg-blue-500/20 p-2 text-white"
               onClick={isPlaying ? handlePause : handlePlay}
@@ -188,7 +213,7 @@ const MusicPlayer: React.FC = () => {
           </ul>
         </motion.div>
       </div>
-      <audio ref={audioRef} src={currentSong?.url} autoPlay/>
+      <audio ref={audioRef} src={currentSong?.url} autoPlay={true} />
     </motion.div>
   );
 };

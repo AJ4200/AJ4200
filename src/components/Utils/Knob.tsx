@@ -55,7 +55,7 @@ const VolumeControl: React.FC<VolumeControlProps> = ({ audioRef }) => {
         </motion.div>
       </div>
 
-      {volume > 0 && (
+      {volume >= 0 && (
         <input
           type="range"
           min="0"
