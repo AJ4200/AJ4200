@@ -14,6 +14,7 @@ import "@/styles/particles.css";
 import "@/styles/matrix.css";
 import "@/styles/musicplayer.css";
 import "@splidejs/splide/dist/css/splide.min.css";
+import "animate.css";
 
 
 import type { AppProps } from "next/app";

@@ -20,7 +20,7 @@ start:1,
   }, []);
 
   return (
-        <><h2 className="my-4 text-2xl font-bold text-center text-shadow-theme">Certifications</h2><div id="certifications-slider" className="splide">
+        <><h2 className="my-4 text-2xl font-bold text-center text-shadow-theme">Certifications Obtained</h2><div id="certifications-slider" className="splide">
       <div className="splide__track">
         <ul className="splide__list">
           {certificationsData.map((certification, index) => (

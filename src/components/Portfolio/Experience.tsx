@@ -23,9 +23,9 @@ const Experience: React.FC = () => {
       <h2 className="text-shadow-theme my-4 text-center text-2xl font-bold">
         Work Experience
       </h2>
-      <div className="flex flex-row justify-between w-full">
+      <div className="flex w-full flex-row justify-between">
         <ExperienceCard experience={workExperienceData[currentIndex]} />
-        <div className="flex flex-col items-center justify-between backdrop-blur-sm border border-[var(--neon)]">
+        <div className="animate__backInRight animate__animated flex flex-col items-center justify-between border border-[var(--neon)] backdrop-blur-sm ">
           <motion.button
             className="text-darkshadow px-4 py-2 text-6xl text-[var(--neon)]"
             onClick={goToPrevCard}
@@ -40,7 +40,7 @@ const Experience: React.FC = () => {
             onClick={goToNextCard}
             whileHover={{ scale: 1.2 }}
             animate={{ scale: 1 }}
-            initial={{rotate : "180deg"}}
+            initial={{ rotate: "180deg" }}
           >
             <FaDrupal />
           </motion.button>
