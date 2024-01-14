@@ -14,7 +14,7 @@ const TitleCard = () => {
           <DynamicTitle />
         </span>
 
-        <p className="text-base md:text-md text-slate-500 my-4 md:my-6"
+        <p className="text-base md:text-md text-slate-500 my-4 md:my-6 hover:text-slate-100 transition-colors duration-400"
         >
           I'm a software engineer with experience in designing, building and
           scaling software, However i specialize in full stack development.
