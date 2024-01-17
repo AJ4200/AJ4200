@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Splide from "@splidejs/splide";
 import projects from "../../data/projects";
 import ProjectContent from "./Projects/ProjectContent";
 import Image from "next/image";
@@ -45,10 +44,11 @@ const Projects: React.FC = () => {
           <FaChevronLeft />
         </motion.button>
         <div>
-          <ul className="h-full w-full border border-[var(--neon)]">
+          <ul className="h-full w-full">
             <li className="flex h-full w-full space-x-2">
               <div className="flex flex-col items-center">
                 <Image
+                  className="border border-[var(--neon)]"
                   width={800}
                   height={600}
                   src={projects[currentProject].image}
@@ -72,9 +72,7 @@ const Projects: React.FC = () => {
             {projects.map((project, index) => (
               <motion.button
                 key={index}
-                className={classnames("border-4 border-transparent", {
-                  "border-[var(--neon)]": index === activeProjectIndex,
-                })}
+                className={`border-4 border-transparent ${index === activeProjectIndex && "bg-blend-color-burn"}`}
                 onClick={() => selectProject(index)}
                 whileTap={{ scale: 0.8 }}
                 whileHover={{

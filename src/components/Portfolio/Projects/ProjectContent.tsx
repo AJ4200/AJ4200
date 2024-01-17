@@ -36,13 +36,13 @@ const ProjectContent: React.FC<ProjectContentProps> = ({
     },
   };
   return (
-    <section className="flex flex-col justify-between bg-lime-500/25 backdrop-blur-md w-full text-darkshadow">
+    <section className="flex flex-col justify-between bg-lime-500/25 backdrop-blur-md w-full text-darkshadow border border-[var(--neon)]">
       <div>
-          <div className="flex mx-4 mt-4 mb-1 justify-between">
-             <ul className="flex w-[50%] ml-1">
+        <div className="flex mx-4 mt-4 mb-1 justify-between ">
+          <div className="overflow-hidden "> <ul className="flex w-full ml-1  scrolling-text">
         {techStack.map((tech) => (
           <motion.li
-            className="lime-grad-bg mx-1 px-1 py-1 transtion-colors hover:bg-transparent"
+            className="lime-grad-bg mx-1 px-1 py-1 transtion-colors hover:bg-transparent "
             key={tech}
             whileHover="hover"
             variants={techStackVariants}
@@ -50,7 +50,8 @@ const ProjectContent: React.FC<ProjectContentProps> = ({
             {tech}
           </motion.li>
         ))}
-      </ul> <div className="flex space-x-1">
+      </ul></div>
+             <div className="flex space-x-1">
           <motion.a
             href={sourceCode}
             target="_blank"

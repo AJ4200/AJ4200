@@ -11,7 +11,9 @@ const Conctact: React.FC = () =>
 return (
   <>
     <PageWithIndicator route='/contact' bgcolor='bg-blue-500'>   
-      <>      <Bubbles/>
+      <>
+        <h1 className='text-5xl text-center text-shadow my-8'>Contact Us.</h1>
+        <Bubbles />
       <MainContact/>   
       </>  
 

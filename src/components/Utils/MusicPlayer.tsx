@@ -81,6 +81,7 @@ const MusicPlayer: React.FC = () => {
   useEffect(() => {
     const handleSongEnded = () => {
       // Check if it's the last song
+     
       if (currentSongIndex === playlist.length - 1) {
         // Stop playback when the last song ends
         handleStop();
