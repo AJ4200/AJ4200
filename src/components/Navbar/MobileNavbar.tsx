@@ -7,8 +7,8 @@ interface MobileNavbarProps {
 
 const MobileNavbar: React.FC<MobileNavbarProps> = ({ open, setOpen }) => {
   return (
-    <div
-      className={`z-[99] block fixed top-0 left-0 h-screen w-screen transform backdrop-blur-lg ${
+    <dialog
+      className={`z-[99999999] block fixed top-0 left-0 h-screen w-screen transform backdrop-blur-lg ${
         open ? "-translate-x-0" : "-translate-x-full"
       } transition-transform duration-300 ease-in-out filter drop-shadow-md `}
     >
@@ -78,7 +78,7 @@ const MobileNavbar: React.FC<MobileNavbarProps> = ({ open, setOpen }) => {
           Contacts
         </a>
       </div>
-    </div>
+    </dialog>
   );
 };
 
