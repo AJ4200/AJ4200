@@ -2,14 +2,14 @@ import React from "react";
 import Hero from "../components/Hero/Hero";
 import PageWithIndicator from "../components/Utils/PageWithIndicator";
 import Matrix from "@/components/Utils/Matrix";
+import Menu from "@/components/Menu/Menu";
 
 export default function Home() {
   return (
     <>
-      <PageWithIndicator route={"/"} bgcolor={"bg-indigo-500"}>
+      <PageWithIndicator route={"/"} bgcolor={"bg-white"}>
         <>
-        <Matrix/>
-          <Hero />
+      <Menu/>
         </>
       
       </PageWithIndicator>

@@ -28,10 +28,13 @@ body {
 }
 
 @font-face {
+  font-family: "Ethnocentric";
+  src: url("/fonts/ethnocentric.otf") format("opentype");
+}
+@font-face {
   font-family: "Teqto";
   src: url("/fonts/Teqto.otf") format("opentype");
 }
-
 @font-face {
   font-family: "pricedown";
   src: url("/fonts/pricedown.otf") format("opentype");

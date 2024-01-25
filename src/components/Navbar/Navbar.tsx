@@ -75,7 +75,7 @@ const Navbar: React.FC = () => {
         </div>
 
         <div className="hidden md:flex">
-          <NavLink to="/" text_color={getTextColor("/")}>
+          <NavLink to="/home" text_color={getTextColor("/home")}>
             HOME
           </NavLink>
           <NavLink to="/about" text_color={getTextColor("/about")}>
