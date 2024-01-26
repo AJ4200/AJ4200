@@ -6,7 +6,7 @@ const Menu: React.FC = () => {
   return (
     <>
       <h1 className="mb-6 text-4xl text-center text-shadow">Welcome</h1>
-      <div className="mx-8 my-2 flex h-[70vh] flex-col place-self-center bg-white/25 backdrop-blur-md">
+      <div className="mx-8 my-2 flex h-[70vh] flex-col place-self-center ">
         <div className="grid h-full w-full grid-cols-2 gap-4">
           <div className="col-span-1 ">
             <MenuCard

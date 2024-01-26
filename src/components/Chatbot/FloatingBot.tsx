@@ -1,9 +1,11 @@
 import { useRouter } from 'next/router';
 import React, { useEffect } from'react';
 import { getStyles, getNeonColor } from '../../lib/navbarUtils';
- 
+interface FloatingBotProps {
+  onClick: () => void;
+} 
 
-const FloatingBot: React.FC = () => 
+const FloatingBot: React.FC<FloatingBotProps> = ({onClick}) => 
 {
     const router = useRouter();
     const { asPath } = router;
@@ -22,7 +24,7 @@ const FloatingBot: React.FC = () =>
       }, [asPath]);
 
 return (
-  <div className="cute-robot-v1">
+  <div className="cute-robot-v1 " onClick={onClick}>
     <div className="circle-bg">
       <div className="robot-ear left"></div>
       <div className="robot-head">
