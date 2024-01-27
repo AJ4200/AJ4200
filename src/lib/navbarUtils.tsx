@@ -57,3 +57,15 @@ export const getNeonColor = (path: string) => {
 
   return neonColorMap[path] || "";
 };
+export const getFont = (path: string) => {
+  const fontMap: Record<string, string> = {
+    "/": "Ethnocentric",
+    "/home": "MonaspaceKrypton",
+    "/about": "pricedown",
+    "/portfolio": "Girdens",
+    "/services": "rimouski",
+    "/contact": "Teqto",
+  };
+
+  return fontMap[path] || "";
+};
