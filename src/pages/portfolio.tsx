@@ -4,6 +4,7 @@ import Projects from "../components/Portfolio/Projects";
 import Experience from "../components/Portfolio/Experience";
 import Certifications from "../components/Portfolio/Certifications";
 import Leaves from "../components/Utils/Leaves";
+import Navbar from "@/components/Navbar/Navbar";
 
 const Portfolio: React.FC = () => {
   const [activeTab, setActiveTab] = useState("projects");
@@ -14,15 +15,16 @@ const Portfolio: React.FC = () => {
 
   return (
     <>
+      <Navbar />
       <PageWithIndicator route={"/portfolio"} bgcolor={"bg-green-500"}>
         <>
           <Leaves />
-          <div className="w-full flex mx-auto items-center flex-col">
-            <div className="flex md:max-w-xl justify-between w-full">
+          <div className="mx-auto flex w-full flex-col items-center">
+            <div className="flex w-full justify-between md:max-w-xl">
               <button
-                className={`text-darkshadow text-lime-500 font-semibold backdrop-blur-md w-[33.33%] py-2 ${
+                className={`text-darkshadow w-[33.33%] py-2 font-semibold text-lime-500 backdrop-blur-md ${
                   activeTab === "experience"
-                    ? "text-green-500 border-b-8 border-green-500/40"
+                    ? "border-b-8 border-green-500/40 text-green-500"
                     : ""
                 }`}
                 onClick={() => handleTabClick("experience")}
@@ -30,9 +32,9 @@ const Portfolio: React.FC = () => {
                 Experience
               </button>
               <button
-                className={`text-darkshadow text-lime-500 font-semibold backdrop-blur-md w-[33.33%] py-2 ${
+                className={`text-darkshadow w-[33.33%] py-2 font-semibold text-lime-500 backdrop-blur-md ${
                   activeTab === "projects"
-                    ? "text-green-500 border-b-8 border-green-500/40"
+                    ? "border-b-8 border-green-500/40 text-green-500"
                     : ""
                 }`}
                 onClick={() => handleTabClick("projects")}
@@ -40,9 +42,9 @@ const Portfolio: React.FC = () => {
                 Projects
               </button>
               <button
-                className={`text-darkshadow text-lime-500 font-semibold backdrop-blur-md w-[33.33%] py-2 ${
+                className={`text-darkshadow w-[33.33%] py-2 font-semibold text-lime-500 backdrop-blur-md ${
                   activeTab === "certifications"
-                    ? "text-green-500 border-b-8 border-green-500/40"
+                    ? "border-b-8 border-green-500/40 text-green-500"
                     : ""
                 }`}
                 onClick={() => handleTabClick("certifications")}

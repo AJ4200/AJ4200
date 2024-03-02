@@ -140,7 +140,7 @@ button {
 }
 .git-header {
   color: var(--neon);
- animation: blink2 linear infinite 5s;
+  animation: blink2 linear infinite 5s;
   transition: all 500ms cubic-bezier(0.23, 1, 0.32, 1);
   background: transparent;
   border-radius: 50%;
@@ -160,7 +160,7 @@ button {
 @keyframes blink2 {
   78% {
     color: rgba(255, 255, 255, 0.5);
-  
+
     text-shadow: inherit;
   }
   79% {
@@ -197,7 +197,12 @@ button {
 }
 
 @keyframes ticker {
-	0%   {transform: translateX(100%);}
+  0% {
+    transform: translateX(100%);
+  }
 
-	100% {transform: translateX(-100%);}
+  100% {
+    transform: translateX(-100%);
+  }
 }
+

@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import MobileNavbar from "./MobileNavbar";
 import NavLink from "./NavLink";
 import { useRouter } from "next/router";
-import { getNeonColor, getStyles, getTextColor } from "../../lib/navbarUtils";
+import { getTextColor } from "../../lib/navbarUtils";
 import { FaGithubAlt } from "react-icons/fa";
 
 const Navbar: React.FC = () => {
@@ -21,21 +21,9 @@ const Navbar: React.FC = () => {
   }
 }
 
-  // Effect to update the font family and background image when the path changes
-  useEffect(() => {
-    const body = document.querySelector("body");
-    if (body) {
-      const styles = getStyles(asPath);
-      body.style.backgroundImage = styles.backgroundImage;
-      body.style.fontFamily = styles.fontFamily;
-    }
-    document.documentElement.style.setProperty("--neon", getNeonColor(asPath));
-
-  }, [asPath]);
-
   return (
     <nav
-      className="z-[9999] logo md:sticky text-shadow flex filter drop-shadow-md bg-transparent backdrop-blur-md px-4 py-4 h-20 items-center"
+      className="z-[9999999999] logo md:sticky text-shadow flex filter drop-shadow-md bg-transparent backdrop-blur-md px-4 py-4 h-20 items-center"
       style={{ textShadow: navshadow(asPath) } }
     >
       <MobileNavbar open={open} setOpen={setOpen} />

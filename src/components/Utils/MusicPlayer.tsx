@@ -109,7 +109,7 @@ const MusicPlayer: React.FC = () => {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -20 }}
     >
-      <span className="mb-4 w-full text-center text-4xl">Music Prod.</span>
+      <span className="w-full text-center text-4xl">Music Prod.</span>
       <div className="flex flex-row justify-between">
         <motion.div
           className="m-4 flex flex-col items-center rounded-md bg-black/20 p-4 shadow-2xl"
