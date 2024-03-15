@@ -20,6 +20,17 @@ const playlist: Song[] = [
     title: "Nostalgic Acts",
     url: "/music/Nostaligic ActsII_Remastered.mp3",
   },
+  {
+    albumArt: "/music/art/Arabina.jpg",
+    title: "Arabina",
+    url: "/music/Arabina.mp3",
+  },
+
+  {
+    albumArt: "/music/art/By.jpg",
+    title: "Jello",
+    url: "/music/Jello.mp3",
+  },
 ];
 
 export default playlist;

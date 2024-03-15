@@ -10,25 +10,24 @@ const SeekProgressBar: React.FC<SeekProgressBarProps> = ({ audioRef }) => {
   const [isSeeking, setIsSeeking] = useState<boolean>(false);
 
   useEffect(() => {
-const updateProgress = () => {
-  console.log("Updating progress...");
-  if (audioRef.current) {
-    const percentage =
-      (audioRef.current.currentTime / audioRef.current.duration) * 100;
-    setProgress(percentage);
-  }
-};
+    const updateProgress = () => {
+      console.log("Updating progress...");
+      if (audioRef.current) {
+        const percentage =
+          (audioRef.current.currentTime / audioRef.current.duration) * 100;
+        setProgress(percentage);
+      }
+    };
 
-const handleSeeking = () => {
-  console.log("Seeking...");
-  setIsSeeking(true);
-};
+    const handleSeeking = () => {
+      console.log("Seeking...");
+      setIsSeeking(true);
+    };
 
-const handleSeeked = () => {
-  console.log("Seeked...");
-  setIsSeeking(false);
-};
-
+    const handleSeeked = () => {
+      console.log("Seeked...");
+      setIsSeeking(false);
+    };
 
     if (audioRef.current) {
       audioRef.current.addEventListener("timeupdate", updateProgress);
@@ -65,7 +64,7 @@ const handleSeeked = () => {
         whileTap={{ scale: 0.9 }}
       >
         <motion.div
-          className="seek-fill h-2  bg-[var(--neon)]"
+          className="seek-fill flex  h-2 justify-start bg-[var(--neon)]"
           style={{
             width: isSeeking ? "auto" : `${progress}%`,
             left: isSeeking ? "0" : "0%",

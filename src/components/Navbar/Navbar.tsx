@@ -23,7 +23,7 @@ const Navbar: React.FC = () => {
 
   return (
     <nav
-      className="z-[9999999999] logo md:sticky text-shadow flex filter drop-shadow-md bg-transparent backdrop-blur-md px-4 py-4 h-20 items-center"
+      className="logo md:sticky text-shadow flex filter drop-shadow-md bg-transparent backdrop-blur-md px-4 py-4 h-20 items-center z-[99999]"
       style={{ textShadow: navshadow(asPath) } }
     >
       <MobileNavbar open={open} setOpen={setOpen} />
