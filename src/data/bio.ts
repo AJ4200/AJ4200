@@ -62,7 +62,8 @@ const bioData: BioData = {
   name: "Abel Majadibodu",
   age: 24,
   occupation: "Software Engineer",
-  description: "Passionate about coding and creating awesome web applications.",
+  description:
+    "I love coding and creating cool web apps, and I dabble in some hobbies on the side too.",
   imageUrl:
     "https://media.licdn.com/dms/image/D4D03AQEMxn0mchBygw/profile-displayphoto-shrink_800_800/0/1675420423236?e=1707350400&v=beta&t=iYRT7EsVckdoic7bUIfZE_7flt0vE-fRBRCYjm872Po",
   hobbies: ["Coding", "Production", "Gaming"],

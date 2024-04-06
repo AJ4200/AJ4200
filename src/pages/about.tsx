@@ -14,7 +14,7 @@ const About: React.FC = () => {
       <PageWithIndicator route="/about" bgcolor="bg-red-500">
         <>
           <Particles />
-          <h1 className="text-shadow text-center text-6xl">Biography</h1>
+          <h1 className="text-shadow text-center text-6xl">Bio</h1>
           <div className="mx-4 mt-1 flex justify-stretch rounded-lg bg-red-900/60 bg-opacity-5 p-6 shadow-md backdrop-blur-sm">
             <Bio {...bioData} />
           </div>

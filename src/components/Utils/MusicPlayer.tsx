@@ -77,11 +77,10 @@ const MusicPlayer: React.FC = () => {
     }
   };
 
-
   useEffect(() => {
     const handleSongEnded = () => {
       // Check if it's the last song
-     
+
       if (currentSongIndex === playlist.length - 1) {
         // Stop playback when the last song ends
         handleStop();
@@ -112,12 +111,12 @@ const MusicPlayer: React.FC = () => {
       <span className="w-full text-center text-4xl">Music Prod.</span>
       <div className="flex flex-row justify-between">
         <motion.div
-          className="m-4 flex flex-col items-center rounded-md bg-black/20 p-4 shadow-2xl"
+          className="m-2 flex flex-col items-center rounded-md bg-black/20 p-4 shadow-2xl"
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: 20 }}
         >
-          <span className="text-darkoutline mb-2 text-xl text-slate-400">
+          <span className="text-darkoutline mb-1 text-xl text-slate-400">
             MPlayer
           </span>
           <motion.div
@@ -147,7 +146,7 @@ const MusicPlayer: React.FC = () => {
           </motion.span>
           <SeekProgressBar audioRef={audioRef} />
           <VolumeControl audioRef={audioRef} />
-          <div className="text-darkoutline flex justify-center space-x-4 p-4 h-24">
+          <div className="text-darkoutline flex h-24 justify-center space-x-4 p-4">
             <motion.button
               className="border border-[var(--neon)] bg-blue-500/20 p-2 text-white"
               onClick={isPlaying ? handlePause : handlePlay}
@@ -185,7 +184,7 @@ const MusicPlayer: React.FC = () => {
         </motion.div>
 
         <motion.div
-          className="m-4 flex w-full flex-col items-center rounded-md bg-black/20 p-4 shadow-2xl"
+          className="m-2 flex w-full flex-col items-center rounded-md bg-black/20 p-4 shadow-2xl"
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: 20 }}

@@ -14,6 +14,7 @@ import "@/styles/robot.scss";
 import "@/styles/particles.css";
 import "@/styles/matrix.css";
 import "@/styles/musicplayer.css";
+import "@/styles/lights.css"
 import "@splidejs/splide/dist/css/splide.min.css";
 import "animate.css";
 

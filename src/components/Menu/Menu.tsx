@@ -51,7 +51,7 @@ const Menu: React.FC = () => {
             </div>
           </div>
         </div>
-        <div className="mt-4 w-full">
+        <div className="mt-4 w-full md:h-[30%]">
           <MenuCard
             label={"Contact"}
             className={getTextColor("/contact") + " h-full border-blue-600"}

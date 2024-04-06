@@ -4,6 +4,7 @@ import Menu from "@/components/Menu/Menu";
 import { getStyles, getNeonColor } from "@/lib/navbarUtils";
 import { useRouter } from "next/router";
 import Navbar from "@/components/Navbar/Navbar";
+import Lights from "@/components/Utils/Lights";
 
 export default function Home() {
   const router = useRouter();
@@ -23,6 +24,7 @@ export default function Home() {
       <Navbar />
       <PageWithIndicator route={"/"} bgcolor={"bg-white"}>
         <>
+          <Lights/>
           <Menu />
         </>
       </PageWithIndicator>

@@ -36,7 +36,7 @@ const VolumeControl: React.FC<VolumeControlProps> = ({ audioRef }) => {
 
   return (
     <div
-      className={`volume-control m-2 flex items-center space-x-2 p-2 backdrop-blur-sm  ${getVolumeColor()}`}
+      className={`volume-control m-1 flex items-center space-x-2 p-2 backdrop-blur-sm  ${getVolumeColor()}`}
     >
       <div className="relative">
         <motion.div

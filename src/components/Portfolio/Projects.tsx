@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import projects from "../../data/projects";
 import ProjectContent from "./Projects/ProjectContent";
 import Image from "next/image";
@@ -54,18 +54,15 @@ const Projects: React.FC = () => {
                   src={projects[currentProject].image}
                   alt={projects[currentProject].title}
                 />
-                <p className="text-darkshadow mt-4 flex h-full w-full items-center justify-center border border-[var(--neon)] bg-lime-500/50 text-5xl font-bold backdrop-blur-sm transition-colors hover:text-[var(--neon)]">
+                <a
+                  href={projects[currentProject].link}
+                  className="text-darkshadow mt-4 flex h-full w-full items-center justify-center border border-[var(--neon)] bg-lime-500/50 text-5xl font-bold backdrop-blur-sm transition-colors hover:text-[var(--neon)]"
+                >
                   {projects[currentProject].title}
-                </p>
+                </a>
               </div>
 
-              <ProjectContent
-                title={projects[currentProject].title}
-                description={projects[currentProject].description}
-                techStack={projects[currentProject].techStack as []}
-                link={projects[currentProject].link}
-                sourceCode={projects[currentProject].sourceCode}
-              />
+              <ProjectContent project={projects[currentProject]} />
             </li>
           </ul>
           <div className="my-2 flex space-x-2 border border-[var(--neon)] bg-lime-500/50 backdrop-blur-sm">

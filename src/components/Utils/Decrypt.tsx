@@ -1,6 +1,7 @@
 import { useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { FaArrowRight  } from "react-icons/fa";
+import { useRouter } from "next/router";
 const Decrypt = () => {
   return <EncryptButton />;
 };
@@ -47,9 +48,10 @@ const EncryptButton = () => {
 
     setText(TARGET_TEXT);
   };
-
+  const router = useRouter();
   return (
     <motion.button
+      onClick={() => {router.push('/about')}}
       whileHover={{
         scale: 1.025,
       }}

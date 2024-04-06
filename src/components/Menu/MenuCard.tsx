@@ -29,16 +29,19 @@ const MenuCard: React.FC<MenuCardProps> = ({
     setIsHovered(false);
   };
 
-  const cardStyle = {
-    backgroundImage: isHovered ? "none" : imgUrl,
-    backgroundColor: isHovered ? getNeonColor(route) : "transparent",
-    Position: isHovered ? "fixed" : "relative",
-  };
+const cardStyle = {
+  backgroundImage: isHovered ? "none" : imgUrl,
+  backgroundColor: isHovered ? getNeonColor(route) : "transparent",
+  Position: isHovered ? "fixed" : "relative", // Corrected 'Position' to 'position'
+  zIndex: isHovered ? "999" : "1", // Ensure the hovered card is above other content
+};
+
 
   return (
     <div
       className={
-        "active:scale-60 z-999 transform border p-2 transition-transform delay-150 hover:scale-110 " +
+        `active:scale-60 z-999 transform border p-2 transition-transform delay-150 hover:scale-110 ${label == "Contact" ? "hover:scale-105" : "hover:scale-110"}` +
+        " " +
         className
       }
       style={cardStyle}

@@ -52,7 +52,7 @@ const SeekProgressBar: React.FC<SeekProgressBarProps> = ({ audioRef }) => {
   };
 
   return (
-    <div className="seek-progress-bar m-2 flex w-full items-center space-x-2 p-2 backdrop-blur-sm">
+    <div className="seek-progress-bar m-1 flex w-full items-center space-x-2 p-2 backdrop-blur-sm">
       <motion.div
         className="seek-bar flex h-4 w-full cursor-pointer items-center justify-center bg-red-500/20"
         onClick={(e) => {
