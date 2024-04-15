@@ -1,6 +1,8 @@
 import Project from "@/datadef/project";
+import { motion } from "framer-motion";
 import React, { useState } from "react";
 import { FaTimes } from "react-icons/fa";
+import { FiGithub, FiExternalLink } from "react-icons/fi";
 
 interface ProjectModalProps {
   project: Project;
@@ -8,46 +10,72 @@ interface ProjectModalProps {
 }
 
 const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) => {
+  const techStackVariants = {
+    hover: {
+      scale: 1.1,
+      transition: { duration: 0.3 },
+      backgroundColor: "var(--transparent)",
+    },
+  };
+  const iconVariants = {
+    hover: {
+      scale: 1.2,
+      transition: { duration: 0.3 },
+      color: "var(--neon)",
+    },
+  };
   return (
-    <div className="fixed inset-0 z-10 flex h-full w-full items-center justify-center bg-lime-500/25 ">
-      <div className="w-[50%] translate-x-[-50%]">
-        <img src={project.image} className=" aspect-video" />
-        <div className="rounded-lg bg-white p-8 shadow-lg">
+    <div className="fixed inset-0 z-10 flex h-full w-full items-center justify-center backdrop-blur ">
+      <div className="w-[50%] ">
+        <div className="border border-[var(--neon)] bg-lime-500/30 p-8 shadow-lg backdrop-blur-3xl">
           <div className="flex items-center justify-between">
-            <h2 className="text-2xl font-bold">{project.title}</h2>
-
-            <FaTimes onClick={onClose} className="lime-shadow" />
-          </div>
-          <div className="mt-4">
-            <p className="text-gray-700">{project.description}</p>
-            <ul className="mt-4 space-y-2">
-              {project.techStack.map((tech: any, index: number) => (
-                <li key={index} className="flex items-center space-x-2">
-                  <span className="text-gray-600">{tech.name}</span>
-                  <span className="text-gray-500">{tech.version}</span>
-                </li>
-              ))}
-            </ul>
-            <div className="mt-4">
-              <a
+            <h2 className="text-shadow-theme text-2xl font-bold">
+              {project.title}
+            </h2>
+            <div className="flex space-x-1">
+              <motion.a
+                href={project.sourceCode}
+                target="_blank"
+                className="transition-colors"
+                rel="noopener noreferrer"
+                whileHover="hover"
+                variants={iconVariants}
+              >
+                <FiGithub size={32} />
+              </motion.a>
+              <motion.a
                 href={project.link}
                 target="_blank"
+                className="transition-colors"
                 rel="noopener noreferrer"
-                className="text-blue-600 hover:underline"
+                whileHover="hover"
+                variants={iconVariants}
               >
-                Visit Website
-              </a>
-              {project.sourceCode && (
-                <a
-                  href={project.sourceCode}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="ml-4 text-blue-600 hover:underline"
-                >
-                  Source Code
-                </a>
-              )}
+                <FiExternalLink size={32} />
+              </motion.a>
             </div>
+            <ul className="ml-1 flex  w-full">
+              {project.techStack.map((tech) => (
+                <motion.li
+                  className="lime-grad-bg transtion-colors mx-1 px-1 py-1 hover:bg-transparent "
+                  key={tech}
+                  whileHover="hover"
+                  variants={techStackVariants}
+                >
+                  {tech}
+                </motion.li>
+              ))}
+            </ul>
+            <FaTimes
+              onClick={onClose}
+              className="absolute right-0 top-0  border-b border-l border-[var(--neon)] p-2 transition-all delay-75 hover:scale-110 hover:text-[var(--neon)] active:scale-75"
+              size={40}
+            />
+          </div>
+          <div className="mt-4">
+            <p className="hover:bg-black hover:text-[var(--neon)]">
+              {project.description}
+            </p>
           </div>
         </div>
       </div>

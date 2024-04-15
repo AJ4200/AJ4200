@@ -12,7 +12,7 @@
   margin: auto;
 }
 
-.x1 {
+.y1 {
   -webkit-animation: floatUp 4s infinite linear;
   -moz-animation: floatUp 4s infinite linear;
   -o-animation: floatUp 4s infinite linear;
@@ -23,7 +23,7 @@
   transform: scale(1);
 }
 
-.x2 {
+.y2 {
   -webkit-animation: floatUp 7s infinite linear;
   -moz-animation: floatUp 7s infinite linear;
   -o-animation: floatUp 7s infinite linear;
@@ -35,7 +35,7 @@
   left: 15%;
 }
 
-.x3 {
+.y3 {
   -webkit-animation: floatUp 2.5s infinite linear;
   -moz-animation: floatUp 2.5s infinite linear;
   -o-animation: floatUp 2.5s infinite linear;
@@ -47,7 +47,7 @@
   left: -15%;
 }
 
-.x4 {
+.y4 {
   -webkit-animation: floatUp 4.5s infinite linear;
   -moz-animation: floatUp 4.5s infinite linear;
   -o-animation: floatUp 4.5s infinite linear;
@@ -59,7 +59,7 @@
   left: -34%;
 }
 
-.x5 {
+.y5 {
   -webkit-animation: floatUp 8s infinite linear;
   -moz-animation: floatUp 8s infinite linear;
   -o-animation: floatUp 8s infinite linear;
@@ -71,7 +71,7 @@
   left: -57%;
 }
 
-.x6 {
+.y6 {
   -webkit-animation: floatUp 3s infinite linear;
   -moz-animation: floatUp 3s infinite linear;
   -o-animation: floatUp 3s infinite linear;
@@ -83,7 +83,7 @@
   left: -81%;
 }
 
-.x7 {
+.y7 {
   -webkit-animation: floatUp 5.3s infinite linear;
   -moz-animation: floatUp 5.3s infinite linear;
   -o-animation: floatUp 5.3s infinite linear;
@@ -95,7 +95,7 @@
   left: 37%;
 }
 
-.x8 {
+.y8 {
   -webkit-animation: floatUp 4.7s infinite linear;
   -moz-animation: floatUp 4.7s infinite linear;
   -o-animation: floatUp 4.7s infinite linear;
@@ -107,7 +107,7 @@
   left: 62%;
 }
 
-.x9 {
+.y9 {
   -webkit-animation: floatUp 4.1s infinite linear;
   -moz-animation: floatUp 4.1s infinite linear;
   -o-animation: floatUp 4.1s infinite linear;

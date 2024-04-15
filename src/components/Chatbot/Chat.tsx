@@ -46,7 +46,7 @@ const Chat: React.FC<ChatProps> = ({ onClose }) => {
 
   return (
     <Draggable>
-      <div className="fixed bottom-4 right-4 rounded border-[2px] border-[var(--neon)] p-4 shadow backdrop-blur-xl">
+      <div className="fixed bottom-4 right-4 z-[99999] rounded border-[2px] border-[var(--neon)] p-4 shadow backdrop-blur-xl">
         <FaGripLines
           className={
             "absolute left-[50%] right-[50%] top-0 p-1 text-3xl transition-transform hover:scale-[1.25] hover:text-[var(--neon)] " +
@@ -86,7 +86,7 @@ const Chat: React.FC<ChatProps> = ({ onClose }) => {
                     />
                   </div>
                 ) : (
-                  <div className="flex items-center space-x-2">
+                  <div className="relative right-0 flex items-center space-x-2">
                     <FaRobot
                       className={
                         "rounded-full border border-[var(--neon)] text-4xl " +
@@ -120,7 +120,7 @@ const Chat: React.FC<ChatProps> = ({ onClose }) => {
             value={input}
             onChange={(e) => setInput(e.target.value)}
             placeholder="Type your message..."
-            className="text-outline flex-grow rounded-l bg-[var(--neon)] p-2 placeholder:text-black focus:outline-none"
+            className="text-outline h-10 flex-grow rounded-l bg-[var(--neon)] p-2 placeholder:text-black focus:outline-none"
           />
           <button
             onClick={handleSendMessage}
