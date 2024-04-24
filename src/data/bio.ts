@@ -65,7 +65,7 @@ const bioData: BioData = {
   description:
     "I love coding and creating cool web apps, and I dabble in some hobbies on the side too.",
   imageUrl:
-    "https://media.licdn.com/dms/image/D4D03AQEMxn0mchBygw/profile-displayphoto-shrink_800_800/0/1675420423236?e=1707350400&v=beta&t=iYRT7EsVckdoic7bUIfZE_7flt0vE-fRBRCYjm872Po",
+    "https://lh3.googleusercontent.com/a/ACg8ocId0xAQI199zuW2rcB1ssJXKWb44O8hlpAu5yF-8xUB114vPUd4UA=s288-c-no",
   hobbies: ["Coding", "Production", "Gaming"],
   socialLinks: {
     linkedin: "https://www.linkedin.com/in/abel-majadibodu-5a0583193",

@@ -10,6 +10,7 @@ import SkillsetSection from "./SkillSet";
 import { skillsets } from "@/data/bio";
 import Game from "./Game";
 import Producing from "./Production";
+import { calculateAge } from "@/lib/utils";
 
 interface BioProps {
   name: string;
@@ -46,40 +47,44 @@ const Bio: React.FC<BioProps> = ({
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        className="space-y-4 max-w-[30%] text-shadow"
+        className="text-shadow max-w-[30%] space-y-4"
       >
         <motion.div
-          className="flex items-center mb-4"
+          className="mb-4 flex items-center"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
           <motion.img
             src={imageUrl}
             alt={`Image of ${name}`}
-            className="w-16 h-16 rounded-full mr-4"
+            className="mr-4 h-16 w-16 rounded-full"
           />
           <motion.h1 className="text-2xl font-bold">{name}</motion.h1>
         </motion.div>
-        <motion.p className="text-lg text-white text-darkshadow">
-          <span>{age} years old,</span>
-          <span className="text-red-700 text-darkshadow">{occupation}</span>
+        <motion.p className="text-darkshadow text-lg text-white">
+          <span>{calculateAge(1999)} years old,</span>
+          <span className="text-darkshadow text-red-700">{occupation}</span>
         </motion.p>
         <motion.p className="text-md my-4">{description}</motion.p>
         <div className="hobbies">
-          <motion.p className="text-gray-300 font-bold mb-2 text-darkoutline text-lg">
+          <motion.p className="text-darkoutline mb-2 text-lg font-bold text-gray-300">
             Hobbies:
+            {activeTab || activeTab === "main" ? (
+              <span className="text-sm text-red-700">
+                click on a hobby below
+              </span>
+            ) : (
+              ""
+            )}
           </motion.p>
           <ul className="list-disc pl-6">
             {hobbies.map((hobby, index) => (
               <motion.li
                 key={index}
-                className={`text-gray-400 text-darkshadow m-2 ${activeTab === hobby ? "text-red-700 text-outline" : ""}`}
+                className={`text-darkshadow m-2 text-gray-400 ${activeTab === hobby ? "text-outline text-red-700" : ""}`}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                onMouseEnter={() => {
-                  setActiveTab(hobby);
-                }}
-                onMouseLeave={() => {
+                onClick={() => {
                   setActiveTab(hobby);
                 }}
               >
@@ -89,8 +94,8 @@ const Bio: React.FC<BioProps> = ({
           </ul>
         </div>
         <div className="social-links mt-4">
-          <motion.p className="font-bold mb-2">Connect with me:</motion.p>
-          <ul className="flex space-x-4 text-darkshadow">
+          <motion.p className="mb-2 font-bold">Connect with me:</motion.p>
+          <ul className="text-darkshadow flex space-x-4">
             {socialLinks.linkedin && (
               <motion.li whileHover={{ scale: 1.2 }} whileTap={{ scale: 0.8 }}>
                 <motion.a
@@ -124,7 +129,7 @@ const Bio: React.FC<BioProps> = ({
             href={`/contact`}
             whileHover={{ scale: 1.2 }}
             whileTap={{ scale: 0.8 }}
-            className="bg-red-500 text-white py-2 px-4 rounded-md flex items-center w-max text-darkshadow"
+            className="text-darkshadow flex w-max items-center rounded-md bg-red-500 px-4 py-2 text-white"
           >
             <FaEnvelope className="mr-2" />
             Contact Me
@@ -133,17 +138,17 @@ const Bio: React.FC<BioProps> = ({
             href={`/portfolio`}
             whileHover={{ scale: 1.2 }}
             whileTap={{ scale: 0.8 }}
-            className="border border-red-500 text-red-500 py-2 px-4 rounded-md flex items-center w-max text-darkshadow"
+            className="text-darkshadow flex w-max items-center rounded-md border border-red-500 px-4 py-2 text-red-500"
           >
             <FaProjectDiagram className="mr-2" />
             My Portfolio
           </motion.a>
         </div>
       </motion.div>
-      <div className="w-[70%] backdrop-blur-md shadow-md rounded-md">
+      <div className="w-[70%] rounded-md shadow-md backdrop-blur-md">
         {activeTab === "main" && (
           <motion.span
-            className="flex w-full items-center justify-center bg-black/5 text-center text-8xl text-gray-400 h-full text-darkoutline"
+            className="text-darkoutline flex h-full w-full items-center justify-center bg-black/5 text-center text-8xl text-gray-400"
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0, transition: { duration: 0.5 } }}
           >
