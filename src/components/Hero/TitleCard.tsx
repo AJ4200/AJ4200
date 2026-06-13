@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import DynamicTitle from "../Utils/DynamicTitle";
 import Decrypt from "../Utils/Decrypt";
 
@@ -112,7 +112,7 @@ const squareData = [
 ];
 
 const generateSquares = () => {
-  return shuffle(squareData).map((sq) => (
+  return shuffle([...squareData]).map((sq) => (
     <motion.div
       key={sq.id}
       layout
@@ -129,20 +129,15 @@ const generateSquares = () => {
 };
 
 const ShuffleGrid = () => {
-  const timeoutRef = useRef<any>(null);
   const [squares, setSquares] = useState(generateSquares());
 
   useEffect(() => {
-    shuffleSquares();
+    const intervalId = window.setInterval(() => {
+      setSquares(generateSquares());
+    }, 3000);
 
-    return () => clearTimeout(timeoutRef.current);
+    return () => window.clearInterval(intervalId);
   }, []);
-
-  const shuffleSquares = () => {
-    setSquares(generateSquares());
-
-    timeoutRef.current = setTimeout(shuffleSquares, 3000);
-  };
 
   return (
     <div className="grid grid-cols-4 grid-rows-4 h-[450px] gap-1">

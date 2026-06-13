@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import Draggable from "react-draggable";
 import { FiSend, FiX } from "react-icons/fi";
 import { FaGripLines, FaRobot, FaUser } from "react-icons/fa";
 import FloatingBot from "./FloatingBot";
 import AccessibilityToggle from "./AccessibilityToggle";
 import { getTextColor } from "@/lib/navbarUtils";
-import { useRouter } from "next/router";
+import { usePathname } from "next/navigation";
 
 interface ChatProps {
   onClose: () => void;
@@ -17,14 +17,14 @@ interface Message {
 }
 
 const Chat: React.FC<ChatProps> = ({ onClose }) => {
-  const router = useRouter();
-  const { asPath } = router;
+  const pathname = usePathname();
+  const nodeRef = useRef<HTMLDivElement>(null);
 
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState<string>("");
 
   const handleSendMessage = () => {
-    const response = simulateChatAPI(input);
+    const response = simulateChatAPI();
 
     setMessages((prevMessages) => [
       ...prevMessages,
@@ -34,7 +34,7 @@ const Chat: React.FC<ChatProps> = ({ onClose }) => {
     setInput("");
   };
 
-  const simulateChatAPI = (userMessage: string): string => {
+  const simulateChatAPI = (): string => {
     const responses = [
       "Hello!",
       "How can I assist you?",
@@ -45,12 +45,12 @@ const Chat: React.FC<ChatProps> = ({ onClose }) => {
   };
 
   return (
-    <Draggable>
-      <div className="fixed bottom-4 right-4 z-[99999] rounded border-[2px] border-[var(--neon)] p-4 shadow backdrop-blur-xl">
+    <Draggable nodeRef={nodeRef}>
+      <div ref={nodeRef} className="fixed bottom-4 right-4 z-[99999] rounded border-[2px] border-[var(--neon)] p-4 shadow backdrop-blur-xl">
         <FaGripLines
           className={
             "absolute left-[50%] right-[50%] top-0 p-1 text-3xl transition-transform hover:scale-[1.25] hover:text-[var(--neon)] " +
-            `${getTextColor(asPath)}`
+            `${getTextColor(pathname)}`
           }
         />
         <FiX
@@ -62,7 +62,7 @@ const Chat: React.FC<ChatProps> = ({ onClose }) => {
           <h1
             className={
               "text-shadow-theme text-4xl font-bold" +
-              ` ${getTextColor(asPath)}`
+              ` ${getTextColor(pathname)}`
             }
           >
             NootBot<span className="text-sm font-thin">alpha</span>
@@ -81,7 +81,7 @@ const Chat: React.FC<ChatProps> = ({ onClose }) => {
                     <FaUser
                       className={
                         "rounded-full border border-[var(--neon)] text-4xl " +
-                        `${getTextColor(asPath)}`
+                        `${getTextColor(pathname)}`
                       }
                     />
                   </div>
@@ -90,12 +90,12 @@ const Chat: React.FC<ChatProps> = ({ onClose }) => {
                     <FaRobot
                       className={
                         "rounded-full border border-[var(--neon)] text-4xl " +
-                        `${getTextColor(asPath)}`
+                        `${getTextColor(pathname)}`
                       }
                     />
                     <p
                       className={`${getTextColor(
-                        asPath,
+                        pathname,
                       )} max-w-[calc(100%-3rem)] whitespace-normal break-words shadow-2xl backdrop-blur-3xl`}
                     >
                       {message.content}
@@ -109,7 +109,7 @@ const Chat: React.FC<ChatProps> = ({ onClose }) => {
           <div className="text-shadow-theme my-2">
             <h2 className="u font-semibold ">how may i assist you?</h2>
             <span className="flex items-center justify-center space-x-2 border border-[var(--neon)]">
-              <AccessibilityToggle route={asPath} />
+              <AccessibilityToggle route={pathname} />
               Font Accessibility
             </span>
           </div>

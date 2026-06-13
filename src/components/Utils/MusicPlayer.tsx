@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
+import Image from "next/image";
 import {
   FaPlay,
   FaPause,
@@ -78,28 +79,33 @@ const MusicPlayer: React.FC = () => {
   };
 
   useEffect(() => {
-    const handleSongEnded = () => {
-      // Check if it's the last song
-
-      if (currentSongIndex === playlist.length - 1) {
-        // Stop playback when the last song ends
-        handleStop();
-      } else {
-        // Load and play the next song
-        handleNext();
-      }
-    };
-
-    if (audioRef.current) {
-      audioRef.current.addEventListener("ended", handleSongEnded);
+    const audio = audioRef.current;
+    if (!audio) {
+      return;
     }
 
-    return () => {
-      if (audioRef.current) {
-        audioRef.current.removeEventListener("ended", handleSongEnded);
+    const handleSongEnded = () => {
+      if (currentSongIndex === playlist.length - 1) {
+        audio.pause();
+        audio.currentTime = 0;
+        setIsPlaying(false);
+      } else {
+        const nextIndex = currentSongIndex + 1;
+        setCurrentSongIndex(nextIndex);
+        audio.src = playlist[nextIndex].url;
+        audio.load();
+        if (isPlaying) {
+          void audio.play();
+        }
       }
     };
-  }, [audioRef, handleNext, handleStop, currentSongIndex, playlist]);
+
+    audio.addEventListener("ended", handleSongEnded);
+
+    return () => {
+      audio.removeEventListener("ended", handleSongEnded);
+    };
+  }, [currentSongIndex, isPlaying]);
 
   return (
     <motion.div
@@ -129,10 +135,12 @@ const MusicPlayer: React.FC = () => {
               <Bars isplaying={isPlaying} />
             </div>
 
-            <img
+            <Image
               className="w-40 shadow-2xl"
               src={currentSong?.albumArt}
               alt="Album Art"
+              height={160}
+              width={160}
             />
           </motion.div>
 

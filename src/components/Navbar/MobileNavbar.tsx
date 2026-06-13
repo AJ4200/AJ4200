@@ -1,4 +1,4 @@
-import { useState } from "react";
+import Link from "next/link";
 
 interface MobileNavbarProps {
   open: boolean;
@@ -15,14 +15,14 @@ const MobileNavbar: React.FC<MobileNavbarProps> = ({ open, setOpen }) => {
       <div className="flex items-center justify-center filter drop-shadow-md h-20">
         {" "}
         {/*logo container*/}
-        <a className="logo text-xl font-semibold" href="/">
+        <Link className="logo text-xl font-semibold" href="/">
           <b>
             a<span>j</span>4<span>2</span>00
           </b>
-        </a>
+        </Link>
       </div>
       <div className="flex flex-col text-center bg-inherit">
-        <a
+        <Link
           className="text-xl font-medium my-4"
           href="/"
           onClick={() =>
@@ -32,8 +32,8 @@ const MobileNavbar: React.FC<MobileNavbarProps> = ({ open, setOpen }) => {
           }
         >
           Home
-        </a>
-        <a
+        </Link>
+        <Link
           className="text- text-xl font-normal my-4"
           href="/about"
           onClick={() =>
@@ -43,8 +43,8 @@ const MobileNavbar: React.FC<MobileNavbarProps> = ({ open, setOpen }) => {
           }
         >
           About
-        </a>
-        <a
+        </Link>
+        <Link
           className="text- text-xl font-normal my-4"
           href="/portfolio"
           onClick={() =>
@@ -54,8 +54,8 @@ const MobileNavbar: React.FC<MobileNavbarProps> = ({ open, setOpen }) => {
           }
         >
           Portfolio
-        </a>
-        <a
+        </Link>
+        <Link
           className="text- text-xl font-normal my-4"
           href="/services"
           onClick={() =>
@@ -65,8 +65,8 @@ const MobileNavbar: React.FC<MobileNavbarProps> = ({ open, setOpen }) => {
           }
         >
           Services
-        </a>
-        <a
+        </Link>
+        <Link
           className="text- text-xl font-normal my-4"
           href="/contact"
           onClick={() =>
@@ -76,7 +76,7 @@ const MobileNavbar: React.FC<MobileNavbarProps> = ({ open, setOpen }) => {
           }
         >
           Contacts
-        </a>
+        </Link>
       </div>
     </dialog>
   );

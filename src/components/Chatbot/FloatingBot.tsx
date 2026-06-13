@@ -1,28 +1,10 @@
-import { useRouter } from 'next/router';
-import React, { useEffect } from'react';
-import { getStyles, getNeonColor } from '../../lib/navbarUtils';
+import React from "react";
 interface FloatingBotProps {
   onClick: () => void;
 } 
 
 const FloatingBot: React.FC<FloatingBotProps> = ({onClick}) => 
 {
-    const router = useRouter();
-    const { asPath } = router;
-    
-      useEffect(() => {
-        const body = document.querySelector("body");
-        if (body) {
-          const styles = getStyles(asPath);
-          body.style.backgroundImage = styles.backgroundImage;
-          body.style.fontFamily = styles.fontFamily;
-        }
-        document.documentElement.style.setProperty(
-          "--neon",
-          getNeonColor(asPath)
-        );
-      }, [asPath]);
-
 return (
   <div className="cute-robot-v1 " onClick={onClick}>
     <div className="circle-bg">

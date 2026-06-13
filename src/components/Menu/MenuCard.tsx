@@ -1,5 +1,5 @@
 import { getNeonColor } from "@/lib/navbarUtils";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { FaHandPointer, FaInfo } from "react-icons/fa";
 

@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import MobileNavbar from "./MobileNavbar";
 import NavLink from "./NavLink";
-import { useRouter } from "next/router";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { getTextColor } from "../../lib/navbarUtils";
 import { FaGithubAlt } from "react-icons/fa";
 
 const Navbar: React.FC = () => {
-  const router = useRouter();
+  const pathname = usePathname();
   const [open, setOpen] = useState(false);
-  const { asPath } = router;
 
   const navshadow = (path: string) => {
   switch (path) {
@@ -24,17 +24,17 @@ const Navbar: React.FC = () => {
   return (
     <nav
       className="logo md:sticky text-shadow flex filter drop-shadow-md bg-transparent backdrop-blur-md px-4 py-4 h-20 items-center z-[99999]"
-      style={{ textShadow: navshadow(asPath) } }
+      style={{ textShadow: navshadow(pathname) } }
     >
       <MobileNavbar open={open} setOpen={setOpen} />
       <div className="w-3/12 flex items-center">
         {open ? (
           ""
-        ) : (   <><a className="git-header mx-2 text-3xl" href="https://github.com/aj4200"><FaGithubAlt /></a><a className="text-2xl font-semibold" href="/">
+        ) : (   <><a className="git-header mx-2 text-3xl" href="https://github.com/aj4200"><FaGithubAlt /></a><Link className="text-2xl font-semibold" href="/">
             <b className="flex">
-              #a<span>j</span>4<span>2</span>00 {asPath}
+              #a<span>j</span>4<span>2</span>00 {pathname}
             </b>
-          </a></>
+          </Link></>
         )}
       </div>
       <div className="w-9/12 flex justify-end items-center">

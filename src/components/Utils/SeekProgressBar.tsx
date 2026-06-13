@@ -10,37 +10,32 @@ const SeekProgressBar: React.FC<SeekProgressBarProps> = ({ audioRef }) => {
   const [isSeeking, setIsSeeking] = useState<boolean>(false);
 
   useEffect(() => {
+    const audio = audioRef.current;
+    if (!audio) {
+      return;
+    }
+
     const updateProgress = () => {
-      console.log("Updating progress...");
-      if (audioRef.current) {
-        const percentage =
-          (audioRef.current.currentTime / audioRef.current.duration) * 100;
-        setProgress(percentage);
-      }
+      const percentage = (audio.currentTime / audio.duration) * 100;
+      setProgress(Number.isFinite(percentage) ? percentage : 0);
     };
 
     const handleSeeking = () => {
-      console.log("Seeking...");
       setIsSeeking(true);
     };
 
     const handleSeeked = () => {
-      console.log("Seeked...");
       setIsSeeking(false);
     };
 
-    if (audioRef.current) {
-      audioRef.current.addEventListener("timeupdate", updateProgress);
-      audioRef.current.addEventListener("seeking", handleSeeking);
-      audioRef.current.addEventListener("seeked", handleSeeked);
-    }
+    audio.addEventListener("timeupdate", updateProgress);
+    audio.addEventListener("seeking", handleSeeking);
+    audio.addEventListener("seeked", handleSeeked);
 
     return () => {
-      if (audioRef.current) {
-        audioRef.current.removeEventListener("timeupdate", updateProgress);
-        audioRef.current.removeEventListener("seeking", handleSeeking);
-        audioRef.current.removeEventListener("seeked", handleSeeked);
-      }
+      audio.removeEventListener("timeupdate", updateProgress);
+      audio.removeEventListener("seeking", handleSeeking);
+      audio.removeEventListener("seeked", handleSeeked);
     };
   }, [audioRef]);
 

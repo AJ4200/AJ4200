@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Image from "next/image";
 import TitleCard from "./TitleCard";
 import GitHubHeatmap from "./GitHeat";
 
@@ -51,9 +52,12 @@ const Hero = () => {
           <span className="text-shadow text-2xl font-bold text-indigo-600">
             Latest Project
           </span>
-          <img
+          <Image
+            alt="Screenshot of the latest project"
             src="/imgs/Screenshot.png"
             className="z-[99] mt-2 max-w-[80%] rounded-md text-center md:w-[60%]"
+            height={675}
+            width={1200}
           />
           <span className="-scroll-mt-72 text-indigo-500">
             Check it Out{" "}

@@ -28,19 +28,13 @@ interface BioProps {
 
 const Bio: React.FC<BioProps> = ({
   name,
-  age,
   occupation,
   description,
   imageUrl,
   hobbies,
   socialLinks,
-  email,
 }) => {
   const [activeTab, setActiveTab] = useState("main");
-
-  const handleTabClick = (tabValue: string) => {
-    setActiveTab(tabValue);
-  };
   return (
     <>
       <motion.div

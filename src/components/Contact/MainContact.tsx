@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { type FormEvent, useState } from "react";
 import emailjs  from "@emailjs/browser";
 
 const MainContact: React.FC = () => {
@@ -9,12 +9,12 @@ const MainContact: React.FC = () => {
   const TEMPLATE_ID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID as string;
   const USER_ID = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY as string;
 
-  function sendEmail(e: any) {
+  function sendEmail(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setLoading(true);
 
     emailjs
-      .sendForm(SERVICE_ID, TEMPLATE_ID, e.target, USER_ID)
+      .sendForm(SERVICE_ID, TEMPLATE_ID, e.currentTarget, USER_ID)
       .then(
         (result) => {
           console.log(result.text);

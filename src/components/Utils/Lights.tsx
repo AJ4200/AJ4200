@@ -1,6 +1,6 @@
 import React from "react";
 
-interface LightsProps {}
+type LightsProps = React.ComponentPropsWithoutRef<"div">;
 
 const Lights: React.FC<LightsProps> = ({ ...props }) => {
   return (

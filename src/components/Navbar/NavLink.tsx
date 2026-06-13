@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Link from "next/link";
 import PageIndicator from "../Utils/PageIndicator";
 
 interface NavLinkProps {
@@ -13,14 +14,14 @@ const NavLink: React.FC<NavLinkProps> = ({ to, children, text_color }) => {
   return (
     <>
       {" "}
-      <a
+      <Link
         href={to}
         className={`mx-4 ${text_color}`}
         onMouseEnter={() => setShowRoute(true)}
         onMouseLeave={() => setShowRoute(false)}
       >
         {children}
-      </a>
+      </Link>
       {showRoute && <PageIndicator route={to} TextColor={text_color} />}
     </>
   );

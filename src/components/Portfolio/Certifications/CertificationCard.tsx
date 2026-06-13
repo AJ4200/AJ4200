@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 
 interface Certification {
   name: string;
@@ -18,10 +19,13 @@ const CertificationCard: React.FC<CertificationCardProps> = ({
   return (
     <div className="bg-lime-500/25 border border-[var(--neon)] p-4  shadow-lg m-1 backdrop-blur-sm">
       <h3 className="text-lg font-semibold mb-2">{certification.name}</h3>
-      <img
+      <Image
         src={certification.imageUrl}
         alt={certification.name}
         className="w-full h-auto mb-4 rounded-md"
+        height={400}
+        unoptimized
+        width={600}
       />
       <div className="certification-details">
         <p className="text-sm mb-2">{certification.issuingAuthority}</p>

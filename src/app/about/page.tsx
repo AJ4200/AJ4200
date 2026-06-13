@@ -1,15 +1,14 @@
-import React from "react";
-import PageWithIndicator from "../components/Utils/PageWithIndicator";
-import Particles from "../components/Utils/Particles";
-import Bio from "../components/About/Bio";
-import { bioData } from "../data/bio";
+"use client";
+
+import Bio from "@/components/About/Bio";
 import Navbar from "@/components/Navbar/Navbar";
+import PageWithIndicator from "@/components/Utils/PageWithIndicator";
+import Particles from "@/components/Utils/Particles";
+import { bioData } from "@/data/bio";
 
-
-const About: React.FC = () => {
+export default function AboutPage() {
   return (
     <>
-    
       <Navbar />
       <PageWithIndicator route="/about" bgcolor="bg-red-500">
         <>
@@ -22,6 +21,4 @@ const About: React.FC = () => {
       </PageWithIndicator>
     </>
   );
-};
-
-export default About;
+}

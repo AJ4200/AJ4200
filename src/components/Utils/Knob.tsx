@@ -1,5 +1,5 @@
 // VolumeControl.tsx
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import { FaVolumeUp, FaVolumeDown, FaVolumeOff } from "react-icons/fa";
 import { motion } from "framer-motion";
 

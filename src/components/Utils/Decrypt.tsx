@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { FaArrowRight  } from "react-icons/fa";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 const Decrypt = () => {
   return <EncryptButton />;
 };
@@ -67,7 +67,7 @@ const EncryptButton = () => {
       }}
     >
       <div className="relative z-10 flex items-center gap-2">
-        <a className="flex" href="/about">{text}<p className="m-1"><FaArrowRight/></p></a>
+        <span className="flex">{text}<span className="m-1"><FaArrowRight/></span></span>
       </div>
       <motion.span
         initial={{
