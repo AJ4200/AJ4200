@@ -13,10 +13,14 @@
 .chatbot-launcher {
   position: relative;
   display: flex;
-  min-width: 12.5rem;
-  min-height: 4.5rem;
+  width: 5rem;
+  height: 5rem;
+  min-width: 5rem;
+  min-height: 5rem;
   align-items: center;
+  justify-content: center;
   border: 1px solid color-mix(in srgb, var(--neon) 48%, transparent);
+  border-radius: 0;
   background:
     linear-gradient(
       120deg,
@@ -27,11 +31,9 @@
   box-shadow:
     0 20px 55px rgb(0 0 0 / 0.52),
     inset 0 0 30px color-mix(in srgb, var(--neon) 4%, transparent);
-  padding: 0.65rem 0.85rem;
+  padding: 0;
   color: #fff;
-  text-align: left;
   backdrop-filter: blur(18px);
-  gap: 0.8rem;
 }
 
 .chatbot-launcher:hover,
@@ -58,31 +60,6 @@
 
 .chatbot-launcher .cute-robot-v1 {
   flex-shrink: 0;
-}
-
-.chatbot-launcher-copy {
-  display: block;
-  min-width: 0;
-}
-
-.chatbot-launcher-copy strong,
-.chatbot-launcher-copy small {
-  display: block;
-}
-
-.chatbot-launcher-copy strong {
-  font-size: 0.72rem;
-  font-weight: 900;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-}
-
-.chatbot-launcher-copy small {
-  margin-top: 0.3rem;
-  color: rgb(255 255 255 / 0.35);
-  font-size: 0.5rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
 }
 
 .chatbot-launcher-status {
@@ -617,17 +594,11 @@
   }
 
   .chatbot-launcher {
-    min-width: 0;
     width: 4.4rem;
     height: 4.4rem;
+    min-width: 4.4rem;
     min-height: 0;
-    justify-content: center;
-    border-radius: 50%;
-    padding: 0;
-  }
-
-  .chatbot-launcher-copy {
-    display: none;
+    border-radius: 0;
   }
 
   .chatbot-window {

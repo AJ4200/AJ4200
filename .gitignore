@@ -34,3 +34,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# local
+AGENTS.md
+GROQ_CHATBOT_SETUP.md

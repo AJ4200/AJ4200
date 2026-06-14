@@ -31,12 +31,6 @@ const FloatingBot = forwardRef<HTMLButtonElement, FloatingBotProps>(
           <span className="robot-body" />
         </span>
       </span>
-      {!compact && (
-        <span className="chatbot-launcher-copy">
-          <strong>Ask NootBot</strong>
-          <small>Site guide / Alpha</small>
-        </span>
-      )}
       {!compact && <span className="chatbot-launcher-status" />}
     </button>
   ),

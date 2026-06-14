@@ -161,18 +161,22 @@ const Chat: React.FC<ChatProps> = ({ onClose }) => {
   }, [messages, settings.reduceMotion]);
 
   useEffect(() => {
-    const saved = window.localStorage.getItem("nootbot-accessibility");
-    if (!saved) {
-      return;
-    }
-
     try {
+      const saved = window.localStorage.getItem("nootbot-accessibility");
+      if (!saved) {
+        return;
+      }
+
       setSettings({
         ...defaultSettings,
         ...(JSON.parse(saved) as Partial<ChatAccessibilitySettings>),
       });
     } catch {
-      window.localStorage.removeItem("nootbot-accessibility");
+      try {
+        window.localStorage.removeItem("nootbot-accessibility");
+      } catch {
+        // Storage may be blocked by the visitor's browser settings.
+      }
     }
   }, []);
 
