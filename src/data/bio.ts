@@ -52,8 +52,8 @@ const skillsets: Skillset[] = [
       { name: "Git", proficiency: 95 },
       { name: "Docker", proficiency: 70 },
       { name: "Modding", proficiency: 80 },
-      { name: "AI Intergration", proficiency: 90 },
-      { name: "PyScripting", proficiency: 70 },
+      { name: "AI Integration", proficiency: 90 },
+      { name: "Python scripting", proficiency: 70 },
     ],
   },
 ];

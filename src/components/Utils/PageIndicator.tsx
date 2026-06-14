@@ -1,32 +1,27 @@
-import { motion, useAnimation } from "framer-motion";
-import React, { useEffect } from "react";
+import { motion, useReducedMotion } from "framer-motion";
 
 interface PageIndicatorProps {
   route: string;
-  TextColor: string;
+  textColor: string;
 }
 
-const PageIndicator: React.FC<PageIndicatorProps> = ({ route, TextColor }) => {
-  const controls = useAnimation();
-
-  useEffect(() => {
-    controls.start({
-      opacity: 1,
-      scale: 1,
-      rotate: [0, -10, 10, -5, 5, 0],
-      transition: { duration: 0.5 },
-    });
-  }, [controls]);
+const PageIndicator: React.FC<PageIndicatorProps> = ({
+  route,
+  textColor,
+}) => {
+  const reduceMotion = useReducedMotion();
 
   return (
     <motion.div
-      className="pointer-events-none fixed bottom-0"
-      initial={{ opacity: 0, scale: 0.5 }}
-      animate={controls}
+      animate={{ opacity: 1, y: 0 }}
+      aria-hidden="true"
+      className="route-preview"
+      exit={{ opacity: 0, y: 24 }}
+      initial={{ opacity: 0, y: 24 }}
+      transition={{ duration: reduceMotion ? 0 : 0.24, ease: "easeOut" }}
     >
-      <span className={`${TextColor} w-full text-center text-7xl opacity-50`}>
-        {route}
-      </span>                                   
+      <span className="route-preview-kicker">Navigate to</span>
+      <strong className={textColor}>{route}</strong>
     </motion.div>
   );
 };

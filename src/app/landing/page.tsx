@@ -1,16 +1,16 @@
 "use client";
 
-import Lights from "@/components/Utils/Lights";
-import Menu from "@/components/Menu/Menu";
+import Hero from "@/components/Hero/Hero";
 import Navbar from "@/components/Navbar/Navbar";
+import Matrix from "@/components/Utils/Matrix";
 
-export default function Page() {
+export default function LandingPage() {
   return (
     <>
       <Navbar />
       <div className="relative isolate">
-        <Lights />
-        <Menu />
+        <Matrix />
+        <Hero />
       </div>
     </>
   );

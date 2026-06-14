@@ -1,20 +1,18 @@
-"use client";
-
 import Navbar from "@/components/Navbar/Navbar";
 import Pricing from "@/components/Services/Pricing";
-import PageWithIndicator from "@/components/Utils/PageWithIndicator";
 import Stars from "@/components/Utils/Stars";
 
 export default function ServicesPage() {
   return (
     <>
       <Navbar />
-      <PageWithIndicator route="/services" bgcolor="bg-purple-500">
-        <>
+      <div className="services-page relative isolate h-[calc(100dvh-5rem)] overflow-y-auto overscroll-contain">
+        <div className="services-stars pointer-events-none fixed inset-0 z-30 overflow-hidden">
           <Stars />
-          <Pricing />
-        </>
-      </PageWithIndicator>
+        </div>
+        <div className="services-backdrop pointer-events-none fixed inset-0 -z-10" />
+        <Pricing />
+      </div>
     </>
   );
 }

@@ -1,41 +1,127 @@
-.cursor {
-  position: absolute;
-  width: 45px;
-  height: 45px;
-  top: 50%;
-  left: 50%;
-  margin: -20px 0 0 -20px;
+.cursor-tip,
+.cursor-halo {
+  position: fixed;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  pointer-events: none;
+  will-change: transform;
+}
+
+.cursor-tip {
+  z-index: 2147483647;
+  width: 15px;
+  height: 20px;
+  transform: translate3d(-100px, -100px, 0);
+  transform-origin: 2px 2px;
+  transition: opacity 90ms ease;
+}
+
+.cursor-tip span {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--neon);
+  clip-path: polygon(0 0, 92% 58%, 53% 64%, 72% 100%, 58% 100%, 38% 68%, 0 94%);
+  filter:
+    drop-shadow(0 0 3px rgb(255 255 255 / 0.8))
+    drop-shadow(0 0 8px var(--neon));
+  transform: rotate(-8deg) scale(0.74);
+  transform-origin: 2px 2px;
+  transition:
+    filter 140ms ease,
+    transform 140ms ease;
+}
+
+.cursor-halo {
+  z-index: 2147483646;
+  width: 28px;
+  height: 28px;
   border: 2px solid var(--neon);
   border-radius: 50%;
-  backface-visibility: hidden;
-  transition: transform 0.5s ease-out;
-  animation: mouseglow 3s infinite alternate, trail 3s ease-out infinite;
-  pointer-events: none;
-  backdrop-filter: invert(60%);
+  background: color-mix(in srgb, var(--neon) 7%, transparent);
+  box-shadow:
+    0 0 8px color-mix(in srgb, var(--neon) 65%, transparent),
+    inset 0 0 8px color-mix(in srgb, var(--neon) 35%, transparent);
+  transform: translate3d(-100px, -100px, 0) translate3d(-50%, -50%, 0);
+  transition:
+    opacity 120ms ease,
+    width 160ms ease,
+    height 160ms ease,
+    border-color 160ms ease,
+    background-color 160ms ease;
+  animation: cursor-breathe 2.4s ease-in-out infinite;
+  backdrop-filter: invert(18%);
 }
 
-@keyframes mouseglow {
-  0% {
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.7);
-  }
-  100% {
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
-  }
+.cursor-tip.is-visible,
+.cursor-halo.is-visible {
+  opacity: 1;
 }
 
-@keyframes trail {
+.cursor-tip.is-interactive span {
+  filter:
+    drop-shadow(0 0 4px white)
+    drop-shadow(0 0 14px var(--neon));
+  transform: rotate(-8deg) scale(0.86);
+}
+
+.cursor-halo.is-interactive {
+  width: 36px;
+  height: 36px;
+  background: color-mix(in srgb, var(--neon) 14%, transparent);
+}
+
+.cursor-tip.is-pressed span {
+  transform: rotate(-8deg) scale(0.52);
+}
+
+.cursor-halo.is-pressed {
+  width: 20px;
+  height: 20px;
+  background: color-mix(in srgb, var(--neon) 28%, transparent);
+}
+
+@keyframes cursor-breathe {
   0%,
   100% {
-    opacity: 0;
+    box-shadow:
+      0 0 6px color-mix(in srgb, var(--neon) 45%, transparent),
+      inset 0 0 5px color-mix(in srgb, var(--neon) 25%, transparent);
   }
+
   50% {
-    opacity: 1;
+    box-shadow:
+      0 0 18px color-mix(in srgb, var(--neon) 75%, transparent),
+      inset 0 0 12px color-mix(in srgb, var(--neon) 45%, transparent);
   }
 }
 
-.cursor.is-moving {
-  transform: scale(0.4) rotate(-45deg);
-  animation: none;
-  background: var(--neon);
-  clip-path: polygon(50% 0%, 100% 100%, 50% 50%, 0 100%);
+@media (hover: none), (pointer: coarse) {
+  body,
+  label,
+  input,
+  img {
+    cursor: auto;
+  }
+
+  a,
+  button,
+  [role="button"] {
+    cursor: pointer;
+  }
+
+  .cursor-tip,
+  .cursor-halo {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cursor-tip,
+  .cursor-tip span,
+  .cursor-halo {
+    animation: none;
+    transition: none;
+  }
 }

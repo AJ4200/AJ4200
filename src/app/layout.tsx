@@ -14,6 +14,12 @@ import "@/styles/robot.scss";
 import "@/styles/matrix.css";
 import "@/styles/musicplayer.css";
 import "@/styles/lights.css";
+import "@/styles/about.css";
+import "@/styles/portfolio.css";
+import "@/styles/services.css";
+import "@/styles/contact.css";
+import "@/styles/navigation.css";
+import "@/styles/chatbot.css";
 import AppShell from "./app-shell";
 
 export const metadata: Metadata = {

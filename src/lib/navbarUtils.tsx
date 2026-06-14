@@ -1,7 +1,7 @@
 export const getTextColor = (path: string) => {
   const colorMap: Record<string, string> = {
     "/": "text-black",
-    "/home": "text-indigo-500",
+    "/landing": "text-indigo-500",
     "/about": "text-red-500",
     "/portfolio": "text-green-500",
     "/services": "text-purple-500",
@@ -20,7 +20,7 @@ export const getStyles = (path: string) => {
       fontFamily: "Ethnocentric",
       backgroundImage: "url(imgs/bw.jpg)",
     },
-    "/home": {
+    "/landing": {
       fontFamily: "MonaspaceKrypton",
       backgroundImage: "url(imgs/bbw.jpg)",
     },
@@ -48,7 +48,7 @@ export const getStyles = (path: string) => {
 export const getNeonColor = (path: string) => {
   const neonColorMap: Record<string, string> = {
     "/": "#000",
-    "/home": "#6366f1",
+    "/landing": "#6366f1",
     "/about": "#ff0000",
     "/portfolio": "#00ff00",
     "/services": "#800080",
@@ -60,7 +60,7 @@ export const getNeonColor = (path: string) => {
 export const getFont = (path: string) => {
   const fontMap: Record<string, string> = {
     "/": "Ethnocentric",
-    "/home": "MonaspaceKrypton",
+    "/landing": "MonaspaceKrypton",
     "/about": "pricedown",
     "/portfolio": "Girdens",
     "/services": "rimouski",

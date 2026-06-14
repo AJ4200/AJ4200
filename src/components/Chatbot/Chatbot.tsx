@@ -1,49 +1,66 @@
-import React, { useState } from "react";
-import { motion } from "framer-motion";
-import FloatingBot from "./FloatingBot";
+"use client";
+
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
 import Chat from "./Chat";
+import FloatingBot from "./FloatingBot";
 
 const Chatbot: React.FC = () => {
-  const [chatToggle, setChatToggle] = useState(false);
+  const [open, setOpen] = useState(false);
+  const triggerRef = useRef<HTMLButtonElement>(null);
+  const reduceMotion = useReducedMotion();
 
-  const handleChatToggle = () => {
-    setChatToggle(!chatToggle);
-  };
+  useEffect(() => {
+    if (!open) {
+      return;
+    }
 
-  const botVariants = {
-    hidden: { scale: 0, opacity: 0 },
-    visible: { scale: 1, opacity: 1, transition: { duration: 0.5 } },
-    exit: { scale: 0, opacity: 0, transition: { duration: 0.5 } },
-  };
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setOpen(false);
+      }
+    };
 
-  const chatVariants = {
-    hidden: { scale: 0, opacity: 0 },
-    visible: { scale: 1, opacity: 1, transition: { duration: 0.5 } },
-    exit: { scale: 0, opacity: 0, transition: { duration: 0.5 } },
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, [open]);
+
+  const closeChat = () => {
+    setOpen(false);
+    window.setTimeout(() => triggerRef.current?.focus(), 0);
   };
 
   return (
-    <div>
-      {chatToggle ? (
-        <motion.div
-          variants={chatVariants}
-          initial="hidden"
-          animate="visible"
-          exit="exit"
-        >
-          <Chat onClose={handleChatToggle} />
-        </motion.div>
-      ) : (
-        <motion.div
-          variants={botVariants}
-          initial="hidden"
-          animate="visible"
-          exit="exit"
-          className="fixed bottom-4 right-4"
-        >
-          <FloatingBot onClick={handleChatToggle} />
-        </motion.div>
-      )}
+    <div className="chatbot-root">
+      <AnimatePresence mode="wait">
+        {open ? (
+          <motion.div
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            className="chatbot-window"
+            exit={{ opacity: 0, scale: 0.97, y: 12 }}
+            initial={{ opacity: 0, scale: 0.97, y: 12 }}
+            key="chat"
+            transition={{ duration: reduceMotion ? 0 : 0.2 }}
+          >
+            <Chat onClose={closeChat} />
+          </motion.div>
+        ) : (
+          <motion.div
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            className="chatbot-launcher-wrap"
+            exit={{ opacity: 0, scale: 0.9, y: 8 }}
+            initial={{ opacity: 0, scale: 0.9, y: 8 }}
+            key="launcher"
+            transition={{ duration: reduceMotion ? 0 : 0.22 }}
+          >
+            <FloatingBot
+              expanded={false}
+              onClick={() => setOpen(true)}
+              ref={triggerRef}
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };

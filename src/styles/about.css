@@ -1,0 +1,362 @@
+.about-page .animation-wrapper {
+  z-index: 0;
+  opacity: 0.6;
+}
+
+.about-page > main {
+  position: relative;
+  z-index: 1;
+}
+
+.about-hero {
+  position: relative;
+}
+
+.about-name {
+  text-shadow:
+    0 0 55px rgb(239 68 68 / 0.18),
+    0 5px 1px rgb(0 0 0 / 0.8);
+}
+
+.about-portrait-glow {
+  position: absolute;
+  inset: 8%;
+  z-index: -1;
+  background:
+    radial-gradient(circle at 20% 20%, #ef4444, transparent 36%),
+    radial-gradient(circle at 80% 70%, #7f1d1d, transparent 42%);
+  filter: blur(55px);
+  opacity: 0.52;
+}
+
+.about-portrait::after {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0,
+    transparent 4px,
+    rgb(255 255 255 / 0.025) 5px
+  );
+  content: "";
+  pointer-events: none;
+}
+
+.about-closing {
+  isolation: isolate;
+  position: relative;
+}
+
+.about-closing::before {
+  position: absolute;
+  inset: -30% auto auto 55%;
+  width: 40rem;
+  height: 40rem;
+  border-radius: 999px;
+  background: rgb(239 68 68 / 0.18);
+  content: "";
+  filter: blur(90px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.about-closing > * {
+  position: relative;
+  z-index: 1;
+}
+
+.studio-player {
+  box-shadow: 0 35px 100px rgb(0 0 0 / 0.55);
+}
+
+.about-record {
+  animation: about-record-spin 18s linear infinite;
+  animation-play-state: paused;
+}
+
+.about-record.is-playing {
+  animation-play-state: running;
+}
+
+.studio-control {
+  display: inline-flex;
+  width: 3rem;
+  height: 3rem;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgb(255 255 255 / 0.14);
+  background: rgb(0 0 0 / 0.25);
+  color: rgb(255 255 255 / 0.6);
+  transition:
+    border-color 160ms ease,
+    background-color 160ms ease,
+    color 160ms ease,
+    transform 160ms ease;
+}
+
+.studio-control:hover,
+.studio-control:focus-visible {
+  border-color: #fcd34d;
+  color: #fcd34d;
+  transform: translateY(-2px);
+}
+
+.studio-control-primary {
+  width: 3.5rem;
+  height: 3.5rem;
+  border-color: #fcd34d;
+  background: #fcd34d;
+  color: #111;
+}
+
+.studio-control-primary:hover,
+.studio-control-primary:focus-visible {
+  background: #fde68a;
+  color: #111;
+}
+
+.studio-range {
+  width: 100%;
+  height: 3px;
+  appearance: none;
+  background: rgb(255 255 255 / 0.12);
+  outline: none;
+}
+
+.studio-range::-webkit-slider-thumb {
+  width: 12px;
+  height: 12px;
+  appearance: none;
+  border: 2px solid #111;
+  border-radius: 50%;
+  background: #fcd34d;
+  box-shadow: 0 0 12px rgb(252 211 77 / 0.65);
+}
+
+.studio-range::-moz-range-thumb {
+  width: 10px;
+  height: 10px;
+  border: 2px solid #111;
+  border-radius: 50%;
+  background: #fcd34d;
+  box-shadow: 0 0 12px rgb(252 211 77 / 0.65);
+}
+
+.arcade-bleed {
+  position: relative;
+  isolation: isolate;
+  padding: clamp(10px, 1.5vw, 20px);
+}
+
+.arcade-bleed::before {
+  position: absolute;
+  inset: 2%;
+  z-index: -2;
+  border-radius: 28px;
+  background: conic-gradient(
+    from 210deg,
+    #0f766e,
+    #58a8ff,
+    #ffd34e,
+    #b91c1c,
+    #10b981,
+    #0f766e
+  );
+  content: "";
+  filter: blur(38px) saturate(1.55);
+  opacity: 0.58;
+  transform: scale(1.025);
+  animation: arcade-bleed-shift 12s ease-in-out infinite alternate;
+}
+
+.arcade-bleed::after {
+  position: absolute;
+  inset: 7%;
+  z-index: -1;
+  border-radius: 22px;
+  background:
+    radial-gradient(circle at 15% 20%, #58a8ff 0, transparent 32%),
+    radial-gradient(circle at 85% 24%, #ffd34e 0, transparent 30%),
+    radial-gradient(circle at 80% 85%, #b91c1c 0, transparent 34%),
+    radial-gradient(circle at 18% 82%, #10b981 0, transparent 32%);
+  content: "";
+  filter: blur(42px);
+  opacity: 0.48;
+}
+
+.arcade-shell {
+  position: relative;
+  display: flex;
+  min-height: clamp(34rem, 72vh, 58rem);
+  overflow: hidden;
+  border: 1px solid rgb(88 168 255 / 0.45);
+  background: #03080e;
+  box-shadow:
+    0 0 0 1px rgb(255 255 255 / 0.05),
+    0 30px 90px rgb(0 0 0 / 0.7);
+  flex-direction: column;
+}
+
+.arcade-toolbar {
+  display: flex;
+  min-height: 4rem;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  border-bottom: 1px solid rgb(88 168 255 / 0.25);
+  background: rgb(3 8 14 / 0.96);
+  padding: 0.75rem 1rem;
+}
+
+.arcade-control {
+  display: inline-flex;
+  min-height: 2.5rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border: 1px solid rgb(88 168 255 / 0.3);
+  background: rgb(7 21 34 / 0.9);
+  padding: 0.65rem 0.8rem;
+  color: rgb(234 255 255 / 0.75);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  transition:
+    border-color 160ms ease,
+    background-color 160ms ease,
+    color 160ms ease;
+}
+
+.arcade-control:hover,
+.arcade-control:focus-visible {
+  border-color: #58a8ff;
+  background: rgb(88 168 255 / 0.16);
+  color: #fff;
+}
+
+.arcade-viewport {
+  position: relative;
+  min-height: 0;
+  flex: 1;
+}
+
+.arcade-loading {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  background:
+    radial-gradient(circle at center, rgb(15 118 110 / 0.2), transparent 40%),
+    #03080e;
+  color: #10b981;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.arcade-loading svg {
+  animation: arcade-loading-pulse 1.2s ease-in-out infinite;
+}
+
+.arcade-viewport::after {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0,
+    transparent 3px,
+    rgb(255 255 255 / 0.018) 4px
+  );
+  content: "";
+  pointer-events: none;
+}
+
+.arcade-frame {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: clamp(30rem, 64vh, 54rem);
+  border: 0;
+  background: #050a0f;
+}
+
+body:has(.arcade-frame:hover) .cursor-tip,
+body:has(.arcade-frame:hover) .cursor-halo {
+  opacity: 0;
+}
+
+.arcade-shell:fullscreen {
+  width: 100vw;
+  height: 100vh;
+  min-height: 100vh;
+  border: 0;
+}
+
+.arcade-shell:fullscreen .arcade-frame {
+  min-height: 0;
+}
+
+@keyframes arcade-bleed-shift {
+  0% {
+    filter: blur(34px) saturate(1.4);
+    transform: scale(1.02) rotate(-1deg);
+  }
+
+  100% {
+    filter: blur(44px) saturate(1.75);
+    transform: scale(1.045) rotate(1deg);
+  }
+}
+
+@keyframes arcade-loading-pulse {
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: scale(0.9);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.15);
+  }
+}
+
+@keyframes about-record-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 640px) {
+  .arcade-bleed {
+    margin-inline: -0.75rem;
+    padding: 8px;
+  }
+
+  .arcade-shell {
+    min-height: 75dvh;
+  }
+
+  .arcade-toolbar {
+    gap: 0.5rem;
+    padding-inline: 0.75rem;
+  }
+
+  .arcade-frame {
+    min-height: calc(75dvh - 4rem);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .arcade-bleed::before,
+  .arcade-loading svg,
+  .about-record {
+    animation: none;
+  }
+}

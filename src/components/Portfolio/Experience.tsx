@@ -1,52 +1,87 @@
+import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
+import { FaArrowDown, FaBriefcase, FaMapMarkerAlt } from "react-icons/fa";
 import { workExperienceData } from "@/data/experience";
-import React from "react";
 import ExperienceCard from "./Experience/ExperienceCard";
-import { FaDrupal } from "react-icons/fa";
-import { motion } from "framer-motion";
+
+const yearFromDate = (date: string) => date.slice(0, 4);
+
+const experiences = [...workExperienceData].sort((a, b) =>
+  b.startDate.localeCompare(a.startDate),
+);
 
 const Experience: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  const goToNextCard = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % workExperienceData.length);
-  };
-
-  const goToPrevCard = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? workExperienceData.length - 1 : prevIndex - 1,
-    );
-  };
-
   return (
-    <div className="w-full">
-      <h2 className="text-shadow-theme my-4 text-center text-2xl font-bold">
-        Work Experience
-      </h2>
-      <div className="flex w-full flex-row justify-between">
-        <ExperienceCard experience={workExperienceData[currentIndex]} />
-        <div className="animate__backInRight animate__animated flex flex-col items-center justify-between border border-[var(--neon)] backdrop-blur-sm ">
-          <motion.button
-            className="text-darkshadow px-4 py-2 text-6xl text-[var(--neon)]"
-            onClick={goToPrevCard}
-            whileHover={{ scale: 1.2 }}
-            animate={{ scale: 1 }}
-          >
-            <FaDrupal />
-          </motion.button>
-          <div className="my-2 h-16 w-1 bg-[var(--neon)]"></div>
-          <motion.button
-            className="text-darkshadow rotate-180 px-4 py-2 text-6xl text-[var(--neon)]"
-            onClick={goToNextCard}
-            whileHover={{ scale: 1.2 }}
-            animate={{ scale: 1 }}
-            initial={{ rotate: "180deg" }}
-          >
-            <FaDrupal />
-          </motion.button>
+    <section className="py-14 lg:py-20">
+      <div className="mb-12 grid gap-5 lg:grid-cols-[0.8fr_1fr] lg:items-end">
+        <div>
+          <span className="portfolio-kicker">02 / Career record</span>
+          <h2 className="portfolio-section-title">
+            Experience
+            <span>timeline.</span>
+          </h2>
+        </div>
+        <p className="max-w-2xl text-sm leading-7 text-white/50 lg:justify-self-end">
+          A chronological map of roles, responsibilities, and the progression
+          from implementation toward ownership. Select any milestone to open
+          its full work record.
+        </p>
+      </div>
+
+      <div className="experience-layout">
+        <div aria-label="Career milestones" className="experience-timeline">
+          {experiences.map((experience, index) => {
+            const isActive = currentIndex === index;
+
+            return (
+              <motion.button
+                aria-pressed={isActive}
+                className={isActive ? "is-active" : ""}
+                key={`${experience.company}-${experience.startDate}`}
+                onClick={() => setCurrentIndex(index)}
+                type="button"
+                whileHover={{ x: 4 }}
+              >
+                <span className="experience-node">
+                  <i />
+                </span>
+                <span className="experience-year">
+                  {yearFromDate(experience.startDate)}
+                </span>
+                <span className="experience-summary">
+                  <strong>{experience.jobTitle}</strong>
+                  <small>{experience.company}</small>
+                </span>
+                <FaArrowDown />
+              </motion.button>
+            );
+          })}
+        </div>
+
+        <div className="experience-dossier">
+          <div className="experience-dossier-topline">
+            <span>
+              <FaBriefcase />
+              Role dossier
+            </span>
+            <span>
+              <FaMapMarkerAlt />
+              {experiences[currentIndex].location}
+            </span>
+          </div>
+          <AnimatePresence mode="wait">
+            <ExperienceCard
+              experience={experiences[currentIndex]}
+              key={`${experiences[currentIndex].company}-${currentIndex}`}
+              number={currentIndex + 1}
+              total={experiences.length}
+            />
+          </AnimatePresence>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

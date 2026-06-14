@@ -3,7 +3,7 @@ html {
   height: 100vh;
   box-sizing: border-box;
 }
-article { 
+.matrix-stream {
   display: flex;
   justify-content: space-around;
   width: 100vw;
@@ -27,7 +27,7 @@ article {
   88% {filter: url(#svg-blur-v);}
   89% {filter: url(#none);}
 }
-pre {
+.matrix-stream pre {
   color: var(--neon);
   text-shadow: 0 0 2px var(--neon), 1px -1px 2px var(--neon);
   font-weight: 400;
@@ -48,19 +48,19 @@ pre {
     transform: translatey(100%);
   }
 }
-pre:nth-child(5n+1) {
+.matrix-stream pre:nth-child(5n+1) {
   animation-delay: 1s;
   animation-duration: 13s;
 }
-pre:nth-child(5n+2) {
+.matrix-stream pre:nth-child(5n+2) {
   animation-delay: 1.33s;
   animation-duration: 53s;
 }
-pre:nth-child(5n+3) {
+.matrix-stream pre:nth-child(5n+3) {
   animation-delay: -1s;
   animation-duration: 29s;
 }
-pre:nth-child(4n) {
+.matrix-stream pre:nth-child(4n) {
   animation-delay: -2s;
   animation-duration: 43s;
 }

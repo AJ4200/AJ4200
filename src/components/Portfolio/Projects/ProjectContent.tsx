@@ -1,109 +1,83 @@
-import React, { useState } from "react";
-import { motion } from "framer-motion";
-import { FiGithub, FiExternalLink } from "react-icons/fi";
-import Project from "@/datadef/project";
-import ProjectModal from "./ProjectModal";
+import { FaArrowRight, FaGithub, FaGlobe } from "react-icons/fa";
+import type Project from "@/datadef/project";
 
 interface ProjectContentProps {
   project: Project;
+  index: number;
+  total: number;
+  onOpenDetails: () => void;
 }
 
-const ProjectContent: React.FC<ProjectContentProps> = ({ project }) => {
-  const iconVariants = {
-    hover: { scale: 1.2, transition: { duration: 0.3 }, color: "var(--neon)" },
-  };
+const hasLiveProject = (link: string) =>
+  Boolean(link) && !link.includes("project2.com");
 
-  const buttonVariants = {
-    hover: { scale: 1.1, transition: { duration: 0.3 } },
-  };
+const projectDescription = (description: string) =>
+  description.startsWith("Description for Project")
+    ? "This build is part of the project archive. Its expanded case-study notes are still being prepared."
+    : description;
 
-  const techStackVariants = {
-    hover: {
-      scale: 1.1,
-      transition: { duration: 0.3 },
-      backgroundColor: "var(--transparent)",
-    },
-  };
-  const descriptionVariants = {
-    hover: {
-      scale: 1.1,
-      transition: { duration: 0.3 },
-      backgroundColor: "black",
-    },
-  };
-  const [showModal, setShowModal] = useState(false);
+const ProjectContent: React.FC<ProjectContentProps> = ({
+  project,
+  index,
+  total,
+  onOpenDetails,
+}) => {
+  const isLive = hasLiveProject(project.link);
 
-  const openModal = () => {
-    setShowModal(true);
-  };
-
-  const closeModal = () => {
-    setShowModal(false);
-  };
   return (
-    <>
-      {" "}
-      <section className="text-darkshadow flex w-full flex-col justify-between border border-[var(--neon)] bg-lime-500/25 backdrop-blur-md">
-        <div>
-          <div className="mx-4 mb-1 mt-4 flex justify-between ">
-            <div className="overflow-hidden ">
-              {" "}
-              <ul className="scrolling-text ml-1 flex  w-full">
-                {project.techStack.map((tech) => (
-                  <motion.li
-                    className="lime-grad-bg transtion-colors mx-1 px-1 py-1 hover:bg-transparent "
-                    key={tech}
-                    whileHover="hover"
-                    variants={techStackVariants}
-                  >
-                    {tech}
-                  </motion.li>
-                ))}
-              </ul>
-            </div>
-            <div className="flex space-x-1">
-              <motion.a
-                href={project.sourceCode}
-                target="_blank"
-                className="transition-colors"
-                rel="noopener noreferrer"
-                whileHover="hover"
-                variants={iconVariants}
-              >
-                <FiGithub size={24} />
-              </motion.a>
-              <motion.a
-                href={project.link}
-                target="_blank"
-                className="transition-colors"
-                rel="noopener noreferrer"
-                whileHover="hover"
-                variants={iconVariants}
-              >
-                <FiExternalLink size={24} />
-              </motion.a>
-            </div>
-          </div>
-
-          <motion.p
-            className="m-2 line-clamp-[10] flex-wrap text-sm transition-colors hover:line-clamp-none hover:text-[var(--neon)]"
-            whileHover="hover"
-            variants={descriptionVariants}
+    <div className="project-content">
+      <div className="project-content-body">
+        <div className="project-content-meta">
+          <span className="text-[0.58rem] uppercase tracking-[0.22em] text-lime-300">
+            Project {String(index + 1).padStart(2, "0")} /{" "}
+            {String(total).padStart(2, "0")}
+          </span>
+          <span
+            className={`project-status ${isLive ? "is-live" : "is-archive"}`}
           >
-            {project.description}
-          </motion.p>
+            {isLive ? "Live build" : "Archive entry"}
+          </span>
         </div>
-        <motion.button
-          className="lime-grad-bg"
-          whileHover="hover"
-          variants={buttonVariants}
-          onClick={openModal}
-        >
-          More Details
-        </motion.button>
-      </section>{" "}
-      {showModal && <ProjectModal project={project} onClose={closeModal} />}
-    </>
+
+        <h3>{project.title}</h3>
+        <p>{projectDescription(project.description)}</p>
+
+        <div className="project-tech">
+          {project.techStack.map((tech) => (
+            <span key={tech}>{tech}</span>
+          ))}
+        </div>
+      </div>
+
+      <div className="project-actions">
+        {isLive ? (
+          <a href={project.link} rel="noopener noreferrer" target="_blank">
+            <FaGlobe />
+            Open project
+          </a>
+        ) : (
+          <span className="project-action-muted">
+            <FaGlobe />
+            Preview unavailable
+          </span>
+        )}
+        {isLive && project.sourceCode && (
+          <a
+            className="project-action-secondary"
+            href={project.sourceCode}
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            <FaGithub />
+            Source
+          </a>
+        )}
+        <button onClick={onOpenDetails} type="button">
+          Full case file
+          <FaArrowRight />
+        </button>
+      </div>
+    </div>
   );
 };
 

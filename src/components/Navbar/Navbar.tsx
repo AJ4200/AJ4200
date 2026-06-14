@@ -1,86 +1,108 @@
-import React, { useState } from "react";
-import MobileNavbar from "./MobileNavbar";
-import NavLink from "./NavLink";
+"use client";
+
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { getTextColor } from "../../lib/navbarUtils";
+import { useState } from "react";
 import { FaGithubAlt } from "react-icons/fa";
+import { getTextColor } from "@/lib/navbarUtils";
+import MobileNavbar from "./MobileNavbar";
+import NavLink from "./NavLink";
+
+const navigation = [
+  {
+    href: "/landing",
+    label: "Landing",
+    number: "01",
+    description: "Profile and current work",
+  },
+  {
+    href: "/about",
+    label: "About",
+    number: "02",
+    description: "Story, code, sound, and play",
+  },
+  {
+    href: "/portfolio",
+    label: "Portfolio",
+    number: "03",
+    description: "Projects and experience",
+  },
+  {
+    href: "/services",
+    label: "Services",
+    number: "04",
+    description: "Ways to build together",
+  },
+  {
+    href: "/contact",
+    label: "Contact",
+    number: "05",
+    description: "Open a project channel",
+  },
+];
 
 const Navbar: React.FC = () => {
-  const pathname = usePathname();
+  const pathname = usePathname() ?? "/";
   const [open, setOpen] = useState(false);
 
-  const navshadow = (path: string) => {
-  switch (path) {
-    case "/about":
-      return "black 1px 1px 1px";
-    case "/services":
-      break;
-    default:
-      break;
-  }
-}
-
   return (
-    <nav
-      className="logo md:sticky text-shadow flex filter drop-shadow-md bg-transparent backdrop-blur-md px-4 py-4 h-20 items-center z-[99999]"
-      style={{ textShadow: navshadow(pathname) } }
-    >
-      <MobileNavbar open={open} setOpen={setOpen} />
-      <div className="w-3/12 flex items-center">
-        {open ? (
-          ""
-        ) : (   <><a className="git-header mx-2 text-3xl" href="https://github.com/aj4200"><FaGithubAlt /></a><Link className="text-2xl font-semibold" href="/">
-            <b className="flex">
-              #a<span>j</span>4<span>2</span>00 {pathname}
-            </b>
-          </Link></>
-        )}
-      </div>
-      <div className="w-9/12 flex justify-end items-center">
-        <div
-          className=" flex relative w-8 h-8 flex-col justify-between items-center md:hidden"
-          onClick={() => {
-            setOpen(!open);
-          }}
-        >
-          {/* hamburger button */}
-          <span
-            className={`h-1 w-full bg-[var(--neon)] rounded-lg transform transition duration-300 ease-in-out ${
-              open ? "rotate-45 translate-y-3.5" : ""
-            }`}
-          />
-          <span
-            className={`h-1 w-full bg-[var(--neon)] rounded-lg transition-all duration-300 ease-in-out ${
-              open ? "bg-transparent" : "w-full"
-            }`}
-          />
-          <span
-            className={`h-1 w-full bg-[var(--neon)] rounded-lg transform transition duration-300 ease-in-out ${
-              open ? "-rotate-45 -translate-y-3.5" : ""
-            }`}
-          />
-        </div>
+    <>
+      <header className="site-header">
+        <nav aria-label="Primary navigation" className="site-nav">
+          <div className="site-brand">
+            <a
+              aria-label="AJ4200 on GitHub"
+              className="git-header site-github"
+              href="https://github.com/aj4200"
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              <FaGithubAlt />
+            </a>
 
-        <div className="hidden md:flex">
-          <NavLink to="/home" text_color={getTextColor("/home")}>
-            HOME
-          </NavLink>
-          <NavLink to="/about" text_color={getTextColor("/about")}>
-            ABOUT
-          </NavLink>
-          <NavLink to="/portfolio" text_color={getTextColor("/portfolio")}>
-            PORTFOLIO
-          </NavLink>
-          <NavLink to="/services" text_color={getTextColor("/services")}>
-            SERVICES
-          </NavLink>
-          <NavLink to="/contact" text_color={getTextColor("/contact")}>
-            CONTACT
-          </NavLink>
-        </div>
-      </div>
-    </nav>
+            <Link aria-label="AJ4200 home" className="logo site-logo" href="/">
+              <b>
+                #a<span>j</span>4<span>2</span>00
+              </b>
+            </Link>
+
+            <span className="site-route-chip" aria-label={`Current route ${pathname}`}>
+              {pathname}
+            </span>
+          </div>
+
+          <div className="site-nav-links">
+            {navigation.map((item) => (
+              <NavLink
+                active={pathname === item.href}
+                description={item.description}
+                key={item.href}
+                number={item.number}
+                textColor={getTextColor(item.href)}
+                to={item.href}
+              >
+                {item.label}
+              </NavLink>
+            ))}
+          </div>
+
+          <button
+            aria-controls="mobile-navigation"
+            aria-expanded={open}
+            aria-label={open ? "Close navigation menu" : "Open navigation menu"}
+            className={`site-menu-toggle ${open ? "is-open" : ""}`}
+            onClick={() => setOpen((current) => !current)}
+            type="button"
+          >
+            <span />
+            <span />
+            <span />
+          </button>
+        </nav>
+      </header>
+
+      <MobileNavbar open={open} onClose={() => setOpen(false)} />
+    </>
   );
 };
 

@@ -203,6 +203,129 @@ button {
     transform: translateX(-100%);
   }
 }
+* {
+  scrollbar-color: var(--neon) transparent;
+  scrollbar-width: thin;
+}
+
+::-webkit-scrollbar {
+  width: 13px;
+  height: 13px;
+}
+
+::-webkit-scrollbar-track,
+::-webkit-scrollbar-track-piece,
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
 ::-webkit-scrollbar-thumb {
-  background-color: red;
+  min-height: 36px;
+  border: 3px solid transparent;
+  border-radius: 999px;
+  background:
+    linear-gradient(var(--neon), var(--neon)) padding-box,
+    transparent border-box;
+  box-shadow:
+    inset 0 0 0 1px color-mix(in srgb, var(--neon) 80%, white),
+    0 0 8px color-mix(in srgb, var(--neon) 65%, transparent);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background:
+    linear-gradient(
+        color-mix(in srgb, var(--neon) 78%, white),
+        color-mix(in srgb, var(--neon) 78%, white)
+      )
+      padding-box,
+    transparent border-box;
+}
+
+::-webkit-scrollbar-button {
+  width: 13px;
+  height: 13px;
+  background-color: var(--neon);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 8px;
+}
+
+::-webkit-scrollbar-button:vertical:decrement {
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10'%3E%3Cpath d='M1 7 5 3l4 4' fill='none' stroke='black' stroke-width='2'/%3E%3C/svg%3E")
+    center / 8px 8px no-repeat;
+}
+
+::-webkit-scrollbar-button:vertical:increment {
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10'%3E%3Cpath d='m1 3 4 4 4-4' fill='none' stroke='black' stroke-width='2'/%3E%3C/svg%3E")
+    center / 8px 8px no-repeat;
+}
+
+::-webkit-scrollbar-button:horizontal:decrement {
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10'%3E%3Cpath d='m7 1-4 4 4 4' fill='none' stroke='black' stroke-width='2'/%3E%3C/svg%3E")
+    center / 8px 8px no-repeat;
+}
+
+::-webkit-scrollbar-button:horizontal:increment {
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10'%3E%3Cpath d='m3 1 4 4-4 4' fill='none' stroke='black' stroke-width='2'/%3E%3C/svg%3E")
+    center / 8px 8px no-repeat;
+}
+
+.welcome-card::after {
+  position: absolute;
+  inset: 0;
+  z-index: -5;
+  background-image: linear-gradient(
+    to bottom,
+    transparent 50%,
+    rgb(255 255 255 / 0.025) 50%
+  );
+  background-size: 100% 4px;
+  content: "";
+  opacity: 0.65;
+  pointer-events: none;
+}
+
+.welcome-card:hover::after,
+.welcome-card:focus-visible::after {
+  animation: welcome-scan 8s linear infinite;
+}
+
+.landing-name {
+  text-shadow:
+    0 0 45px rgb(99 102 241 / 0.2),
+    0 4px 1px rgb(0 0 0 / 0.85);
+}
+
+.welcome-spectrum {
+  width: fit-content;
+  background-image: linear-gradient(
+    90deg,
+    #6366f1 0%,
+    #ef4444 25%,
+    #22c55e 50%,
+    #a855f7 75%,
+    #3b82f6 100%
+  );
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 0 18px rgb(255 255 255 / 0.16));
+}
+
+@keyframes welcome-scan {
+  from {
+    background-position-y: 0;
+  }
+
+  to {
+    background-position-y: 80px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .welcome-card,
+  .welcome-card *,
+  .welcome-card::after {
+    animation: none !important;
+    transition-duration: 0.01ms !important;
+  }
 }

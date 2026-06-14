@@ -1,9 +1,8 @@
-import React from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 
 interface Skill {
   name: string;
-  proficiency: number; // Use a value between 0 and 100 for the percentage
+  proficiency: number;
 }
 
 interface Skillset {
@@ -16,75 +15,52 @@ interface SkillsetSectionProps {
 }
 
 const SkillsetSection: React.FC<SkillsetSectionProps> = ({ skillsets }) => {
-   const renderRadialProgressBar = (percentage: number) => {
-    const strokeWidth = 7;
-    const radius = 13;
-    const circumference = 2 * Math.PI * radius;
-
-    const progress = circumference - (percentage / 100) * circumference;
-
-    return (
-      <motion.svg
-        height="40"
-        width="40"
-        className="mr-2"
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.9 }}
-      >
-        <motion.circle
-          strokeWidth={strokeWidth}
-          fill="var(--neon)"
-          r={radius}
-          cx="20"
-          cy="20"
-          stroke="black"
-          strokeDasharray={`${circumference} ${circumference}`}
-          style={{ strokeDashoffset: progress }}
-        />
-      </motion.svg>
-    );
-  };
-
   return (
-    <motion.div
-      className="w-full p-6 flex flex-col "
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-    >
-      <h2 className="text-2xl font-bold mb-4 text-right text-white text-darkshadow">Skillset</h2>
-      <div className="flex items-stretch w-full">
-        {skillsets.map((skillset, index) => (
-          <AnimatePresence key={index}>
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -50 }}
-              className="bg-red-950 p-4 rounded-md w-full m-1 hover:bg-red-950/70 transition-colors"
-            >
-              <h3 className="text-lg font-semibold mb-2 text-white/80 text-darkshadow text-center">{skillset.title}</h3>
-              <ul className="list-disc list-inside">
-                {skillset.skills.map((skill, skillIndex) => (
-                  <motion.li
-                    key={skillIndex}
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: 20 }}
-                    className="flex items-center "
-                  >
-                    {renderRadialProgressBar(skill.proficiency)}
-                    <div className="flex justify-between w-[85%] text-outline">
-                      <span className="font-semibold">{skill.name}</span>
-                      <span className="ml-1 text-black bg-[var(--neon)] rounded-full ">{`${skill.proficiency}%`}</span>
-                    </div>
-                  </motion.li>
-                ))}
-              </ul>
-            </motion.div>
-          </AnimatePresence>
-        ))}
-      </div>
-    </motion.div>
+    <div className="grid gap-4 lg:grid-cols-3">
+      {skillsets.map((skillset, groupIndex) => (
+        <motion.article
+          className="group relative overflow-hidden border border-white/12 bg-black/35 p-5 backdrop-blur-md sm:p-6"
+          initial={{ opacity: 0, y: 30 }}
+          key={skillset.title}
+          transition={{ delay: groupIndex * 0.08, duration: 0.5 }}
+          viewport={{ once: true, amount: 0.2 }}
+          whileInView={{ opacity: 1, y: 0 }}
+        >
+          <span className="absolute right-5 top-5 text-xs font-bold text-white/15">
+            0{groupIndex + 1}
+          </span>
+          <h3 className="max-w-[80%] text-2xl font-black uppercase leading-tight text-white">
+            {skillset.title}
+          </h3>
+          <div className="mt-8 space-y-5">
+            {skillset.skills.map((skill) => (
+              <div key={skill.name}>
+                <div className="mb-2 flex items-center justify-between gap-4">
+                  <span className="text-xs font-bold uppercase tracking-[0.12em] text-white/65">
+                    {skill.name}
+                  </span>
+                  <span className="text-[0.58rem] tracking-[0.15em] text-red-300">
+                    {skill.proficiency}%
+                  </span>
+                </div>
+                <div className="h-1 overflow-hidden bg-white/10">
+                  <motion.div
+                    className="h-full bg-gradient-to-r from-red-600 to-red-300 shadow-[0_0_12px_rgba(248,113,113,0.65)]"
+                    initial={{ width: 0 }}
+                    transition={{
+                      delay: groupIndex * 0.08 + 0.15,
+                      duration: 0.8,
+                    }}
+                    viewport={{ once: true }}
+                    whileInView={{ width: `${skill.proficiency}%` }}
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
+        </motion.article>
+      ))}
+    </div>
   );
 };
 

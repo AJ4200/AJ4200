@@ -2,7 +2,7 @@ import Image from "next/image";
 
 const GitHubHeatmap: React.FC = () => {
   return (
-    <div className="mt-4 backdrop-blur-sm w-[90%]">
+    <div className="mx-auto w-full max-w-5xl">
       <Image
         alt="AJ4200 GitHub statistics"
         className="h-auto w-full"

@@ -2,7 +2,6 @@
 
 import Bio from "@/components/About/Bio";
 import Navbar from "@/components/Navbar/Navbar";
-import PageWithIndicator from "@/components/Utils/PageWithIndicator";
 import Particles from "@/components/Utils/Particles";
 import { bioData } from "@/data/bio";
 
@@ -10,15 +9,14 @@ export default function AboutPage() {
   return (
     <>
       <Navbar />
-      <PageWithIndicator route="/about" bgcolor="bg-red-500">
-        <>
-          <Particles />
-          <h1 className="text-shadow text-center text-6xl">Bio</h1>
-          <div className="mx-4 mt-1 flex justify-stretch rounded-lg bg-red-900/60 bg-opacity-5 p-6 shadow-md backdrop-blur-sm">
-            <Bio {...bioData} />
-          </div>
-        </>
-      </PageWithIndicator>
+      <div className="about-page relative isolate h-[calc(100dvh-5rem)] overflow-y-auto overscroll-contain">
+        <Particles />
+        <div className="pointer-events-none fixed inset-0 -z-10 bg-[radial-gradient(circle_at_12%_10%,rgba(239,68,68,0.2),transparent_30%),linear-gradient(to_bottom,rgba(7,3,5,0.28),rgba(12,3,5,0.94)_75%)]" />
+
+        <main className="relative z-10 mx-auto max-w-[100rem] px-4 pb-16 sm:px-6 lg:px-10">
+          <Bio {...bioData} />
+        </main>
+      </div>
     </>
   );
 }

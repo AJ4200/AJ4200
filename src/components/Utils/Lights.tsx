@@ -4,8 +4,11 @@ type LightsProps = React.ComponentPropsWithoutRef<"div">;
 
 const Lights: React.FC<LightsProps> = ({ ...props }) => {
   return (
-    <div {...props}>
-      {" "}
+    <div
+      aria-hidden="true"
+      className="pointer-events-none fixed inset-0 -z-10 overflow-hidden"
+      {...props}
+    >
       <div className="light y1"></div>
       <div className="light y2"></div>
       <div className="light y3"></div>
