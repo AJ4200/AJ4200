@@ -18,15 +18,15 @@ export const getStyles = (path: string) => {
   > = {
     "/": {
       fontFamily: "Ethnocentric",
-      backgroundImage: "url(imgs/bw.jpg)",
+      backgroundImage: "url('/imgs/bw.jpg')",
     },
     "/landing": {
       fontFamily: "MonaspaceKrypton",
-      backgroundImage: "url(imgs/bbw.jpg)",
+      backgroundImage: "url('/imgs/bbw.jpg')",
     },
     "/about": {
       fontFamily: "pricedown",
-      backgroundImage: "url('imgs/apg.jpg')",
+      backgroundImage: "url('/imgs/apg.jpg')",
     },
     "/portfolio": {
       fontFamily: "Girdens",

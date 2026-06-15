@@ -21,7 +21,7 @@ export default function AppShell({ children }: Readonly<{ children: ReactNode }>
 
   return (
     <>
-      <PageLoader key={currentPath} />
+      <PageLoader key={currentPath} pathname={currentPath} />
       {children}
       <Cursor />
       <Chatbot />

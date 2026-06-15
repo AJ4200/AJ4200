@@ -20,6 +20,7 @@ import "@/styles/services.css";
 import "@/styles/contact.css";
 import "@/styles/navigation.css";
 import "@/styles/chatbot.css";
+import "@/styles/page-loader.css";
 import AppShell from "./app-shell";
 
 export const metadata: Metadata = {

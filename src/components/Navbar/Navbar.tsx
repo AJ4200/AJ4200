@@ -77,6 +77,7 @@ const Navbar: React.FC = () => {
                 active={pathname === item.href}
                 description={item.description}
                 key={item.href}
+                label={item.label}
                 number={item.number}
                 textColor={getTextColor(item.href)}
                 to={item.href}

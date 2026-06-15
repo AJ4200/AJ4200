@@ -1,0 +1,291 @@
+.page-loader {
+  --loader-accent: #fff;
+  position: fixed;
+  z-index: 2147483000;
+  inset: 0;
+  display: grid;
+  overflow: hidden;
+  background: #030307;
+  color: #fff;
+  isolation: isolate;
+  pointer-events: all;
+}
+
+.page-loader-panel {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  bottom: 0;
+  width: 50.1%;
+  background:
+    linear-gradient(
+      145deg,
+      color-mix(in srgb, var(--loader-accent) 9%, transparent),
+      transparent 43%
+    ),
+    #030307;
+  transition: transform 720ms cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+.page-loader-panel-left {
+  left: 0;
+  border-right: 1px solid color-mix(in srgb, var(--loader-accent) 35%, transparent);
+}
+
+.page-loader-panel-right {
+  right: 0;
+  border-left: 1px solid color-mix(in srgb, var(--loader-accent) 35%, transparent);
+}
+
+.page-loader.is-leaving {
+  pointer-events: none;
+}
+
+.page-loader.is-leaving .page-loader-panel-left {
+  transform: translateX(-101%);
+}
+
+.page-loader.is-leaving .page-loader-panel-right {
+  transform: translateX(101%);
+}
+
+.page-loader-grid {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background-image:
+    linear-gradient(rgb(255 255 255 / 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(255 255 255 / 0.035) 1px, transparent 1px);
+  background-size: 4rem 4rem;
+  mask-image: linear-gradient(to bottom, black, transparent 88%);
+}
+
+.page-loader-glow {
+  position: absolute;
+  z-index: -1;
+  width: min(65vw, 60rem);
+  height: min(65vw, 60rem);
+  border-radius: 50%;
+  background: var(--loader-accent);
+  filter: blur(11rem);
+  opacity: 0.13;
+  transform: translate(-30%, -38%);
+}
+
+.page-loader-topline {
+  position: absolute;
+  top: clamp(1.25rem, 4vw, 3rem);
+  right: clamp(1.25rem, 5vw, 5rem);
+  left: clamp(1.25rem, 5vw, 5rem);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgb(255 255 255 / 0.14);
+  padding-bottom: 0.8rem;
+  color: rgb(255 255 255 / 0.42);
+  font-family: "MonaspaceKrypton", monospace;
+  font-size: clamp(0.52rem, 0.8vw, 0.7rem);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.page-loader-topline::after {
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: clamp(4rem, 13vw, 10rem);
+  height: 1px;
+  background: var(--loader-accent);
+  box-shadow: 0 0 1.4rem var(--loader-accent);
+  content: "";
+}
+
+.page-loader-content {
+  align-self: center;
+  width: min(100% - 2.5rem, 90rem);
+  margin-inline: auto;
+}
+
+.page-loader-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  color: color-mix(in srgb, var(--loader-accent) 76%, white);
+  font-family: "MonaspaceKrypton", monospace;
+  font-size: clamp(0.62rem, 1vw, 0.82rem);
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+}
+
+.page-loader-kicker::before {
+  width: 2.4rem;
+  height: 1px;
+  background: currentColor;
+  content: "";
+}
+
+.page-loader-title-wrap {
+  position: relative;
+  display: flex;
+  align-items: baseline;
+  margin-top: clamp(2rem, 4vw, 3.5rem);
+}
+
+.page-loader-title-wrap h1 {
+  max-width: 100%;
+  margin: 0;
+  color: #fff;
+  font-family: inherit;
+  font-size: clamp(3.8rem, 14vw, 12rem);
+  font-weight: 900;
+  letter-spacing: -0.075em;
+  line-height: 0.78;
+  text-transform: uppercase;
+  text-shadow:
+    0 0 0.8rem color-mix(in srgb, var(--loader-accent) 28%, transparent),
+    0 0 4rem color-mix(in srgb, var(--loader-accent) 16%, transparent);
+  white-space: nowrap;
+}
+
+.page-loader-slash {
+  margin-right: clamp(0.4rem, 1.4vw, 1.25rem);
+  color: var(--loader-accent);
+  font-family: "MonaspaceKrypton", monospace;
+  font-size: clamp(2.5rem, 7vw, 6rem);
+  font-weight: 300;
+  line-height: 1;
+  text-shadow: 0 0 2rem var(--loader-accent);
+}
+
+.page-loader-ghost {
+  position: absolute;
+  z-index: -1;
+  top: 0.16em;
+  left: 0.22em;
+  color: transparent;
+  font-family: inherit;
+  font-size: clamp(3.8rem, 14vw, 12rem);
+  font-weight: 900;
+  letter-spacing: -0.075em;
+  line-height: 0.78;
+  opacity: 0.22;
+  -webkit-text-stroke: 1px var(--loader-accent);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.page-loader-content p {
+  margin: clamp(1.4rem, 3vw, 2.5rem) 0 0 clamp(2.7rem, 8vw, 7rem);
+  color: rgb(255 255 255 / 0.4);
+  font-family: "MonaspaceKrypton", monospace;
+  font-size: clamp(0.6rem, 1vw, 0.82rem);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.page-loader-footer {
+  position: absolute;
+  right: clamp(1.25rem, 5vw, 5rem);
+  bottom: clamp(1.4rem, 4vw, 3.5rem);
+  left: clamp(1.25rem, 5vw, 5rem);
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 0.9rem 1.5rem;
+  font-family: "MonaspaceKrypton", monospace;
+}
+
+.page-loader-status {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  color: rgb(255 255 255 / 0.5);
+  font-size: clamp(0.52rem, 0.8vw, 0.68rem);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.page-loader-pulse {
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 50%;
+  background: var(--loader-accent);
+  box-shadow: 0 0 1rem var(--loader-accent);
+  animation: page-loader-pulse 1.15s ease-in-out infinite;
+}
+
+.page-loader-percentage {
+  color: color-mix(in srgb, var(--loader-accent) 70%, white);
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+}
+
+.page-loader-progress {
+  grid-column: 1 / -1;
+  height: 2px;
+  overflow: hidden;
+  background: rgb(255 255 255 / 0.1);
+}
+
+.page-loader-progress span {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    color-mix(in srgb, var(--loader-accent) 45%, white),
+    var(--loader-accent)
+  );
+  box-shadow: 0 0 1.5rem var(--loader-accent);
+  transform: scaleX(0);
+  transform-origin: left;
+}
+
+@keyframes page-loader-pulse {
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: scale(0.78);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+@media (max-width: 760px) {
+  .page-loader-grid {
+    background-size: 2.5rem 2.5rem;
+  }
+
+  .page-loader-title-wrap h1,
+  .page-loader-ghost {
+    font-size: clamp(3rem, 16vw, 6rem);
+  }
+
+  .page-loader-title-wrap h1.is-long,
+  .page-loader-ghost.is-long {
+    font-size: clamp(2.7rem, 12vw, 5rem);
+  }
+
+  .page-loader-title-wrap {
+    align-items: center;
+  }
+
+  .page-loader-content p {
+    margin-left: 2.15rem;
+    line-height: 1.7;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-loader-panel,
+  .page-loader-progress span {
+    transition: none;
+  }
+
+  .page-loader-pulse {
+    animation: none;
+  }
+}

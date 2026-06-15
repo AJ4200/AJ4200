@@ -119,6 +119,7 @@ const Projects: React.FC = () => {
                   alt={`${project.title} project preview`}
                   className="object-cover transition duration-700 group-hover:scale-[1.03]"
                   fill
+                  loading="eager"
                   priority={currentProject === 0}
                   sizes="(min-width: 1024px) 58vw, 100vw"
                   src={project.image}

@@ -2,12 +2,14 @@
 
 import { AnimatePresence } from "framer-motion";
 import Link from "next/link";
-import { useState, type ReactNode } from "react";
+import { type CSSProperties, useState, type ReactNode } from "react";
+import { getNeonColor } from "@/lib/navbarUtils";
 import PageIndicator from "../Utils/PageIndicator";
 
 interface NavLinkProps {
   to: string;
   children: ReactNode;
+  label: string;
   textColor: string;
   number: string;
   description: string;
@@ -17,6 +19,7 @@ interface NavLinkProps {
 const NavLink: React.FC<NavLinkProps> = ({
   to,
   children,
+  label,
   textColor,
   number,
   description,
@@ -34,6 +37,11 @@ const NavLink: React.FC<NavLinkProps> = ({
         onFocus={() => setShowRoute(true)}
         onMouseEnter={() => setShowRoute(true)}
         onMouseLeave={() => setShowRoute(false)}
+        style={
+          {
+            "--nav-link-accent": getNeonColor(to) || "#ffffff",
+          } as CSSProperties
+        }
       >
         <span className="site-nav-number">{number}</span>
         <span className={`site-nav-label ${textColor}`}>{children}</span>
@@ -42,7 +50,13 @@ const NavLink: React.FC<NavLinkProps> = ({
 
       <AnimatePresence>
         {showRoute && (
-          <PageIndicator route={to} textColor={textColor} />
+          <PageIndicator
+            description={description}
+            label={label}
+            number={number}
+            route={to}
+            textColor={textColor}
+          />
         )}
       </AnimatePresence>
     </>
