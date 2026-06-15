@@ -115,7 +115,17 @@ const Menu: React.FC = () => {
         </section>
 
         <footer className="mt-6 flex flex-wrap items-center justify-between gap-3 border-t border-white/15 py-5 text-[0.65rem] uppercase tracking-[0.25em] text-white/40">
-          <span>Designed and built by Abel Jansen</span>
+          <span>
+            Designed and built by{" "}
+            <a
+              className="text-white/70 transition hover:text-white"
+              href="https://github.com/aj4200"
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              aj4200
+            </a>
+          </span>
           <span>Johannesburg / South Africa</span>
         </footer>
       </div>

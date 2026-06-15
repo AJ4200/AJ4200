@@ -2,9 +2,9 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { type CSSProperties, useState } from "react";
 import { FaGithubAlt } from "react-icons/fa";
-import { getTextColor } from "@/lib/navbarUtils";
+import { getNeonColor, getTextColor } from "@/lib/navbarUtils";
 import MobileNavbar from "./MobileNavbar";
 import NavLink from "./NavLink";
 
@@ -93,6 +93,12 @@ const Navbar: React.FC = () => {
             aria-label={open ? "Close navigation menu" : "Open navigation menu"}
             className={`site-menu-toggle ${open ? "is-open" : ""}`}
             onClick={() => setOpen((current) => !current)}
+            style={
+              {
+                "--menu-accent":
+                  pathname === "/" ? "#ffffff" : getNeonColor(pathname),
+              } as CSSProperties
+            }
             type="button"
           >
             <span />

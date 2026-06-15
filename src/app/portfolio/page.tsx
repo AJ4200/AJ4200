@@ -1,7 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { type KeyboardEvent, useState } from "react";
+import { type KeyboardEvent, useLayoutEffect, useRef, useState } from "react";
 import {
   FaArrowDown,
   FaBriefcase,
@@ -53,6 +53,14 @@ type SectionId = (typeof sections)[number]["id"];
 
 export default function PortfolioPage() {
   const [activeSection, setActiveSection] = useState<SectionId>("projects");
+  const pageRef = useRef<HTMLDivElement>(null);
+
+  useLayoutEffect(() => {
+    if (pageRef.current) {
+      pageRef.current.scrollLeft = 0;
+      pageRef.current.scrollTop = 0;
+    }
+  }, []);
 
   const handleTabKeyDown = (
     event: KeyboardEvent<HTMLButtonElement>,
@@ -74,7 +82,10 @@ export default function PortfolioPage() {
   return (
     <>
       <Navbar />
-      <div className="portfolio-page relative isolate h-[calc(100dvh-5rem)] overflow-y-auto overscroll-contain">
+      <div
+        className="portfolio-page relative isolate h-[calc(100dvh-5rem)] overflow-y-auto overscroll-contain"
+        ref={pageRef}
+      >
         <div className="portfolio-leaves pointer-events-none fixed inset-0 z-30 overflow-hidden">
           <Leaves />
         </div>

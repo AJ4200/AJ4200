@@ -183,7 +183,8 @@
   height: 3rem;
   flex-shrink: 0;
   align-self: center;
-  border: 1px solid color-mix(in srgb, var(--neon) 42%, transparent);
+  border: 1px solid
+    color-mix(in srgb, var(--menu-accent, var(--neon)) 42%, transparent);
   background: rgb(0 0 0 / 0.24);
 }
 
@@ -192,8 +193,9 @@
   left: 0.65rem;
   width: 1.65rem;
   height: 2px;
-  background: var(--neon);
-  box-shadow: 0 0 8px color-mix(in srgb, var(--neon) 70%, transparent);
+  background: var(--menu-accent, var(--neon));
+  box-shadow: 0 0 8px
+    color-mix(in srgb, var(--menu-accent, var(--neon)) 70%, transparent);
   transition:
     opacity 220ms ease,
     transform 220ms ease,

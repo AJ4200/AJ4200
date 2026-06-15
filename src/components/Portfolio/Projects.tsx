@@ -11,12 +11,22 @@ const Projects: React.FC = () => {
   const [direction, setDirection] = useState(1);
   const [showModal, setShowModal] = useState(false);
   const activeThumbnailRef = useRef<HTMLButtonElement>(null);
+  const thumbnailRailRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    activeThumbnailRef.current?.scrollIntoView({
+    const rail = thumbnailRailRef.current;
+    const thumbnail = activeThumbnailRef.current;
+
+    if (!rail || !thumbnail) {
+      return;
+    }
+
+    const left =
+      thumbnail.offsetLeft - (rail.clientWidth - thumbnail.offsetWidth) / 2;
+
+    rail.scrollTo({
       behavior: "smooth",
-      block: "nearest",
-      inline: "center",
+      left,
     });
   }, [currentProject]);
 
@@ -193,7 +203,11 @@ const Projects: React.FC = () => {
         </button>
       </div>
 
-      <div className="project-thumbnails" aria-label="Choose a project">
+      <div
+        aria-label="Choose a project"
+        className="project-thumbnails"
+        ref={thumbnailRailRef}
+      >
         {projects.map((item, index) => (
           <button
             aria-label={`View ${item.title}`}

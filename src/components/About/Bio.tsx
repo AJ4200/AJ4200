@@ -121,9 +121,11 @@ const Bio: React.FC<BioProps> = ({
           <span className="text-[0.65rem] uppercase tracking-[0.34em] text-red-300/65">
             About file / AJ4200
           </span>
-          <h1 className="about-name mt-4 text-6xl font-black uppercase leading-[0.78] tracking-[-0.07em] text-white sm:text-8xl lg:text-[8.5rem]">
-            Abel
-            <span className="block text-red-500">Majadibodu</span>
+          <h1 className="about-name mt-4 text-6xl font-black uppercase leading-[0.84] tracking-[0.015em] text-white sm:text-8xl lg:text-[8.5rem]">
+            Beyond
+            <span className="about-name-accent block text-red-500">
+              the build.
+            </span>
           </h1>
 
           <div className="mt-8 grid max-w-3xl gap-5 border-l-2 border-red-500 pl-5 sm:grid-cols-[1fr_auto] sm:items-end">
@@ -418,7 +420,7 @@ const Bio: React.FC<BioProps> = ({
       </section>
 
       <footer className="flex flex-wrap items-center justify-between gap-3 border-t border-white/10 py-5 text-[0.58rem] uppercase tracking-[0.23em] text-white/25">
-        <span>About Abel Majadibodu</span>
+        <span>AJ4200 / Personal archive</span>
         <span>{hobbies.join(" / ")}</span>
       </footer>
     </>
