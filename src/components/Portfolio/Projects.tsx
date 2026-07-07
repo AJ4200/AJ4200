@@ -43,9 +43,12 @@ const Projects: React.FC = () => {
   };
 
   const project = projects[currentProject];
-  const previousIndex =
-    (currentProject - 1 + projects.length) % projects.length;
-  const nextIndex = (currentProject + 1) % projects.length;
+  const projectIndex = (offset: number) =>
+    (currentProject + offset + projects.length) % projects.length;
+  const previousFarIndex = projectIndex(-2);
+  const previousIndex = projectIndex(-1);
+  const nextIndex = projectIndex(1);
+  const nextFarIndex = projectIndex(2);
 
   return (
     <section className="py-14 lg:py-20">
@@ -80,8 +83,24 @@ const Projects: React.FC = () => {
 
       <div className="project-reel">
         <button
+          aria-label={`View ${projects[previousFarIndex].title}`}
+          className="project-peek project-peek-left project-peek-far"
+          onClick={() => selectProject(previousFarIndex)}
+          type="button"
+        >
+          <Image
+            alt=""
+            className="object-cover"
+            fill
+            sizes="12vw"
+            src={projects[previousFarIndex].image}
+          />
+          <span>{projects[previousFarIndex].title}</span>
+        </button>
+
+        <button
           aria-label={`View ${projects[previousIndex].title}`}
-          className="project-peek project-peek-left"
+          className="project-peek project-peek-left project-peek-near"
           onClick={() => moveProject(-1)}
           type="button"
         >
@@ -188,7 +207,7 @@ const Projects: React.FC = () => {
 
         <button
           aria-label={`View ${projects[nextIndex].title}`}
-          className="project-peek project-peek-right"
+          className="project-peek project-peek-right project-peek-near"
           onClick={() => moveProject(1)}
           type="button"
         >
@@ -200,6 +219,22 @@ const Projects: React.FC = () => {
             src={projects[nextIndex].image}
           />
           <span>{projects[nextIndex].title}</span>
+        </button>
+
+        <button
+          aria-label={`View ${projects[nextFarIndex].title}`}
+          className="project-peek project-peek-right project-peek-far"
+          onClick={() => selectProject(nextFarIndex)}
+          type="button"
+        >
+          <Image
+            alt=""
+            className="object-cover"
+            fill
+            sizes="12vw"
+            src={projects[nextFarIndex].image}
+          />
+          <span>{projects[nextFarIndex].title}</span>
         </button>
       </div>
 
