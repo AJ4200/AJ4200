@@ -68,6 +68,10 @@
   width: 100%;
   height: 100%;
   color: #fff;
+  stroke: var(--neon);
+  stroke-width: 24;
+  stroke-linejoin: round;
+  paint-order: stroke fill;
 }
 
 .accessibility-trigger-icon::after {
