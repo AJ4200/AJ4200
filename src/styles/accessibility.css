@@ -114,6 +114,22 @@ html[data-high-contrast] :is(a, button, input, textarea, select):focus-visible {
   outline-offset: 3px;
 }
 
+html[data-high-contrast] .chat-accessibility-panel > button i {
+  border-color: #fff;
+}
+
+html[data-high-contrast] .chat-accessibility-panel > button.is-active i {
+  background: #fff;
+}
+
+html[data-high-contrast] .chat-accessibility-panel > button.is-active i::before {
+  color: #000;
+}
+
+html[data-high-contrast] .chat-accessibility-panel > button.is-active i::after {
+  background: #000;
+}
+
 html[data-reduce-motion] *,
 html[data-reduce-motion] *::before,
 html[data-reduce-motion] *::after {
@@ -134,8 +150,12 @@ html[data-reduce-motion] *::after {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .accessibility-dock-signal {
+  .accessibility-dock-signal,
+  .chat-accessibility-panel > button,
+  .chat-accessibility-panel > button i,
+  .chat-accessibility-panel > button i::after {
     animation: none;
+    transition: none;
   }
 }
 

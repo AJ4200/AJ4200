@@ -234,6 +234,8 @@
   right: 0;
   z-index: 10;
   width: min(20rem, calc(100vw - 3rem));
+  max-height: min(26rem, calc(100dvh - 11rem));
+  overflow-y: auto;
   border: 1px solid var(--chat-border);
   background: rgb(2 4 10 / 0.99);
   box-shadow: 0 20px 60px #000;
@@ -291,27 +293,38 @@
 }
 
 .chat-accessibility-panel > button {
+  position: relative;
   display: grid;
   width: 100%;
-  min-height: 3.7rem;
+  min-height: 4.25rem;
   align-items: center;
-  border-bottom: 1px solid rgb(255 255 255 / 0.06);
-  padding: 0.6rem;
-  color: rgb(255 255 255 / 0.68);
+  border: 1px solid transparent;
+  border-bottom-color: rgb(255 255 255 / 0.08);
+  padding: 0.7rem 0.6rem;
+  color: rgb(255 255 255 / 0.85);
   text-align: left;
-  grid-template-columns: 1.2rem 1fr auto;
-  gap: 0.65rem;
+  grid-template-columns: 1.4rem minmax(0, 1fr) auto;
+  gap: 0.75rem;
+  transition: background-color 180ms ease, border-color 180ms ease;
 }
 
 .chat-accessibility-panel > button:hover,
 .chat-accessibility-panel > button:focus-visible,
 .chat-accessibility-panel > button.is-active {
-  background: color-mix(in srgb, var(--neon) 10%, transparent);
+  border-left-color: var(--neon);
+  background: color-mix(in srgb, var(--neon) 9%, transparent);
   color: #fff;
+}
+
+.chat-accessibility-panel > button:focus-visible {
+  outline: 2px solid var(--neon);
+  outline-offset: -2px;
 }
 
 .chat-accessibility-panel > button > svg {
   color: var(--neon);
+  font-size: 1rem;
+  filter: drop-shadow(0 0 6px color-mix(in srgb, var(--neon) 35%, transparent));
 }
 
 .chat-accessibility-panel > button strong,
@@ -325,38 +338,67 @@
 
 .chat-accessibility-panel > button small {
   margin-top: 0.2rem;
-  color: rgb(255 255 255 / 0.3);
-  font-size: 0.52rem;
+  color: rgb(255 255 255 / 0.65);
+  font-size: 0.58rem;
+  line-height: 1.4;
 }
 
 .chat-accessibility-panel > button i {
   position: relative;
-  width: 2rem;
-  height: 1rem;
-  border: 1px solid rgb(255 255 255 / 0.2);
+  display: block;
+  width: 3.4rem;
+  height: 1.65rem;
+  flex-shrink: 0;
+  border: 1px solid rgb(255 255 255 / 0.35);
   border-radius: 999px;
+  background: rgb(255 255 255 / 0.06);
+  font-style: normal;
+  transition: background-color 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+}
+
+.chat-accessibility-panel > button i::before {
+  position: absolute;
+  top: 50%;
+  right: 0.42rem;
+  color: rgb(255 255 255 / 0.7);
+  font-family: Arial, sans-serif;
+  font-size: 0.48rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  transform: translateY(-50%);
+  content: "OFF";
 }
 
 .chat-accessibility-panel > button i::after {
   position: absolute;
-  top: 0.15rem;
-  left: 0.15rem;
-  width: 0.6rem;
-  height: 0.6rem;
+  top: 0.19rem;
+  left: 0.19rem;
+  width: 1.15rem;
+  height: 1.15rem;
   border-radius: 50%;
-  background: rgb(255 255 255 / 0.35);
+  background: #d3d5de;
+  box-shadow: 0 1px 5px rgb(0 0 0 / 0.6);
   content: "";
-  transition: transform 160ms ease;
+  transition: transform 180ms ease, background-color 180ms ease, box-shadow 180ms ease;
 }
 
 .chat-accessibility-panel > button.is-active i {
   border-color: var(--neon);
-  background: color-mix(in srgb, var(--neon) 20%, transparent);
+  background: color-mix(in srgb, var(--neon) 28%, #080a10);
+  box-shadow: 0 0 12px color-mix(in srgb, var(--neon) 25%, transparent);
+}
+
+.chat-accessibility-panel > button.is-active i::before {
+  right: auto;
+  left: 0.45rem;
+  color: #fff;
+  content: "ON";
 }
 
 .chat-accessibility-panel > button.is-active i::after {
   background: var(--neon);
-  transform: translateX(0.95rem);
+  box-shadow: 0 0 9px color-mix(in srgb, var(--neon) 65%, transparent);
+  transform: translateX(1.7rem);
 }
 
 .chat-log {
