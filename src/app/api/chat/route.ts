@@ -67,7 +67,7 @@ Known facts:
 - Services include web applications, full-stack systems, AI features, and product prototypes.
 - The free discovery service includes an initial consultation, scope outline, mock interface direction, and a focused working application demo. It is not a complete production application.
 - The portfolio contains projects, experience, and certifications.
-- The About page contains Code, Production, and Gaming sections. Gaming embeds Baturo Arena, Abel's online arcade platform.
+- The About page contains Code, Production, and Gaming sections. Gaming embeds Baturo Arena, Abel's original arcade platform, and FlashBack Machine, a browser-based collection of emulators and games with offline caching.
 - Contact enquiries use a form that compiles the visitor's answers into a Gmail draft addressed to Abel.
 - Abel's public email is abeljackson33@gmail.com.
 - GitHub: https://github.com/aj4200

@@ -17,13 +17,12 @@ import {
   FaUser,
 } from "react-icons/fa";
 import { FiSend } from "react-icons/fi";
-import AccessibilityToggle, {
-  type ChatAccessibilitySettings,
-} from "./AccessibilityToggle";
+import type { ChatAccessibilitySettings } from "./AccessibilityToggle";
 import FloatingBot from "./FloatingBot";
 
 interface ChatProps {
   onClose: () => void;
+  settings: ChatAccessibilitySettings;
 }
 
 interface Message {
@@ -42,13 +41,6 @@ const quickPrompts = [
   "Show me selected projects",
   "How do I contact Abel?",
 ];
-
-const defaultSettings: ChatAccessibilitySettings = {
-  readableFont: false,
-  largeText: false,
-  highContrast: false,
-  reduceMotion: false,
-};
 
 const getBotResponse = (input: string, pathname: string): Omit<Message, "id"> => {
   const prompt = input.toLowerCase();
@@ -119,7 +111,7 @@ const getBotResponse = (input: string, pathname: string): Omit<Message, "id"> =>
     return {
       type: "bot",
       content:
-        "Use the accessibility button in this chat header to enable a readable font, larger text, stronger contrast, or reduced motion.",
+        "Use the wrench beside NootBot to enable a readable font, larger text, stronger contrast, or reduced motion.",
     };
   }
 
@@ -129,7 +121,7 @@ const getBotResponse = (input: string, pathname: string): Omit<Message, "id"> =>
   };
 };
 
-const Chat: React.FC<ChatProps> = ({ onClose }) => {
+const Chat: React.FC<ChatProps> = ({ onClose, settings }) => {
   const pathname = usePathname() ?? "/";
   const titleId = useId();
   const descriptionId = useId();
@@ -146,9 +138,6 @@ const Chat: React.FC<ChatProps> = ({ onClose }) => {
         "Hey, I am NootBot. I can guide you through Abel's work, services, free app demo, and contact options.",
     },
   ]);
-  const [settings, setSettings] =
-    useState<ChatAccessibilitySettings>(defaultSettings);
-
   useEffect(() => {
     inputRef.current?.focus();
   }, []);
@@ -159,39 +148,6 @@ const Chat: React.FC<ChatProps> = ({ onClose }) => {
       top: logRef.current.scrollHeight,
     });
   }, [messages, settings.reduceMotion]);
-
-  useEffect(() => {
-    try {
-      const saved = window.localStorage.getItem("nootbot-accessibility");
-      if (!saved) {
-        return;
-      }
-
-      setSettings({
-        ...defaultSettings,
-        ...(JSON.parse(saved) as Partial<ChatAccessibilitySettings>),
-      });
-    } catch {
-      try {
-        window.localStorage.removeItem("nootbot-accessibility");
-      } catch {
-        // Storage may be blocked by the visitor's browser settings.
-      }
-    }
-  }, []);
-
-  const updateSettings = (next: ChatAccessibilitySettings) => {
-    setSettings(next);
-
-    try {
-      window.localStorage.setItem(
-        "nootbot-accessibility",
-        JSON.stringify(next),
-      );
-    } catch {
-      // The controls still work for this session when storage is unavailable.
-    }
-  };
 
   const panelClasses = useMemo(
     () =>
@@ -288,10 +244,6 @@ const Chat: React.FC<ChatProps> = ({ onClose }) => {
           </div>
         </div>
         <div className="chat-header-actions">
-          <AccessibilityToggle
-            onChange={updateSettings}
-            settings={settings}
-          />
           <button
             aria-label="Close NootBot"
             className="chat-icon-button"

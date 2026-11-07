@@ -52,7 +52,8 @@ about how software works, but I care just as much about how it feels to use.
       <h3>03 / Gaming</h3>
       <p>
         Original games, custom engines, narrative systems, mods, and the
-        in-house arcade platform Baturo Arena.
+        in-house arcade platform Baturo Arena and browser-based retro arcade
+        FlashBack Machine.
       </p>
     </td>
   </tr>
@@ -78,6 +79,7 @@ The experience includes:
 - Route-specific color systems, typography, motion, particles, and atmosphere
 - An About page split into Code, Production, and Gaming
 - An embedded, fullscreen-ready Baturo Arena arcade
+- A FlashBack Machine gaming tab with browser emulators and offline play
 - A case-file project carousel, experience timeline, and credential archive
 - Service pathways from free discovery demos through custom systems
 - A project brief that compiles enquiries directly into Gmail
@@ -173,7 +175,8 @@ NootBot includes keyboard operation, focus restoration, screen-reader labels,
 live message announcements, quick prompts, readable-font and larger-text modes,
 high contrast, reduced motion, and persisted preferences. The navigation also
 exposes active-route semantics and opens its visual route previews on keyboard
-focus, not only on hover.
+focus, not only on hover. NootBot's accessibility settings are available from
+the wrench beside its launcher.
 
 ## Current signal
 

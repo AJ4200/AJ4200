@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useEffect, useRef } from "react";
 import {
   FaAdjust,
   FaFont,
   FaLowVision,
   FaUniversalAccess,
+  FaWrench,
 } from "react-icons/fa";
 
 export interface ChatAccessibilitySettings {
@@ -16,6 +17,10 @@ export interface ChatAccessibilitySettings {
 interface AccessibilityToggleProps {
   settings: ChatAccessibilitySettings;
   onChange: (settings: ChatAccessibilitySettings) => void;
+  open: boolean;
+  onOpenChange: (open: boolean) => void;
+  chatOpen: boolean;
+  triggerRef: React.RefObject<HTMLButtonElement | null>;
 }
 
 const controls = [
@@ -48,20 +53,48 @@ const controls = [
 const AccessibilityToggle: React.FC<AccessibilityToggleProps> = ({
   settings,
   onChange,
+  open,
+  onOpenChange,
+  chatOpen,
+  triggerRef,
 }) => {
-  const [open, setOpen] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!open) return;
+
+    const handlePointerDown = (event: PointerEvent) => {
+      if (event.target instanceof Node && !containerRef.current?.contains(event.target)) {
+        onOpenChange(false);
+      }
+    };
+
+    document.addEventListener("pointerdown", handlePointerDown);
+    return () => document.removeEventListener("pointerdown", handlePointerDown);
+  }, [open, onOpenChange]);
 
   return (
-    <div className="chat-accessibility">
+    <div
+      className={[
+        "chat-accessibility",
+        chatOpen && "is-chat-open",
+        settings.readableFont && "is-readable",
+        settings.largeText && "is-large-text",
+        settings.highContrast && "is-high-contrast",
+        settings.reduceMotion && "is-reduced-motion",
+      ].filter(Boolean).join(" ")}
+      ref={containerRef}
+    >
       <button
         aria-controls="chat-accessibility-controls"
         aria-expanded={open}
-        className="chat-icon-button"
-        onClick={() => setOpen((current) => !current)}
+        className="chat-accessibility-trigger"
+        onClick={() => onOpenChange(!open)}
+        ref={triggerRef}
         type="button"
       >
-        <FaUniversalAccess />
-        <span className="sr-only">Chat accessibility options</span>
+        <FaWrench aria-hidden="true" />
+        <span className="sr-only">NootBot accessibility options</span>
       </button>
 
       {open && (
