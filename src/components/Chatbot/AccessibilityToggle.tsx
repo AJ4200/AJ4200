@@ -50,6 +50,9 @@ const controls = [
   },
 ] as const;
 
+const dockOutline =
+  "M42 22 C52 22 55 32 65 34 C76 36 78 4 112 4 C134 4 152 22 152 44 C152 66 134 84 112 84 C78 84 76 52 65 54 C55 56 52 66 42 66 C30 66 20 56 20 44 C20 32 30 22 42 22Z";
+
 const AccessibilityToggle: React.FC<AccessibilityToggleProps> = ({
   settings,
   onChange,
@@ -99,6 +102,21 @@ const AccessibilityToggle: React.FC<AccessibilityToggleProps> = ({
       ].filter(Boolean).join(" ")}
       ref={containerRef}
     >
+      {!chatOpen && (
+        <svg
+          aria-hidden="true"
+          className="accessibility-dock-outline"
+          preserveAspectRatio="none"
+          viewBox="0 0 156 88"
+        >
+          <path className="accessibility-dock-track" d={dockOutline} />
+          <path
+            className="accessibility-dock-signal"
+            d={dockOutline}
+            pathLength={100}
+          />
+        </svg>
+      )}
       <button
         aria-controls="chat-accessibility-controls"
         aria-expanded={open}

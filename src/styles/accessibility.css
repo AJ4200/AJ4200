@@ -15,6 +15,38 @@
   pointer-events: none;
 }
 
+.accessibility-dock-outline {
+  position: fixed;
+  right: 0.55rem;
+  bottom: 0.75rem;
+  z-index: -1;
+  width: 9.4rem;
+  height: 5.3rem;
+  overflow: visible;
+  fill: none;
+  pointer-events: none;
+}
+
+.accessibility-dock-track {
+  stroke: color-mix(in srgb, var(--neon) 45%, transparent);
+  stroke-width: 1;
+}
+
+.accessibility-dock-signal {
+  stroke: var(--neon);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-dasharray: 16 84;
+  filter: drop-shadow(0 0 4px var(--neon));
+  animation: accessibility-dock-orbit 4s linear infinite;
+}
+
+@keyframes accessibility-dock-orbit {
+  to {
+    stroke-dashoffset: -100;
+  }
+}
+
 .chat-accessibility-trigger {
   position: relative;
   border: 1px solid color-mix(in srgb, var(--neon) 75%, white);
@@ -92,10 +124,21 @@ html[data-reduce-motion] *::after {
 }
 
 @media (max-width: 640px) {
-  .chatbot-root:has(.chatbot-launcher-wrap)::before {
+  .chatbot-root:has(.chatbot-launcher-wrap)::before,
+  .accessibility-dock-outline {
     right: 0.3rem;
     bottom: 0.5rem;
     width: 8.4rem;
     height: 4.7rem;
   }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .accessibility-dock-signal {
+    animation: none;
+  }
+}
+
+html[data-reduce-motion] .accessibility-dock-signal {
+  animation: none;
 }
