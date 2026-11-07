@@ -84,7 +84,7 @@
   z-index: 1;
   width: 0.7rem;
   height: 0.7rem;
-  color: #10101a;
+  color: var(--neon);
 }
 
 .chat-accessibility-trigger::after {
