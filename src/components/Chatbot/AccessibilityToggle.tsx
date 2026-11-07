@@ -27,25 +27,25 @@ const controls = [
   {
     key: "readableFont",
     label: "Readable font",
-    description: "Use a simple sans-serif font",
+    description: "Use a simple font across the site",
     icon: FaFont,
   },
   {
     key: "largeText",
     label: "Larger text",
-    description: "Increase chat message size",
+    description: "Increase site text and interface sizes",
     icon: FaLowVision,
   },
   {
     key: "highContrast",
     label: "High contrast",
-    description: "Strengthen borders and colors",
+    description: "Improve text and control contrast",
     icon: FaAdjust,
   },
   {
     key: "reduceMotion",
     label: "Reduce motion",
-    description: "Disable chat animations",
+    description: "Reduce motion across the site",
     icon: FaUniversalAccess,
   },
 ] as const;
@@ -59,6 +59,20 @@ const AccessibilityToggle: React.FC<AccessibilityToggleProps> = ({
   triggerRef,
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const root = document.documentElement;
+    root.toggleAttribute("data-readable-font", settings.readableFont);
+    root.toggleAttribute("data-large-text", settings.largeText);
+    root.toggleAttribute("data-high-contrast", settings.highContrast);
+    root.toggleAttribute("data-reduce-motion", settings.reduceMotion);
+    return () => {
+      root.removeAttribute("data-readable-font");
+      root.removeAttribute("data-large-text");
+      root.removeAttribute("data-high-contrast");
+      root.removeAttribute("data-reduce-motion");
+    };
+  }, [settings]);
 
   useEffect(() => {
     if (!open) return;
@@ -94,19 +108,19 @@ const AccessibilityToggle: React.FC<AccessibilityToggleProps> = ({
         type="button"
       >
         <FaWrench aria-hidden="true" />
-        <span className="sr-only">NootBot accessibility options</span>
+        <span className="sr-only">Site accessibility options</span>
       </button>
 
       {open && (
         <div
-          aria-label="Chat accessibility options"
+          aria-label="Site accessibility options"
           className="chat-accessibility-panel"
           id="chat-accessibility-controls"
           role="group"
         >
           <div>
             <strong>Accessibility</strong>
-            <span>Adjust NootBot for you</span>
+            <span>Adjust the site for you. Embedded sites have their own settings.</span>
           </div>
           {controls.map(({ key, label, description, icon: Icon }) => (
             <button

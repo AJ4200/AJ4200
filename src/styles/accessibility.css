@@ -1,0 +1,93 @@
+/* The shared dock frames the launcher without changing the robot itself. */
+.chatbot-root:has(.chatbot-launcher-wrap)::before {
+  position: fixed;
+  right: 0.7rem;
+  bottom: 0.8rem;
+  z-index: 199999;
+  width: 9.1rem;
+  height: 5.3rem;
+  border: 1px solid color-mix(in srgb, var(--neon) 28%, transparent);
+  border-radius: 2.8rem 1.4rem 1.4rem 2.8rem;
+  background:
+    radial-gradient(circle at 75% 50%, color-mix(in srgb, var(--neon) 20%, transparent), transparent 49%),
+    linear-gradient(120deg, rgb(5 8 18 / 0.94), rgb(8 10 24 / 0.78));
+  box-shadow: 0 0 28px color-mix(in srgb, var(--neon) 15%, transparent), inset 0 0 20px rgb(255 255 255 / 0.04);
+  content: "";
+  pointer-events: none;
+}
+
+.chat-accessibility-trigger {
+  position: relative;
+  border: 1px solid color-mix(in srgb, var(--neon) 75%, white);
+  background:
+    radial-gradient(circle at 35% 25%, color-mix(in srgb, var(--neon) 30%, #111322), #050711 68%);
+  box-shadow: 0 0 0 3px rgb(5 8 18 / 0.9), 0 0 0 4px color-mix(in srgb, var(--neon) 30%, transparent), 0 0 20px color-mix(in srgb, var(--neon) 35%, transparent);
+}
+
+.chat-accessibility-trigger::after {
+  position: absolute;
+  right: -0.22rem;
+  bottom: -0.12rem;
+  width: 0.55rem;
+  height: 0.55rem;
+  border: 2px solid #050711;
+  border-radius: 50%;
+  background: var(--neon);
+  box-shadow: 0 0 8px var(--neon);
+  content: "";
+}
+
+.chat-accessibility-panel {
+  border-color: color-mix(in srgb, var(--neon) 60%, transparent);
+  background:
+    linear-gradient(135deg, color-mix(in srgb, var(--neon) 10%, transparent), transparent 35%),
+    rgb(2 4 10 / 0.98);
+  box-shadow: 0 0 30px color-mix(in srgb, var(--neon) 15%, transparent), 0 20px 60px #000;
+}
+
+html[data-readable-font] body,
+html[data-readable-font] body * {
+  font-family: Arial, Helvetica, sans-serif !important;
+}
+
+html[data-large-text] {
+  font-size: 112.5%;
+}
+
+html[data-large-text] :is(p, a, button, label, input, textarea, select, small, strong, span, li) {
+  font-size: max(0.9rem, 1em) !important;
+}
+
+html[data-high-contrast] :is(p, h1, h2, h3, h4, h5, h6, label, small, strong, span, li, blockquote) {
+  color: #fff !important;
+  text-shadow: 0 1px 3px #000 !important;
+}
+
+html[data-high-contrast] :is(a, button:not(.chatbot-launcher), input, textarea, select) {
+  border-color: #fff !important;
+  background: #000 !important;
+  color: #fff !important;
+}
+
+html[data-high-contrast] :is(a, button, input, textarea, select):focus-visible {
+  outline: 3px solid #fff !important;
+  outline-offset: 3px;
+}
+
+html[data-reduce-motion] *,
+html[data-reduce-motion] *::before,
+html[data-reduce-motion] *::after {
+  scroll-behavior: auto !important;
+  animation-duration: 0.001ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.001ms !important;
+}
+
+@media (max-width: 640px) {
+  .chatbot-root:has(.chatbot-launcher-wrap)::before {
+    right: 0.45rem;
+    bottom: 0.55rem;
+    width: 8.15rem;
+    height: 4.7rem;
+  }
+}

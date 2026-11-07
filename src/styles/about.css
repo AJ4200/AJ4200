@@ -153,6 +153,53 @@
   box-shadow: 0 0 12px rgb(252 211 77 / 0.65);
 }
 
+.arcade-platform {
+  --arcade-accent: #6ee7b7;
+  --arcade-signal-bg: rgb(16 185 129 / 0.1);
+}
+
+.arcade-platform--flashback {
+  --arcade-accent: #d3ff32;
+  --arcade-signal-bg: rgb(211 255 50 / 0.08);
+}
+
+.arcade-platform-accent,
+.arcade-tab-accent {
+  color: var(--arcade-accent);
+}
+
+.arcade-platform-signal {
+  border-color: color-mix(in srgb, var(--arcade-accent) 35%, transparent);
+  background: var(--arcade-signal-bg);
+  color: var(--arcade-accent);
+}
+
+.arcade-platform-dot,
+.arcade-tab-indicator {
+  background: var(--arcade-accent);
+}
+
+.arcade-tab--baturo {
+  --arcade-accent: #6ee7b7;
+}
+
+.arcade-tab--flashback {
+  --arcade-accent: #d3ff32;
+}
+
+.arcade-tab.is-active {
+  background: color-mix(in srgb, var(--arcade-accent) 7%, transparent);
+}
+
+.arcade-tab.is-active h4 {
+  color: var(--arcade-accent);
+}
+
+.arcade-tab.is-active > svg {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
 .arcade-bleed {
   position: relative;
   isolation: isolate;
@@ -193,6 +240,47 @@
   content: "";
   filter: blur(42px);
   opacity: 0.48;
+}
+
+.arcade-platform--flashback .arcade-bleed::before {
+  background: conic-gradient(from 210deg, #d3ff32, #00e9ff, #f500b8, #d3ff32);
+}
+
+.arcade-platform--flashback .arcade-bleed::after {
+  background:
+    radial-gradient(circle at 15% 20%, #d3ff32 0, transparent 32%),
+    radial-gradient(circle at 85% 24%, #f500b8 0, transparent 30%),
+    radial-gradient(circle at 80% 85%, #00e9ff 0, transparent 34%),
+    radial-gradient(circle at 18% 82%, #d3ff32 0, transparent 32%);
+}
+
+.arcade-platform--flashback .arcade-shell {
+  border-color: #d3ff32;
+  background: #08050b;
+  box-shadow: 4px 4px 0 #f500b8, 0 30px 90px rgb(0 0 0 / 0.7);
+}
+
+.arcade-platform--flashback .arcade-toolbar {
+  border-color: rgb(211 255 50 / 0.5);
+  background: #08050b;
+}
+
+.arcade-platform--flashback .arcade-control {
+  border-color: rgb(0 233 255 / 0.5);
+  background: #10101a;
+  color: #b6faff;
+}
+
+.arcade-platform--flashback .arcade-control:hover,
+.arcade-platform--flashback .arcade-control:focus-visible {
+  border-color: #f500b8;
+  background: rgb(245 0 184 / 0.18);
+  color: #fff;
+}
+
+.arcade-platform--flashback .arcade-loading {
+  background: radial-gradient(circle at center, rgb(245 0 184 / 0.18), transparent 40%), #08050b;
+  color: #d3ff32;
 }
 
 .arcade-shell {

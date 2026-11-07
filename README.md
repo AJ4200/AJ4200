@@ -172,11 +172,13 @@ Changes appear on the website after the updated repository is deployed.
 ## Accessibility is part of the interface
 
 NootBot includes keyboard operation, focus restoration, screen-reader labels,
-live message announcements, quick prompts, readable-font and larger-text modes,
-high contrast, reduced motion, and persisted preferences. The navigation also
+live message announcements, and quick prompts. The site-wide accessibility
+controls offer a readable font, larger text, high contrast, reduced motion, and
+persisted preferences. These settings cannot change embedded external sites
+such as the arcades. The navigation also
 exposes active-route semantics and opens its visual route previews on keyboard
-focus, not only on hover. NootBot's accessibility settings are available from
-the wrench beside its launcher.
+focus, not only on hover. Accessibility settings are available from the wrench
+beside NootBot's launcher.
 
 ## Current signal
 

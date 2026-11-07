@@ -1,7 +1,8 @@
 "use client";
 
 import type { ReactNode } from "react";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { MotionConfig } from "framer-motion";
 import { usePathname } from "next/navigation";
 import Chatbot from "@/components/Chatbot/Chatbot";
 import PageLoader from "@/components/Navbar/PageLoader";
@@ -11,6 +12,16 @@ import { getNeonColor, getStyles } from "@/lib/navbarUtils";
 export default function AppShell({ children }: Readonly<{ children: ReactNode }>) {
   const pathname = usePathname();
   const currentPath = pathname ?? "/";
+  const [reduceMotion, setReduceMotion] = useState(false);
+
+  useEffect(() => {
+    const root = document.documentElement;
+    const syncMotion = () => setReduceMotion(root.hasAttribute("data-reduce-motion"));
+    const observer = new MutationObserver(syncMotion);
+    observer.observe(root, { attributes: true, attributeFilter: ["data-reduce-motion"] });
+    syncMotion();
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
     const styles = getStyles(currentPath);
@@ -20,11 +31,11 @@ export default function AppShell({ children }: Readonly<{ children: ReactNode }>
   }, [currentPath]);
 
   return (
-    <>
+    <MotionConfig reducedMotion={reduceMotion ? "always" : "user"}>
       <PageLoader key={currentPath} pathname={currentPath} />
       {children}
       <Cursor />
       <Chatbot />
-    </>
+    </MotionConfig>
   );
 }

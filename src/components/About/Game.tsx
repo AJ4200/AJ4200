@@ -1,7 +1,9 @@
 "use client";
 
+import { motion } from "framer-motion";
 import { type KeyboardEvent, useEffect, useRef, useState } from "react";
 import {
+  FaCompactDisc,
   FaCompress,
   FaExpand,
   FaExternalLinkAlt,
@@ -11,7 +13,10 @@ import {
 const platforms = [
   {
     id: "baturo",
+    index: "01",
     name: "Baturo Arena",
+    subtitle: "Original games / Custom engines",
+    icon: FaGamepad,
     url: "https://baturo-arena.vercel.app/",
     eyebrow: "In-house arcade platform",
     description:
@@ -21,7 +26,10 @@ const platforms = [
   },
   {
     id: "flashback",
+    index: "02",
     name: "FlashBack Machine",
+    subtitle: "Retro games / Browser emulation",
+    icon: FaCompactDisc,
     url: "https://flashback-machine.vercel.app/",
     eyebrow: "Browser retro arcade",
     description:
@@ -39,6 +47,7 @@ const Arcade: React.FC<{ platform: Platform }> = ({ platform }) => {
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
   const [fullscreenError, setFullscreenError] = useState(false);
+  const Icon = platform.icon;
 
   useEffect(() => {
     const handleFullscreenChange = () => {
@@ -65,16 +74,16 @@ const Arcade: React.FC<{ platform: Platform }> = ({ platform }) => {
   };
 
   return (
-    <>
+    <div className={`arcade-platform arcade-platform--${platform.id}`}>
       <div className="mb-10 grid gap-5 lg:grid-cols-[0.75fr_1fr] lg:items-end">
         <div>
-          <span className="inline-flex items-center gap-2 text-[0.6rem] uppercase tracking-[0.25em] text-emerald-300">
-            <FaGamepad />
+          <span className="arcade-platform-accent inline-flex items-center gap-2 text-[0.6rem] uppercase tracking-[0.25em]">
+            <Icon />
             03 / {platform.eyebrow}
           </span>
           <h3 className="mt-3 text-5xl font-black uppercase leading-[0.9] text-white sm:text-7xl">
             Enter
-            <span className="block text-emerald-300">{platform.name}.</span>
+            <span className="arcade-platform-accent block">{platform.name}.</span>
           </h3>
         </div>
         <div className="max-w-2xl lg:justify-self-end">
@@ -82,7 +91,7 @@ const Arcade: React.FC<{ platform: Platform }> = ({ platform }) => {
             {platform.description} Play directly here, take over the screen, or
             launch it in its own window.
           </p>
-          <span className="mt-4 inline-flex w-fit border border-emerald-400/25 bg-emerald-500/10 px-3 py-2 text-[0.58rem] uppercase tracking-[0.18em] text-emerald-200">
+          <span className="arcade-platform-signal mt-4 inline-flex w-fit border px-3 py-2 text-[0.58rem] uppercase tracking-[0.18em]">
             {platform.signal}
           </span>
         </div>
@@ -93,8 +102,8 @@ const Arcade: React.FC<{ platform: Platform }> = ({ platform }) => {
           <header className="arcade-toolbar">
             <div className="flex min-w-0 items-center gap-3">
               <span className="relative flex size-3 shrink-0">
-                <span className="absolute inline-flex size-full animate-ping rounded-full bg-emerald-400 opacity-60" />
-                <span className="relative inline-flex size-3 rounded-full bg-emerald-400" />
+                <span className="arcade-platform-dot absolute inline-flex size-full animate-ping rounded-full opacity-60" />
+                <span className="arcade-platform-dot relative inline-flex size-3 rounded-full" />
               </span>
               <div className="min-w-0">
                 <span className="block truncate text-xs font-black uppercase tracking-[0.2em] text-white">
@@ -139,7 +148,7 @@ const Arcade: React.FC<{ platform: Platform }> = ({ platform }) => {
           <div className="arcade-viewport">
             {!isLoaded && (
               <div className="arcade-loading" role="status">
-                <FaGamepad />
+                <Icon />
                 <span>Booting {platform.name}...</span>
               </div>
             )}
@@ -156,7 +165,7 @@ const Arcade: React.FC<{ platform: Platform }> = ({ platform }) => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
@@ -183,27 +192,47 @@ const Game: React.FC = () => {
 
   return (
     <div>
-      <div aria-label="Gaming platforms" className="mb-10 flex flex-wrap gap-3" role="tablist">
-        {platforms.map((platform, index) => (
-          <button
-            aria-controls={`arcade-${platform.id}-panel`}
-            aria-selected={active === platform.id}
-            className={`border px-5 py-3 text-xs font-bold uppercase tracking-[0.15em] transition ${
-              active === platform.id
-                ? "border-emerald-300 bg-emerald-400/15 text-emerald-200"
-                : "border-white/15 bg-black/30 text-white/55 hover:border-emerald-400/60 hover:text-white"
-            }`}
-            id={`arcade-${platform.id}-tab`}
-            key={platform.id}
-            onClick={() => selectPlatform(platform.id)}
-            onKeyDown={(event) => handleTabKeyDown(event, index)}
-            role="tab"
-            tabIndex={active === platform.id ? 0 : -1}
-            type="button"
-          >
-            {platform.name}
-          </button>
-        ))}
+      <div aria-label="Gaming platforms" className="mb-10 grid border-y border-white/10 sm:grid-cols-2" role="tablist">
+        {platforms.map((platform, index) => {
+          const Icon = platform.icon;
+          return (
+            <button
+              aria-controls={`arcade-${platform.id}-panel`}
+              aria-selected={active === platform.id}
+              className={`arcade-tab arcade-tab--${platform.id} group relative flex min-h-28 items-center justify-between overflow-hidden border-b border-white/10 px-5 py-5 text-left transition hover:bg-white/[0.035] sm:border-b-0 sm:border-r sm:last:border-r-0 ${
+                active === platform.id ? "is-active" : ""
+              }`}
+              id={`arcade-${platform.id}-tab`}
+              key={platform.id}
+              onClick={() => selectPlatform(platform.id)}
+              onKeyDown={(event) => handleTabKeyDown(event, index)}
+              role="tab"
+              tabIndex={active === platform.id ? 0 : -1}
+              type="button"
+            >
+              <div>
+                <span className="arcade-tab-accent text-xs font-bold">{platform.index}</span>
+                <h4 className="mt-2 text-xl font-black uppercase transition-colors sm:text-2xl">
+                  {platform.name}
+                </h4>
+                <p className="mt-1 text-[0.6rem] uppercase tracking-[0.15em] text-white/40">
+                  {platform.subtitle}
+                </p>
+              </div>
+              <Icon
+                aria-hidden="true"
+                className="arcade-tab-accent ml-4 shrink-0 text-2xl opacity-50 transition group-hover:scale-110 group-hover:opacity-100"
+              />
+              {active === platform.id && (
+                <motion.span
+                  className="arcade-tab-indicator absolute inset-x-0 bottom-0 h-1"
+                  layoutId="arcade-indicator"
+                  transition={{ type: "spring", stiffness: 420, damping: 34 }}
+                />
+              )}
+            </button>
+          );
+        })}
       </div>
       {platforms.map((platform) => (
         <div
