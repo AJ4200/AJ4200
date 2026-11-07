@@ -41,10 +41,68 @@ async function getSearchCount(type) {
   return result.total_count;
 }
 
-const [repositories, pullRequests, issues] = await Promise.all([
+async function getContributionCalendar() {
+  if (!process.env.GITHUB_TOKEN) {
+    throw new Error("GITHUB_TOKEN is required to fetch the contribution calendar");
+  }
+
+  const response = await fetch("https://api.github.com/graphql", {
+    method: "POST",
+    headers: { ...headers, "Content-Type": "application/json" },
+    body: JSON.stringify({
+      query: `query ($login: String!) {
+        user(login: $login) {
+          contributionsCollection {
+            contributionCalendar {
+              totalContributions
+              weeks {
+                contributionDays { date contributionCount contributionLevel }
+              }
+            }
+          }
+        }
+      }`,
+      variables: { login: username },
+    }),
+    signal: AbortSignal.timeout(15000),
+  });
+  if (!response.ok) {
+    throw new Error(`GitHub GraphQL request failed: ${response.status} ${response.statusText}`);
+  }
+  const result = await response.json();
+  if (result.errors?.length) {
+    throw new Error(`GitHub GraphQL error: ${result.errors.map((error) => error.message).join(", ")}`);
+  }
+  const calendar = result.data?.user?.contributionsCollection?.contributionCalendar;
+  const levels = ["NONE", "FIRST_QUARTILE", "SECOND_QUARTILE", "THIRD_QUARTILE", "FOURTH_QUARTILE"];
+  if (
+    !calendar ||
+    !Number.isSafeInteger(calendar.totalContributions) ||
+    !Array.isArray(calendar.weeks) ||
+    calendar.weeks.length < 52 ||
+    calendar.weeks.length > 54 ||
+    calendar.weeks.some((week) =>
+      !Array.isArray(week.contributionDays) ||
+      week.contributionDays.length < 1 ||
+      week.contributionDays.length > 7 ||
+      week.contributionDays.some((day) =>
+        !/^\d{4}-\d{2}-\d{2}$/.test(day.date) ||
+        !Number.isSafeInteger(day.contributionCount) ||
+        day.contributionCount < 0 ||
+        !levels.includes(day.contributionLevel)
+      )
+    )
+  ) {
+    throw new Error("GitHub API returned an invalid contribution calendar");
+  }
+  return calendar;
+}
+
+const [repositories, pullRequests, issues, calendar] = await Promise.all([
   getOwnedRepositories(),
   getSearchCount("pr"),
   getSearchCount("issue"),
+  getContributionCalendar(),
 ]);
 
 if (repositories.some((repo) => !Number.isSafeInteger(repo.stargazers_count))) {
@@ -60,26 +118,66 @@ const stats = [
 ];
 
 const cards = stats.map(([label, value], index) => {
-  const x = 28 + (index % 2) * 260;
-  const y = 104 + Math.floor(index / 2) * 94;
-  return `  <g transform="translate(${x} ${y})">
-    <rect width="244" height="82" rx="4" fill="#111021" stroke="#302a4b"/>
-    <text x="14" y="24" fill="#a5a0bc" font-size="12" letter-spacing="1">${label}</text>
-    <text x="14" y="61" fill="#7cffb2" font-size="30" font-weight="700">${value}</text>
+  const x = 28 + index * 205;
+  return `  <g transform="translate(${x} 96)">
+    <rect width="192" height="91" rx="5" fill="#111021" stroke="#31294a"/>
+    <path d="M0 0h44" stroke="${index % 2 === 0 ? "#a78bfa" : "#7cffb2"}" stroke-width="2"/>
+    <text x="15" y="26" fill="#b9b4c9" font-size="10" letter-spacing="1.2">${label}</text>
+    <text x="15" y="68" fill="#f3efff" font-size="34" font-weight="700">${value.toLocaleString("en-US")}</text>
   </g>`;
 }).join("\n");
 
-const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="560" height="320" viewBox="0 0 560 320" role="img" aria-labelledby="title description">
-  <title id="title">AJ4200 GitHub statistics</title>
-  <desc id="description">${repositories.length} public repositories, ${stars} stars on owned public repositories, ${pullRequests} public pull requests and ${issues} public issues.</desc>
-  <rect width="560" height="320" rx="6" fill="#05050b"/>
-  <path d="M28 34h28" stroke="#7cffb2" stroke-width="3"/>
-  <text x="28" y="67" fill="#9b7bff" font-family="Arial, sans-serif" font-size="21" font-weight="700">AJ4200 / GITHUB SIGNAL</text>
-  <text x="28" y="86" fill="#a5a0bc" font-family="Arial, sans-serif" font-size="11" letter-spacing="1">PUBLIC ACTIVITY</text>
+const colors = {
+  NONE: "#202032",
+  FIRST_QUARTILE: "#315b51",
+  SECOND_QUARTILE: "#438f70",
+  THIRD_QUARTILE: "#5dc990",
+  FOURTH_QUARTILE: "#7cffb2",
+};
+const months = [];
+let lastMonth = "";
+let lastMonthX = -Infinity;
+const cells = calendar.weeks.flatMap((week, weekIndex) =>
+  week.contributionDays.map((day) => {
+    const date = new Date(`${day.date}T00:00:00Z`);
+    const x = 52 + weekIndex * 14;
+    const y = 267 + date.getUTCDay() * 14;
+    const month = day.date.slice(0, 7);
+    if (month !== lastMonth && x - lastMonthX >= 42) {
+      months.push(`<text x="${x}" y="255" fill="#b9b4c9" font-size="10">${date.toLocaleString("en-US", { month: "short", timeZone: "UTC" })}</text>`);
+      lastMonthX = x;
+    }
+    lastMonth = month;
+    return `<rect x="${x}" y="${y}" width="10" height="10" rx="2" fill="${colors[day.contributionLevel]}"><title>${day.date}: ${day.contributionCount} contributions</title></rect>`;
+  }),
+).join("\n    ");
+
+const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="860" height="417" viewBox="0 0 860 417" role="img" aria-labelledby="title description" font-family="Arial, sans-serif">
+  <title id="title">AJ4200 GitHub signal</title>
+  <desc id="description">${repositories.length} public repositories, ${stars} stars on owned public repositories, ${pullRequests} public pull requests, ${issues} public issues, and ${calendar.totalContributions} contributions in the last year.</desc>
+  <rect width="860" height="417" rx="8" fill="#080913"/>
+  <path d="M0 0h860" stroke="#a78bfa" stroke-width="2"/>
+  <circle cx="33" cy="38" r="4" fill="#7cffb2"/>
+  <text x="46" y="42" fill="#c6b5ff" font-size="11" font-weight="700" letter-spacing="2">OPEN SOURCE / DAILY SIGNAL</text>
+  <text x="28" y="76" fill="#fff" font-size="24" font-weight="700" letter-spacing="1">AJ4200 ON GITHUB</text>
+  <text x="832" y="42" text-anchor="end" fill="#9d99b2" font-size="10" letter-spacing="1">PUBLIC PROFILE</text>
   <g font-family="Arial, sans-serif">
 ${cards}
   </g>
-  <text x="28" y="307" fill="#777287" font-family="Arial, sans-serif" font-size="10">Stars on owned public repositories. PRs and issues authored on GitHub.</text>
+  <path d="M28 211h804" stroke="#302a42"/>
+  <text x="28" y="235" fill="#f3efff" font-size="14" font-weight="700">${calendar.totalContributions.toLocaleString("en-US")} CONTRIBUTIONS</text>
+  <text x="832" y="235" text-anchor="end" fill="#b9b4c9" font-size="10" letter-spacing="1">LAST YEAR</text>
+  <g font-family="Arial, sans-serif">
+    ${months.join("\n    ")}
+    <text x="28" y="292" fill="#b9b4c9" font-size="9">M</text>
+    <text x="28" y="320" fill="#b9b4c9" font-size="9">W</text>
+    <text x="28" y="348" fill="#b9b4c9" font-size="9">F</text>
+    ${cells}
+  </g>
+  <text x="28" y="397" fill="#b9b4c9" font-size="10">Stars on owned public repos / PRs and issues authored on GitHub</text>
+  <text x="692" y="397" fill="#b9b4c9" font-size="10">Less</text>
+  ${Object.values(colors).map((color, index) => `<rect x="${724 + index * 15}" y="387" width="10" height="10" rx="2" fill="${color}"/>`).join("\n  ")}
+  <text x="806" y="397" fill="#b9b4c9" font-size="10">More</text>
 </svg>
 `;
 

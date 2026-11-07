@@ -152,9 +152,11 @@ The site and profile README use the same locally stored GitHub statistics card.
 The [stats workflow](./.github/workflows/github-stats.yml) refreshes it daily
 and can also be run manually. It uses GitHub's API and the workflow's
 `GITHUB_TOKEN`, with no third-party card service or extra secret. The card shows
-public repositories, stars on owned public repositories, and public pull
-requests and issues authored by AJ4200. If an API request fails, the workflow
-fails without replacing the last successful card.
+public repositories, stars on owned public repositories, public pull requests
+and issues authored by AJ4200, and a contribution heatmap for the last year.
+The heatmap reflects activity available to the workflow token; private
+contributions may not be included. If an API request fails, the workflow fails
+without replacing the last successful card.
 
 GitHub Actions must be enabled and permitted to write repository contents.
 Changes appear on the website after the updated repository is deployed.
@@ -190,7 +192,7 @@ entire application from its first sketch.
   <br />
   <img
     src="./public/github-stats.svg"
-    alt="AJ4200 GitHub statistics: public repositories, stars, pull requests, and issues"
+    alt="AJ4200 GitHub statistics and contribution heatmap. Visit the GitHub profile for detailed contribution counts."
   />
   <br /><br />
   <strong>Code with intent. Build with character.</strong>
