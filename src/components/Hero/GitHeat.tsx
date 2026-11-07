@@ -2,14 +2,14 @@ import Image from "next/image";
 
 const GitHubHeatmap: React.FC = () => {
   return (
-    <div className="mx-auto w-full max-w-5xl">
+    <div className="mx-auto w-full max-w-2xl">
       <Image
-        alt="AJ4200 GitHub statistics"
+        alt="AJ4200 GitHub statistics: public repositories, stars, pull requests, and issues"
         className="h-auto w-full"
-        height={400}
-        src="https://github-readme-stats.vercel.app/api?username=aj4200&show_icons=true&theme=transparent&hide_border=true"
+        height={320}
+        src="/github-stats.svg"
         unoptimized
-        width={1000}
+        width={560}
       />
     </div>
   );

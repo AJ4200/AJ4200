@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="560" height="320" viewBox="0 0 560 320" role="img" aria-labelledby="title description">
+  <title id="title">AJ4200 GitHub statistics</title>
+  <desc id="description">57 public repositories, 5 stars on owned public repositories, 27 public pull requests and 56 public issues.</desc>
+  <rect width="560" height="320" rx="6" fill="#05050b"/>
+  <path d="M28 34h28" stroke="#7cffb2" stroke-width="3"/>
+  <text x="28" y="67" fill="#9b7bff" font-family="Arial, sans-serif" font-size="21" font-weight="700">AJ4200 / GITHUB SIGNAL</text>
+  <text x="28" y="86" fill="#a5a0bc" font-family="Arial, sans-serif" font-size="11" letter-spacing="1">PUBLIC ACTIVITY</text>
+  <g font-family="Arial, sans-serif">
+  <g transform="translate(28 104)">
+    <rect width="244" height="82" rx="4" fill="#111021" stroke="#302a4b"/>
+    <text x="14" y="24" fill="#a5a0bc" font-size="12" letter-spacing="1">PUBLIC REPOS</text>
+    <text x="14" y="61" fill="#7cffb2" font-size="30" font-weight="700">57</text>
+  </g>
+  <g transform="translate(288 104)">
+    <rect width="244" height="82" rx="4" fill="#111021" stroke="#302a4b"/>
+    <text x="14" y="24" fill="#a5a0bc" font-size="12" letter-spacing="1">REPO STARS</text>
+    <text x="14" y="61" fill="#7cffb2" font-size="30" font-weight="700">5</text>
+  </g>
+  <g transform="translate(28 198)">
+    <rect width="244" height="82" rx="4" fill="#111021" stroke="#302a4b"/>
+    <text x="14" y="24" fill="#a5a0bc" font-size="12" letter-spacing="1">PULL REQUESTS</text>
+    <text x="14" y="61" fill="#7cffb2" font-size="30" font-weight="700">27</text>
+  </g>
+  <g transform="translate(288 198)">
+    <rect width="244" height="82" rx="4" fill="#111021" stroke="#302a4b"/>
+    <text x="14" y="24" fill="#a5a0bc" font-size="12" letter-spacing="1">ISSUES</text>
+    <text x="14" y="61" fill="#7cffb2" font-size="30" font-weight="700">56</text>
+  </g>
+  </g>
+  <text x="28" y="307" fill="#777287" font-family="Arial, sans-serif" font-size="10">Stars on owned public repositories. PRs and issues authored on GitHub.</text>
+</svg>

@@ -144,6 +144,19 @@ GROQ_MODEL=llama-3.1-8b-instant
 See [GROQ_CHATBOT_SETUP.md](./GROQ_CHATBOT_SETUP.md) for the complete setup.
 Without a key, NootBot remains useful through its built-in site-guide fallback.
 
+### GitHub statistics
+
+The site and profile README use the same locally stored GitHub statistics card.
+The [stats workflow](./.github/workflows/github-stats.yml) refreshes it daily
+and can also be run manually. It uses GitHub's API and the workflow's
+`GITHUB_TOKEN`, with no third-party card service or extra secret. The card shows
+public repositories, stars on owned public repositories, and public pull
+requests and issues authored by AJ4200. If an API request fails, the workflow
+fails without replacing the last successful card.
+
+GitHub Actions must be enabled and permitted to write repository contents.
+Changes appear on the website after the updated repository is deployed.
+
 ## Commands
 
 | Command | Purpose |
@@ -171,8 +184,8 @@ entire application from its first sketch.
 <div align="center">
   <br />
   <img
-    src="https://github-readme-stats.vercel.app/api?username=AJ4200&amp;show_icons=true&amp;hide_border=true&amp;bg_color=05050B&amp;title_color=9B7BFF&amp;text_color=C7CAD1&amp;icon_color=7CFFB2"
-    alt="AJ4200 GitHub statistics"
+    src="./public/github-stats.svg"
+    alt="AJ4200 GitHub statistics: public repositories, stars, pull requests, and issues"
   />
   <br /><br />
   <strong>Code with intent. Build with character.</strong>
