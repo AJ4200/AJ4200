@@ -163,8 +163,16 @@
   --arcade-signal-bg: rgb(211 255 50 / 0.08);
 }
 
-.arcade-platform-accent,
+.arcade-platform-accent {
+  color: var(--arcade-accent);
+}
+
+.arcade-tab,
 .arcade-tab-accent {
+  color: rgb(255 255 255 / 0.8);
+}
+
+.arcade-tab.is-active .arcade-tab-accent {
   color: var(--arcade-accent);
 }
 

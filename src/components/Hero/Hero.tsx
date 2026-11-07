@@ -185,7 +185,7 @@ const Hero = () => {
               github.com/aj4200
             </a>
           </div>
-          <div className="border border-white/15 bg-black/40 p-3 backdrop-blur-md sm:p-6">
+          <div className="relative overflow-hidden border border-indigo-300/20 bg-indigo-950/25 p-3 shadow-[0_0_60px_rgba(99,102,241,0.12)] backdrop-blur-2xl sm:p-6">
             <GitHubHeatmap />
           </div>
         </section>

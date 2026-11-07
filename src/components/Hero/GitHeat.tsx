@@ -9,7 +9,7 @@ const GitHubHeatmap: React.FC = () => {
       tabIndex={0}
     >
       <Image
-        alt="AJ4200 GitHub statistics and contribution heatmap. Visit the GitHub profile for detailed contribution counts."
+        alt="AJ4200 GitHub statistics, including public commits from the past year, and contribution heatmap. Visit the GitHub profile for detailed contribution counts."
         className="h-auto w-full min-w-[48rem]"
         height={417}
         src="/github-stats.svg"

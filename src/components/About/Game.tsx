@@ -192,14 +192,14 @@ const Game: React.FC = () => {
 
   return (
     <div>
-      <div aria-label="Gaming platforms" className="mb-10 grid border-y border-white/10 sm:grid-cols-2" role="tablist">
+      <div aria-label="Gaming platforms" className="mx-3 mb-12 grid border-x border-b border-white/10 sm:mx-5 sm:grid-cols-2 lg:mb-16" role="tablist">
         {platforms.map((platform, index) => {
           const Icon = platform.icon;
           return (
             <button
               aria-controls={`arcade-${platform.id}-panel`}
               aria-selected={active === platform.id}
-              className={`arcade-tab arcade-tab--${platform.id} group relative flex min-h-28 items-center justify-between overflow-hidden border-b border-white/10 px-5 py-5 text-left transition hover:bg-white/[0.035] sm:border-b-0 sm:border-r sm:last:border-r-0 ${
+              className={`arcade-tab arcade-tab--${platform.id} group relative flex min-h-20 items-center justify-between overflow-hidden border-b border-white/10 px-4 py-3 text-left transition hover:bg-white/[0.035] sm:border-b-0 sm:border-r sm:last:border-r-0 ${
                 active === platform.id ? "is-active" : ""
               }`}
               id={`arcade-${platform.id}-tab`}
@@ -211,21 +211,21 @@ const Game: React.FC = () => {
               type="button"
             >
               <div>
-                <span className="arcade-tab-accent text-xs font-bold">{platform.index}</span>
-                <h4 className="mt-2 text-xl font-black uppercase transition-colors sm:text-2xl">
+                <span className="arcade-tab-accent text-[0.6rem] font-bold">{platform.index}</span>
+                <h4 className="mt-1 text-base font-black uppercase transition-colors sm:text-lg">
                   {platform.name}
                 </h4>
-                <p className="mt-1 text-[0.6rem] uppercase tracking-[0.15em] text-white/40">
+                <p className="mt-1 text-[0.55rem] uppercase tracking-[0.15em] text-white/65">
                   {platform.subtitle}
                 </p>
               </div>
               <Icon
                 aria-hidden="true"
-                className="arcade-tab-accent ml-4 shrink-0 text-2xl opacity-50 transition group-hover:scale-110 group-hover:opacity-100"
+                className="arcade-tab-accent ml-4 shrink-0 text-xl transition group-hover:scale-110"
               />
               {active === platform.id && (
                 <motion.span
-                  className="arcade-tab-indicator absolute inset-x-0 bottom-0 h-1"
+                  className="arcade-tab-indicator absolute inset-x-0 bottom-0 h-0.5"
                   layoutId="arcade-indicator"
                   transition={{ type: "spring", stiffness: 420, damping: 34 }}
                 />

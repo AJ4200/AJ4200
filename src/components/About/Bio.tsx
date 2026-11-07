@@ -375,7 +375,7 @@ const Bio: React.FC<BioProps> = ({
             <motion.div
               animate={{ opacity: 1, x: 0 }}
               aria-labelledby="gaming-tab"
-              className="py-16 lg:py-24"
+              className="pb-16 lg:pb-24"
               exit={{ opacity: 0, x: -24 }}
               id="gaming-panel"
               initial={{ opacity: 0, x: 24 }}

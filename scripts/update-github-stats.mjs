@@ -41,6 +41,18 @@ async function getSearchCount(type) {
   return result.total_count;
 }
 
+async function getCommitCount() {
+  const since = new Date(Date.now() - 365 * 24 * 60 * 60 * 1000)
+    .toISOString()
+    .slice(0, 10);
+  const query = encodeURIComponent(`author:${username} author-date:>=${since} is:public`);
+  const result = await getJson(`https://api.github.com/search/commits?q=${query}&per_page=1`);
+  if (!Number.isSafeInteger(result.total_count) || result.incomplete_results !== false) {
+    throw new Error("GitHub API returned an incomplete or invalid commit count");
+  }
+  return result.total_count;
+}
+
 async function getContributionCalendar() {
   if (!process.env.GITHUB_TOKEN) {
     throw new Error("GITHUB_TOKEN is required to fetch the contribution calendar");
@@ -98,10 +110,11 @@ async function getContributionCalendar() {
   return calendar;
 }
 
-const [repositories, pullRequests, issues, calendar] = await Promise.all([
+const [repositories, pullRequests, issues, commits, calendar] = await Promise.all([
   getOwnedRepositories(),
   getSearchCount("pr"),
   getSearchCount("issue"),
+  getCommitCount(),
   getContributionCalendar(),
 ]);
 
@@ -113,14 +126,15 @@ const stars = repositories.reduce((total, repo) => total + repo.stargazers_count
 const stats = [
   ["PUBLIC REPOS", repositories.length],
   ["REPO STARS", stars],
+  ["COMMITS / 1Y", commits],
   ["PULL REQUESTS", pullRequests],
   ["ISSUES", issues],
 ];
 
 const cards = stats.map(([label, value], index) => {
-  const x = 28 + index * 205;
+  const x = 28 + index * 163;
   return `  <g transform="translate(${x} 96)">
-    <rect width="192" height="91" rx="5" fill="#111021" stroke="#31294a"/>
+    <rect width="152" height="91" rx="5" fill="#111021" fill-opacity="0.88" stroke="#31294a"/>
     <path d="M0 0h44" stroke="${index % 2 === 0 ? "#a78bfa" : "#7cffb2"}" stroke-width="2"/>
     <text x="15" y="26" fill="#b9b4c9" font-size="10" letter-spacing="1.2">${label}</text>
     <text x="15" y="68" fill="#f3efff" font-size="34" font-weight="700">${value.toLocaleString("en-US")}</text>
@@ -154,8 +168,8 @@ const cells = calendar.weeks.flatMap((week, weekIndex) =>
 
 const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="860" height="417" viewBox="0 0 860 417" role="img" aria-labelledby="title description" font-family="Arial, sans-serif">
   <title id="title">AJ4200 GitHub signal</title>
-  <desc id="description">${repositories.length} public repositories, ${stars} stars on owned public repositories, ${pullRequests} public pull requests, ${issues} public issues, and ${calendar.totalContributions} contributions in the last year.</desc>
-  <rect width="860" height="417" rx="8" fill="#080913"/>
+  <desc id="description">${repositories.length} public repositories, ${stars} stars on owned public repositories, ${commits} commits to public repositories in the past year, ${pullRequests} public pull requests, ${issues} public issues, and ${calendar.totalContributions} contributions in the last year.</desc>
+  <rect width="860" height="417" rx="8" fill="#080913" fill-opacity="0.86"/>
   <path d="M0 0h860" stroke="#a78bfa" stroke-width="2"/>
   <circle cx="33" cy="38" r="4" fill="#7cffb2"/>
   <text x="46" y="42" fill="#c6b5ff" font-size="11" font-weight="700" letter-spacing="2">OPEN SOURCE / DAILY SIGNAL</text>
@@ -174,7 +188,7 @@ ${cards}
     <text x="28" y="348" fill="#b9b4c9" font-size="9">F</text>
     ${cells}
   </g>
-  <text x="28" y="397" fill="#b9b4c9" font-size="10">Stars on owned public repos / PRs and issues authored on GitHub</text>
+  <text x="28" y="397" fill="#b9b4c9" font-size="10">Public commits in past year / Stars on owned repos / Authored PRs and issues</text>
   <text x="692" y="397" fill="#b9b4c9" font-size="10">Less</text>
   ${Object.values(colors).map((color, index) => `<rect x="${724 + index * 15}" y="387" width="10" height="10" rx="2" fill="${color}"/>`).join("\n  ")}
   <text x="806" y="397" fill="#b9b4c9" font-size="10">More</text>
