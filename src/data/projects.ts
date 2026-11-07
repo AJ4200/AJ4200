@@ -26,15 +26,15 @@ const projects: Project[] = [
     title: "GWS Inc.",
     description:
       "GWS is a comprehensive web application that combines the functionality of a link-in-bio tool like Linktree with a content creator platform. It allows users to create a landing page with multiple clickable buttons, each linking to a different webpage or social media profile, making it easier for their followers to find and access their content. GWS also offers advanced features such as the ability to fetch the latest posts from Instagram, TikTok, and YouTube, and display them on the landing page, as well as customization options to match the user's brand. Additionally, GWS provides analytics and monetization options, such as commission rates through affiliate links, making it an ideal tool for influencers, bloggers, and content creators who want to share links and promote their content effectively.",
-    techStack: ["Tech4", "Tech5", "Tech6"],
+    techStack: ["TypeScript", "Next.js", "Tailwind"],
     link: "https://project2.com",
     sourceCode: "https://github.com/AJ4200/CodeShifter",
   },
   {
     image: "/imgs/hdfplayer.png",
     title: "HDFPlayer",
-    description: "Description for Project 2.",
-    techStack: ["Tech4", "Tech5", "Tech6"],
+    description: "Deprecated project. Now replaced by FlashBack Machine",
+    techStack: ["Ruffle", "JS Dos", "RetroArch","Play!"],
     link: "https://project2.com",
     sourceCode: "https://github.com/AJ4200/CodeShifter",
   },
@@ -49,10 +49,10 @@ const projects: Project[] = [
   {
     image: "/imgs/Appoflex.png",
     title: "AppoFlex",
-    description: "Description for Project 2.",
-    techStack: ["Tech4", "Tech5", "Tech6"],
-    link: "https://project2.com",
-    sourceCode: "https://github.com/AJ4200/CodeShifter",
+    description: "AppoFlex is a versatile application designed to streamline and enhance user productivity through flexible task management and scheduling features.",
+    techStack: ["TypeScript","Next.js","Neon","Groq"],
+    link: "https://appo-flex.vercel.app",
+    sourceCode: "https://github.com/AJ4200/AppoFlex",
   },
   {
     image: "/imgs/Portyfolio.png",
