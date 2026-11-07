@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 import {
   FaAdjust,
+  FaCog,
   FaFont,
   FaLowVision,
   FaUniversalAccess,
@@ -125,7 +126,10 @@ const AccessibilityToggle: React.FC<AccessibilityToggleProps> = ({
         ref={triggerRef}
         type="button"
       >
-        <FaWrench aria-hidden="true" />
+        <span aria-hidden="true" className="accessibility-trigger-icon">
+          <FaCog className="accessibility-trigger-gear" />
+          <FaWrench className="accessibility-trigger-wrench" />
+        </span>
         <span className="sr-only">Site accessibility options</span>
       </button>
 
