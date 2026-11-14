@@ -30,6 +30,12 @@ export const metadata: Metadata = {
     template: "%s | AJ4200",
   },
   description: "AJ4200 developer portfolio",
+  icons: {
+    icon: [
+      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/favicon.ico", type: "image/x-icon" },
+    ],
+  },
 };
 
 export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
