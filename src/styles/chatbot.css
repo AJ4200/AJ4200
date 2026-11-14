@@ -197,19 +197,20 @@
 .chat-accessibility {
   --chat-border: color-mix(in srgb, var(--neon) 35%, transparent);
   position: fixed;
-  right: 6rem;
-  bottom: 1.6rem;
+  right: 6.35rem;
+  bottom: 2.38rem;
   z-index: 200001;
 }
 
 .chat-accessibility.is-chat-open {
   right: min(calc(29rem + 0.5rem), calc(100vw - 3.5rem));
+  bottom: 1.6rem;
 }
 
 .chat-accessibility-trigger {
   display: inline-flex;
-  width: 2.75rem;
-  height: 2.75rem;
+  width: 2.05rem;
+  height: 2.05rem;
   align-items: center;
   justify-content: center;
   border: 1px solid var(--chat-border);
@@ -704,8 +705,8 @@
   }
 
   .chat-accessibility {
-    right: 5.25rem;
-    bottom: 1.15rem;
+    right: 5.4rem;
+    bottom: 1.83rem;
   }
 
   .chat-accessibility.is-chat-open {
