@@ -30,6 +30,40 @@ export default function AppShell({ children }: Readonly<{ children: ReactNode }>
     document.documentElement.style.setProperty("--neon", getNeonColor(currentPath));
   }, [currentPath]);
 
+  useEffect(() => {
+    let active = true;
+    const color =
+      currentPath === "/" ? "#ffffff" : getNeonColor(currentPath) || "#ffffff";
+    const favicon = document.querySelector<HTMLLinkElement>('link[rel="icon"]');
+
+    if (!favicon) {
+      return;
+    }
+
+    fetch("/github-favicon.svg")
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`Failed to load favicon: ${response.status}`);
+        }
+        return response.text();
+      })
+      .then((svg) => {
+        if (!active) {
+          return;
+        }
+
+        const themedSvg = svg.replace(/#f0abfc/g, color);
+        favicon.href = `data:image/svg+xml,${encodeURIComponent(themedSvg)}`;
+      })
+      .catch((error: unknown) => {
+        console.error("Unable to update the favicon for the active page.", error);
+      });
+
+    return () => {
+      active = false;
+    };
+  }, [currentPath]);
+
   return (
     <MotionConfig reducedMotion={reduceMotion ? "always" : "user"}>
       <PageLoader key={currentPath} pathname={currentPath} />
