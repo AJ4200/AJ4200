@@ -82,7 +82,7 @@ The experience includes:
 - A FlashBack Machine gaming tab with browser emulators and offline play
 - A case-file project carousel, experience timeline, and credential archive
 - Service pathways from free discovery demos through custom systems
-- A project brief that compiles enquiries directly into Gmail
+- A project brief that creates styled HTML drafts in Gmail with user consent
 - Responsive desktop and mobile navigation with oversized route previews
 - A custom cursor, themed scrollbar, loaders, ambient stars, leaves, and light
 - **NootBot**, an accessible Groq-powered site guide with a local fallback
@@ -145,6 +145,41 @@ GROQ_MODEL=llama-3.1-8b-instant
 
 See [GROQ_CHATBOT_SETUP.md](./GROQ_CHATBOT_SETUP.md) for the complete setup.
 Without a key, NootBot remains useful through its built-in site-guide fallback.
+
+### Enable styled Gmail drafts
+
+The contact form uses Google's Gmail API to create an HTML draft in the
+visitor's Gmail account. It requests only the `gmail.compose` permission and
+never sends the message automatically. Without this setup, the form falls back
+to the existing plain-text Gmail/email-app draft.
+
+1. In the [Google Cloud Console](https://console.cloud.google.com/), create or
+   select a project and enable the **Gmail API**.
+2. Configure the OAuth consent screen. For an External app in Testing, add the
+   Google account you'll use to test as a test user.
+3. Add the Gmail API scope
+   `https://www.googleapis.com/auth/gmail.compose` to the consent screen's data
+   access.
+4. Create an OAuth client ID with application type **Web application**. Add
+   each site origin under **Authorized JavaScript origins** (for example
+   `http://localhost:3000` and `https://your-production-domain.com`). Origins
+   contain no path.
+5. Add the client ID to `.env.local`:
+
+   ```env
+   NEXT_PUBLIC_GOOGLE_CLIENT_ID=your-client-id.apps.googleusercontent.com
+   ```
+
+6. Restart the development server. Open `/contact`, submit the form, choose the
+   Google account whose Gmail should hold the draft, and grant the compose
+   permission. The styled draft will appear in that account's Gmail Drafts.
+7. For deployment, add the same variable to the hosting provider's environment
+   settings and include the deployed site's origin in the OAuth client. Redeploy
+   after changing environment variables.
+
+The OAuth client ID is public and is safe to expose in the browser; do not add a
+client secret. Google may require app verification before an OAuth app using the
+Gmail compose scope can be used broadly outside its test users.
 
 ### GitHub statistics
 
